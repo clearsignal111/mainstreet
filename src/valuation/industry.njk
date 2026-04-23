@@ -10,7 +10,7 @@ permalink: "{{ industry.page_url }}"
 
 {# ─── Front-matter computed values ─────────────────────────────────────────── #}
 {%- set pageTitle = "How Much Is a " + industry.display_name + " Business Worth? (" + site.dataYear + " Data)" -%}
-{%- set metaDescription = industry.industry_name + " SDE Multiple: " + industry.sde_multiple_low + "× – " + industry.sde_multiple_high + "× (" + industry.data_source + "). Calculate your specific " + industry.industry_name + " business valuation using " + industry.transaction_count + "+ closed transactions. Free, no email required." -%}
+{%- set metaDescription = industry.industry_name + " SDE Multiple: " + industry.sde_multiple_low + "× – " + industry.sde_multiple_high + "× (" + industry.data_source + "). Calculate your specific " + industry.display_name + " business valuation using " + industry.transaction_count + "+ closed transactions. Free, no email required." -%}
 {%- set canonicalPath = industry.page_url -%}
 
 {# ─── Schema ────────────────────────────────────────────────────────────────── #}
@@ -27,7 +27,7 @@ permalink: "{{ industry.page_url }}"
     <li><a href="/">Home</a></li>
     <li><a href="/valuation/">Business Valuation</a></li>
     <li><a href="{{ industry.category_url }}">{{ industry.industry_category }}</a></li>
-    <li aria-current="page">{{ industry.industry_name }}</li>
+    <li aria-current="page">{{ industry.display_name }}</li>
   </ol>
 </nav>
 
@@ -37,7 +37,7 @@ permalink: "{{ industry.page_url }}"
     <h1>How Much Is a {{ industry.display_name }} Business Worth? ({{ site.dataYear }} Data)</h1>
     <p class="industry-hook">{{ industry.hook }}</p>
     <p class="industry-intro">
-      {{ industry.industry_name }} businesses typically sell for
+      {{ industry.display_name }} businesses typically sell for
       <strong>{{ industry.sde_multiple_low }}× to {{ industry.sde_multiple_high }}× annual SDE</strong>
       (Seller's Discretionary Earnings), with a median of <strong>{{ industry.sde_multiple_mid }}×</strong>.
       These multiples are derived from {{ industry.transaction_count }}+ closed transactions
@@ -48,11 +48,11 @@ permalink: "{{ industry.page_url }}"
 </section>
 
 {# ── SGE Summary Block ───────────────────────────────────────────────────────── #}
-<section class="sge-summary-block" aria-label="{{ industry.industry_name }} valuation summary">
+<section class="sge-summary-block" aria-label="{{ industry.display_name }} valuation summary">
   <div class="container">
     <div class="sge-summary-block__inner">
       <p class="sge-fact">
-        The median {{ industry.industry_name }} SDE multiple is <strong>{{ industry.sde_multiple_mid }}×</strong>.
+        The median {{ industry.display_name }} SDE multiple is <strong>{{ industry.sde_multiple_mid }}×</strong>.
       </p>
       <p class="sge-authority">
         Based on {{ industry.transaction_count }}+ closed transactions reported to BizBuySell through {{ industry.data_source }}.
@@ -87,7 +87,7 @@ permalink: "{{ industry.page_url }}"
 <section class="micro-calc-section">
   <div class="container">
     <p class="micro-calc-hook">
-      Enter your SDE and annual revenue to see where your {{ industry.industry_name }}
+      Enter your SDE and annual revenue to see where your {{ industry.display_name }}
       business falls within the {{ site.dataYear }} transaction range.
     </p>
 
@@ -205,11 +205,11 @@ permalink: "{{ industry.page_url }}"
 {# ── Multiple Data Table ─────────────────────────────────────────────────────── #}
 <section class="industry-data">
   <div class="container">
-    <h2>{{ industry.industry_name }} Business Valuation Multiples ({{ site.dataYear }})</h2>
+    <h2>{{ industry.display_name }} Business Valuation Multiples ({{ site.dataYear }})</h2>
 
     <div class="data-table-wrap">
       <table class="data-table">
-        <caption class="sr-only">{{ industry.industry_name }} SDE and revenue multiples from BizBuySell closed transaction data</caption>
+        <caption class="sr-only">{{ industry.display_name }} SDE and revenue multiples from BizBuySell closed transaction data</caption>
         <tbody>
           <tr>
             <th scope="row">SDE Multiple (Lower Quartile)</th>
@@ -244,7 +244,7 @@ permalink: "{{ industry.page_url }}"
     </div>
 
     <p class="data-table-interp">
-      A {{ industry.industry_name }} business with $200,000 SDE would be valued between
+      A {{ industry.display_name }} business with $200,000 SDE would be valued between
       <strong>{{ industry.example_low | usd }}</strong> and
       <strong>{{ industry.example_high | usd }}</strong>
       under typical market conditions ({{ industry.sde_multiple_low }}× – {{ industry.sde_multiple_high }}× applied to $200,000 SDE).
@@ -261,7 +261,7 @@ permalink: "{{ industry.page_url }}"
       <div id="logic-transparency-body" class="logic-transparency__body" hidden>
         <p>{{ industry.logic_transparency_opener }}</p>
         <p>
-          The {{ industry.sde_multiple_mid }}× median multiple for {{ industry.industry_name }} businesses
+          The {{ industry.sde_multiple_mid }}× median multiple for {{ industry.display_name }} businesses
           is derived from {{ industry.transaction_count }}+ closed transactions reported to BizBuySell
           from Q1 {{ site.dataCoverageStart }} through Q4 {{ site.dataCoverageEnd }}.
         </p>
@@ -287,7 +287,7 @@ permalink: "{{ industry.page_url }}"
 {# ── What Drives Value Up ─────────────────────────────────────────────────────── #}
 <section class="value-drivers">
   <div class="container">
-    <h2>What Makes a {{ industry.industry_name }} Business Worth More</h2>
+    <h2>What Makes a {{ industry.display_name }} Business Worth More</h2>
     <p>{{ industry.deal_notes }}</p>
     <ul class="value-drivers__list">
       {% for factor in industry.what_increases_value %}
@@ -304,10 +304,10 @@ permalink: "{{ industry.page_url }}"
 {# ── What Reduces Value ──────────────────────────────────────────────────────── #}
 <section class="value-reducers">
   <div class="container">
-    <h2>What Can Reduce a {{ industry.industry_name }} Business's Sale Price</h2>
+    <h2>What Can Reduce a {{ industry.display_name }} Business's Sale Price</h2>
     <p>
       Buyers and their lenders scrutinize the following risk factors when underwriting a
-      {{ industry.industry_name }} acquisition. Each one can reduce the multiple, extend the
+      {{ industry.display_name }} acquisition. Each one can reduce the multiple, extend the
       time to close, or trigger a retrade after diligence.
     </p>
     <ul class="value-reducers__list">
@@ -325,12 +325,12 @@ permalink: "{{ industry.page_url }}"
 {# ── Market Context ───────────────────────────────────────────────────────────── #}
 <section class="market-context">
   <div class="container">
-    <h2>{{ site.dataYear }} {{ industry.industry_name }} Business Sale Market</h2>
+    <h2>{{ site.dataYear }} {{ industry.display_name }} Business Sale Market</h2>
 
     {# Required element 1: Comparison Table (from related_industries) #}
     <div class="comparison-table-wrap">
       <table class="data-table comparison-table">
-        <caption>{{ industry.industry_name }} vs. related business types — SDE multiple comparison</caption>
+        <caption>{{ industry.display_name }} vs. related business types — SDE multiple comparison</caption>
         <thead>
           <tr>
             <th scope="col">Business Type</th>
@@ -340,7 +340,7 @@ permalink: "{{ industry.page_url }}"
         </thead>
         <tbody>
           <tr class="comparison-table__this-row">
-            <td><strong>{{ industry.industry_name }}</strong> <span class="this-page-badge">this page</span></td>
+            <td><strong>{{ industry.display_name }}</strong> <span class="this-page-badge">this page</span></td>
             <td>{{ industry.sde_multiple_mid }}×</td>
             <td>{{ industry.deal_notes | truncate(80, true, "…") }}</td>
           </tr>
@@ -369,7 +369,7 @@ permalink: "{{ industry.page_url }}"
 {# ── Who Buys These Businesses ───────────────────────────────────────────────── #}
 <section class="buyer-profile">
   <div class="container">
-    <h2>Who Buys {{ industry.industry_name }} Businesses?</h2>
+    <h2>Who Buys {{ industry.display_name }} Businesses?</h2>
     <p>{{ industry.typical_buyer_profile }}</p>
     <p>
       Understanding who your likely buyer is shapes how you prepare your financials and position
@@ -381,15 +381,15 @@ permalink: "{{ industry.page_url }}"
 {# ── FAQ ─────────────────────────────────────────────────────────────────────── #}
 <section class="industry-faq">
   <div class="container">
-    <h2>Frequently Asked Questions: Selling a {{ industry.industry_name }} Business</h2>
+    <h2>Frequently Asked Questions: Selling a {{ industry.display_name }} Business</h2>
 
     <div class="faq-list">
 
       <div class="faq-item">
-        <h3>What SDE multiple do {{ industry.industry_name }} businesses sell for?</h3>
+        <h3>What SDE multiple do {{ industry.display_name }} businesses sell for?</h3>
         <p>
           Based on {{ industry.transaction_count }}+ closed transactions reported to BizBuySell
-          ({{ industry.data_source }}), {{ industry.industry_name }} businesses typically sell for
+          ({{ industry.data_source }}), {{ industry.display_name }} businesses typically sell for
           <strong>{{ industry.sde_multiple_low }}× to {{ industry.sde_multiple_high }}× annual SDE</strong>,
           with a median of {{ industry.sde_multiple_mid }}×. The range reflects the degree of owner
           involvement, revenue growth trend, and customer concentration in the specific business.
@@ -399,9 +399,9 @@ permalink: "{{ industry.page_url }}"
       </div>
 
       <div class="faq-item">
-        <h3>How do I calculate the value of my {{ industry.industry_name }} business?</h3>
+        <h3>How do I calculate the value of my {{ industry.display_name }} business?</h3>
         <p>
-          The standard method for valuing a {{ industry.industry_name }} business is to multiply
+          The standard method for valuing a {{ industry.display_name }} business is to multiply
           your annual SDE (Seller's Discretionary Earnings) by the industry-specific multiple.
           Enter your SDE and annual revenue in the estimate tool above to see where your business
           falls within the {{ site.dataYear }} transaction range. For an estimate that accounts for
@@ -412,21 +412,21 @@ permalink: "{{ industry.page_url }}"
       </div>
 
       <div class="faq-item">
-        <h3>What is SDE and why is it used for {{ industry.industry_name }} valuations?</h3>
+        <h3>What is SDE and why is it used for {{ industry.display_name }} valuations?</h3>
         <p>
           SDE — Seller's Discretionary Earnings — represents the total financial benefit a full-time
           owner-operator extracts from the business annually: net profit plus the owner's salary plus
           any personal expenses run through the business plus non-cash charges like depreciation.
-          For {{ industry.industry_name }} businesses under approximately $5M in revenue, SDE is the
+          For {{ industry.display_name }} businesses under approximately $5M in revenue, SDE is the
           standard valuation basis because it normalizes for differences in how owners pay themselves.
           <a href="/guides/what-is-sde/">Full SDE explanation and calculation guide →</a>
         </p>
       </div>
 
       <div class="faq-item">
-        <h3>How does owner involvement affect a {{ industry.industry_name }} sale price?</h3>
+        <h3>How does owner involvement affect a {{ industry.display_name }} sale price?</h3>
         <p>
-          Owner involvement is one of the most significant discount factors in any {{ industry.industry_name }}
+          Owner involvement is one of the most significant discount factors in any {{ industry.display_name }}
           acquisition. A business where the owner is central to daily operations — managing key customer
           relationships, holding specialized licenses, or performing core service delivery — faces buyers
           who discount for key-person risk. The full calculator applies a ±0.20× adjustment for owner
@@ -436,7 +436,7 @@ permalink: "{{ industry.page_url }}"
       </div>
 
       <div class="faq-item">
-        <h3>What financing do buyers use for {{ industry.industry_name }} acquisitions?</h3>
+        <h3>What financing do buyers use for {{ industry.display_name }} acquisitions?</h3>
         <p>
           {{ industry.typical_buyer_profile }} SBA 7(a) loans are the most common financing vehicle
           for Main Street acquisitions, covering up to 90% of the purchase price for qualifying transactions.
