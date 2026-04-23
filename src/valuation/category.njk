@@ -9,7 +9,7 @@ permalink: "/valuation/{{ category.slug }}/"
 
 
 {# ─── Front-matter computed values ─────────────────────────────────────────── #}
-{%- set pageTitle = category.name + " Business Valuation: SDE Multiples & Market Data (" + site.dataYear + ")" -%}
+{%- set pageTitle = category.name + " Business Valuation: SDE Multiples & Market Data (" + site.dataQuarter + " " + site.dataYear + ")" -%}
 {%- set metaDescription = category.name + " businesses sell for " + category.multiple_low + "× to " + category.multiple_high + "× SDE depending on type. Valuation data for " + category.industry_count + " business types, based on BizBuySell transaction records." -%}
 {%- set canonicalPath = category.url -%}
 
@@ -33,7 +33,7 @@ permalink: "/valuation/{{ category.slug }}/"
 {# ── H1 + Overview ───────────────────────────────────────────────────────────── #}
 <section class="category-hero">
   <div class="container">
-    <h1>Valuing a {{ category.name }} Business: SDE Multiples and {{ site.dataYear }} Market Data</h1>
+    <h1>Valuing a {{ category.name }} Business: SDE Multiples and {{ site.dataQuarter }} {{ site.dataYear }} Market Data</h1>
     <div class="category-overview">
       <p>
         {{ category.name }} businesses sell across a wide range of valuations — from

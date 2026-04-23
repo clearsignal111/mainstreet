@@ -2,8 +2,8 @@
 {
   "@context": "https://schema.org",
   "@type": "Dataset",
-  "name": "{{ industry.industry_name | jsStr }} Business Valuation Multiples — {{ industry.last_updated_display | jsStr }}",
-  "description": "SDE multiple and revenue multiple data for {{ industry.industry_name | jsStr }} businesses, based on {{ industry.transaction_count }}+ closed transactions reported to BizBuySell. {{ industry.industry_name | jsStr }} businesses typically sell for {{ industry.sde_multiple_low }}× to {{ industry.sde_multiple_high }}× annual SDE.",
+  "name": "{{ industry.display_name | jsStr }} Business Valuation Multiples — {{ site.dataQuarter }} {{ site.dataYear }}",
+  "description": "SDE multiple and revenue multiple data for {{ industry.display_name | jsStr }} businesses, based on {{ industry.transaction_count }}+ closed transactions reported to BizBuySell. {{ industry.display_name | jsStr }} businesses typically sell for {{ industry.sde_multiple_low }}× to {{ industry.sde_multiple_high }}× annual SDE.",
   "url": "{{ site.url }}{{ industry.page_url }}",
   "creator": {
     "@type": "Organization",
@@ -71,7 +71,7 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How much is a {{ industry.industry_name | jsStr }} business worth?",
+      "name": "How much is a {{ industry.display_name | jsStr }} business worth?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "According to Mainstreet Benchmark's analysis of {{ industry.transaction_count }}+ closed transactions reported to BizBuySell, {{ industry.industry_name | jsStr }} businesses typically sell for {{ industry.sde_multiple_low }}× to {{ industry.sde_multiple_high }}× annual SDE, with a median of {{ industry.sde_multiple_mid }}×. A business generating $200,000 in annual SDE would be valued between {{ industry.example_low | usd }} and {{ industry.example_high | usd }} under typical market conditions. Use the calculator above to generate a range based on your specific numbers."
@@ -79,7 +79,7 @@
     },
     {
       "@type": "Question",
-      "name": "What drives a {{ industry.industry_name | jsStr }} business toward the upper end of the valuation range?",
+      "name": "What drives a {{ industry.display_name | jsStr }} business toward the upper end of the valuation range?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "{{ industry.what_increases_value[0] | jsStr }} Beyond the base multiple, deal-specific factors for {{ industry.industry_name | jsStr }} businesses include: {{ industry.deal_notes | jsStr }}"
@@ -87,7 +87,7 @@
     },
     {
       "@type": "Question",
-      "name": "What is the current market for buying and selling {{ industry.industry_name | jsStr }} businesses?",
+      "name": "What is the current market for buying and selling {{ industry.display_name | jsStr }} businesses?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "{{ industry.market_sentiment | jsStr }}"
@@ -95,7 +95,7 @@
     },
     {
       "@type": "Question",
-      "name": "Who typically buys {{ industry.industry_name | jsStr }} businesses, and how do they finance the purchase?",
+      "name": "Who typically buys {{ industry.display_name | jsStr }} businesses, and how do they finance the purchase?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "{{ industry.typical_buyer_profile | jsStr }}"

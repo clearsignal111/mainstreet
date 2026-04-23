@@ -9,7 +9,7 @@ permalink: "{{ industry.page_url }}"
 
 
 {# ─── Front-matter computed values ─────────────────────────────────────────── #}
-{%- set pageTitle = "How Much Is a " + industry.display_name + " Business Worth? (" + site.dataYear + " Data)" -%}
+{%- set pageTitle = "How Much Is a " + industry.display_name + " Business Worth? (" + site.dataQuarter + " " + site.dataYear + " Data)" -%}
 {%- set metaDescription = industry.industry_name + " SDE Multiple: " + industry.sde_multiple_low + "× – " + industry.sde_multiple_high + "× (" + industry.data_source + "). Calculate your specific " + industry.display_name + " business valuation using " + industry.transaction_count + "+ closed transactions. Free, no email required." -%}
 {%- set canonicalPath = industry.page_url -%}
 
@@ -34,7 +34,7 @@ permalink: "{{ industry.page_url }}"
 {# ── H1 + Hook ──────────────────────────────────────────────────────────────── #}
 <section class="industry-hero">
   <div class="container">
-    <h1>How Much Is a {{ industry.display_name }} Business Worth? ({{ site.dataYear }} Data)</h1>
+    <h1>How Much Is a {{ industry.display_name }} Business Worth? ({{ site.dataQuarter }} {{ site.dataYear }} Data)</h1>
     <p class="industry-hook">{{ industry.hook }}</p>
     <p class="industry-intro">
       {{ industry.display_name }} businesses typically sell for
@@ -205,7 +205,7 @@ permalink: "{{ industry.page_url }}"
 {# ── Multiple Data Table ─────────────────────────────────────────────────────── #}
 <section class="industry-data">
   <div class="container">
-    <h2>{{ industry.display_name }} Business Valuation Multiples ({{ site.dataYear }})</h2>
+    <h2>{{ industry.display_name }} Business Valuation Multiples ({{ site.dataQuarter }} {{ site.dataYear }})</h2>
 
     <div class="data-table-wrap">
       <table class="data-table">
@@ -325,7 +325,7 @@ permalink: "{{ industry.page_url }}"
 {# ── Market Context ───────────────────────────────────────────────────────────── #}
 <section class="market-context">
   <div class="container">
-    <h2>{{ site.dataYear }} {{ industry.display_name }} Business Sale Market</h2>
+    <h2>{{ site.dataQuarter }} {{ site.dataYear }} {{ industry.display_name }} Business Sale Market</h2>
 
     {# Required element 1: Comparison Table (from related_industries) #}
     <div class="comparison-table-wrap">
