@@ -4,8 +4,9 @@ pagination:
   size: 1
   alias: category
 permalink: "/valuation/{{ category.slug }}/"
-layout: layouts/base.njk
 ---
+{%- extends "layouts/base.njk" -%}
+
 
 {# ─── Front-matter computed values ─────────────────────────────────────────── #}
 {%- set pageTitle = category.name + " Business Valuation: SDE Multiples & Market Data (" + site.dataYear + ")" -%}

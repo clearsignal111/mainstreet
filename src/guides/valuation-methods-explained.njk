@@ -1,5 +1,4 @@
 ---
-layout: layouts/base.njk
 pageTitle: "Business Valuation Methods Explained: SDE, EBITDA, Asset, and DCF"
 metaDescription: "The four main business valuation methods — SDE multiples, EBITDA multiples, asset-based, and DCF — compared with worked examples. Learn which method applies to your business type."
 canonicalPath: /guides/valuation-methods-explained/
@@ -15,6 +14,8 @@ faqItems:
   - question: "Can the same business use different valuation methods and get very different results?"
     answer: "Yes — and this is intentional. A business with $150,000 SDE, $400,000 in equipment, and projected 30% annual growth for 5 years would value very differently under SDE multiples ($450,000 at 3×), asset-based ($500,000+), and DCF ($800,000+ depending on discount rate and terminal value). The appropriate method depends on the buyer type, the business's characteristics, and what the buyer is actually underwriting. Most Main Street sales use SDE multiples because it matches how SBA lenders underwrite the acquisition."
 ---
+{%- extends "layouts/base.njk" -%}
+
 
 {# ─── Schema ────────────────────────────────────────────────────────────────── #}
 {% block schema %}

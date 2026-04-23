@@ -4,8 +4,9 @@ pagination:
   size: 1
   alias: industry
 permalink: "{{ industry.page_url }}"
-layout: layouts/base.njk
 ---
+{%- extends "layouts/base.njk" -%}
+
 
 {# ─── Front-matter computed values ─────────────────────────────────────────── #}
 {%- set pageTitle = "How Much Is a " + industry.industry_name + " Business Worth? (" + site.dataYear + " Data)" -%}
