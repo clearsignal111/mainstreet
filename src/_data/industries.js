@@ -17,9 +17,17 @@ const CATEGORY_SLUG_MAP = {
   "Transportation and Storage": "transportation-and-storage",
 };
 
+// Strip trailing " Businesses" or " Business" for use in H1/title phrases like
+// "How Much Is a HVAC Business Worth?" (avoids "HVAC Businesses Business Worth?")
+function toDisplayName(name) {
+  return name.replace(/ Businesses$/, "").replace(/ Business$/, "");
+}
+
 // Enrich each industry with computed fields
 const all = rawData.map((ind) => ({
   ...ind,
+  // display_name: name without trailing "Business/Businesses" suffix — use in H1/title
+  display_name: toDisplayName(ind.industry_name),
   category_slug: CATEGORY_SLUG_MAP[ind.industry_category] || ind.industry_category.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
   page_url: `/valuation/${ind.industry_slug}/`,
   category_url: `/valuation/${CATEGORY_SLUG_MAP[ind.industry_category]}/`,
