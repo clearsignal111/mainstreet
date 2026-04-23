@@ -1,0 +1,284 @@
+---
+layout: layouts/base.njk
+pageTitle: "Understanding Business Valuation Multiples"
+metaDescription: "What is an SDE multiple and why does it vary by industry? Learn how valuation multiples work, what drives them up or down, and how to interpret your number. Based on 9,500+ closed transactions."
+canonicalPath: /guides/understanding-valuation-multiples/
+datePublished: "2026-01-15"
+dateModified: "2026-01-15"
+faqItems:
+  - question: "What is a valuation multiple?"
+    answer: "A valuation multiple is a number you multiply by your business's annual SDE (Seller's Discretionary Earnings) to estimate its market value. For example, a 3.0× multiple applied to $200,000 SDE produces a $600,000 valuation. Multiples are derived from actual closed transaction data and vary significantly by industry, business quality, and market conditions."
+  - question: "What is a good SDE multiple for a small business?"
+    answer: "The average SDE multiple across all Main Street industries is approximately 2.5× to 3.5×. However, 'good' depends entirely on your industry. Car washes average 4.99×, HVAC services average 3.17×, and restaurants average 2.15×. The relevant benchmark is your specific industry's multiple range, not a generic average. Use the industry-specific calculator to see where your business falls."
+  - question: "Why do some industries have higher multiples than others?"
+    answer: "Multiples reflect buyer perception of risk and earnings quality. Industries with recurring revenue, low owner dependency, and scalable operations command higher multiples. Industries with high owner involvement, volatile demand, or location risk command lower multiples. Car washes trade near 5× because express membership programs generate predictable monthly recurring revenue with minimal labor. Restaurants trade near 2× because of high owner involvement, lease risk, and food cost volatility."
+  - question: "How much does owner involvement affect the multiple?"
+    answer: "Significantly. The valuation calculator applies a ±0.20× adjustment for owner involvement. On a business with $300,000 SDE, moving from high owner involvement to a systematized operation shifts the valuation by approximately $60,000. This is the single most actionable lever most business owners have before going to market — reducing dependency increases the multiple."
+---
+
+{# ─── Schema ────────────────────────────────────────────────────────────────── #}
+{% block schema %}
+  {% include "schema/guide.njk" %}
+{% endblock %}
+
+{% block content %}
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/guides/">Guides</a></li>
+    <li aria-current="page">Understanding Valuation Multiples</li>
+  </ol>
+</nav>
+
+<article class="guide-article">
+  <div class="container">
+
+    <header class="guide-header">
+      <h1>Understanding Business Valuation Multiples</h1>
+      <div class="guide-meta">
+        <span>By {{ site.author.name }}</span>
+        <span>·</span>
+        <span>Updated {{ site.dataLastModified }}</span>
+        <span>·</span>
+        <span>9 min read</span>
+      </div>
+    </header>
+
+    <section class="guide-body">
+
+      <p>
+        When a business broker tells you your business is worth "3 times earnings," they are referring
+        to a valuation multiple. Understanding what that multiple means — where it comes from, what drives
+        it up or down, and why it varies dramatically by industry — is the difference between going into
+        a sale negotiation informed and going in blind.
+      </p>
+      <p>
+        This guide uses real multiple data from {{ site.transactionCount }}+ closed transactions across
+        63 industries to explain how multiples work in practice — not in theory.
+      </p>
+
+      <h2>What Is a Valuation Multiple?</h2>
+      <p>
+        A valuation multiple is a multiplier applied to your annual SDE (Seller's Discretionary Earnings)
+        to estimate the market value of your business. The formula is simple:
+      </p>
+      <div class="formula-block">
+        <p><strong>Business Value = Annual SDE × Industry Multiple</strong></p>
+      </div>
+      <p>
+        If your business generates $250,000 in SDE and the median multiple for your industry is 3.0×,
+        the estimated market value is $750,000. The multiple is the market's collective judgment about
+        how much a dollar of your business's earnings is worth to a buyer.
+      </p>
+
+      <h2>Where Multiples Come From</h2>
+      <p>
+        Multiples are not invented — they are observed. Mainstreet Benchmark's industry multiples are
+        derived from {{ site.transactionCount }}+ closed transactions reported to BizBuySell, CoStar Group's
+        business-for-sale marketplace, across Q1 {{ site.dataCoverageStart }} through Q4 {{ site.dataCoverageEnd }}.
+        These are actual sale prices, not asking prices. The lower quartile, median, and upper quartile
+        multiples represent the distribution of real deals.
+      </p>
+      <p>
+        A car wash that sold for $997,000 on $200,000 SDE paid a 4.99× multiple. An HVAC company
+        that sold for $634,000 on $200,000 SDE paid a 3.17× multiple. A restaurant that sold for
+        $430,000 on $200,000 SDE paid a 2.15× multiple. These are the data points that produce the
+        median multiples you see in the <a href="/">valuation calculator</a>.
+      </p>
+
+      <h2>Why Multiples Vary by Industry</h2>
+      <p>
+        The multiple reflects what buyers will pay for a dollar of earnings in a specific industry —
+        which depends on perceived risk, earnings quality, and growth potential. Three concrete examples:
+      </p>
+
+      <h3>Car Washes: 4.99× Median</h3>
+      <p>
+        Car washes — specifically express exterior operations with unlimited membership programs — command
+        near-5× multiples because the revenue model is fundamentally different from most small businesses.
+        A 1,000-member unlimited wash club generating $35/month produces $420,000 in annual recurring
+        revenue with predictable churn, minimal labor (2–4 staff members), and no meaningful owner
+        involvement required. Buyers are paying a premium for the membership program as much as the physical
+        asset. The <a href="/valuation/car-wash/">full car wash valuation data</a> covers all formats,
+        including self-service bays which trade near the 3.5× floor.
+      </p>
+
+      <h3>HVAC Services: 3.17× Median</h3>
+      <p>
+        HVAC companies occupy the middle of the multiple range because they have strong recurring revenue
+        potential (service contracts, maintenance agreements) but also meaningful owner dependency and
+        technician risk. A well-run HVAC company where the owner manages rather than turns wrenches —
+        with 60%+ revenue from service contracts — trades in the upper quartile (3.5×+). A shop where
+        the owner is the primary technician trades near the floor (2.5×) because the buyer must price in
+        the cost of replacing that skill. See <a href="/valuation/hvac-services/">HVAC valuation data</a>.
+      </p>
+
+      <h3>Restaurants: 2.15× Median</h3>
+      <p>
+        Restaurants trade at a discount to most Main Street businesses for well-documented reasons:
+        high owner and staff involvement, lease dependency (lose the location and you lose the business),
+        food cost volatility, health code risk, and historically high failure rates. SBA lenders apply
+        stricter underwriting to restaurant acquisitions. The upper quartile (2.5×+) applies to
+        well-established restaurants with long lease terms, documented systems, and owner-independent
+        operations. See <a href="/valuation/restaurant/">restaurant valuation data</a>.
+      </p>
+
+      <h2>What Drives the Multiple Up</h2>
+      <p>
+        Across all industries, the factors that move a business from the lower quartile to the upper quartile
+        of its multiple range are consistent:
+      </p>
+      <ul>
+        <li>
+          <strong>Recurring revenue:</strong> Service contracts, subscriptions, memberships, and maintenance
+          agreements generate predictable forward revenue. Buyers pay more for certainty.
+        </li>
+        <li>
+          <strong>Low owner involvement:</strong> A business that runs via documented systems and trained
+          staff — where the owner works on the business rather than in it — is more valuable and more
+          transferable. The <a href="/">calculator</a> applies +0.20× for low owner involvement.
+        </li>
+        <li>
+          <strong>Diversified customer base:</strong> No single customer representing more than 15% of revenue
+          means no single customer departure can materially impair the business. +0.10× adjustment.
+        </li>
+        <li>
+          <strong>Revenue growth:</strong> A business growing 20%+ per year signals market momentum.
+          +0.30× adjustment for strong growth in the calculator.
+        </li>
+        <li>
+          <strong>Clean financials:</strong> Three years of consistent tax returns with well-documented
+          add-backs accelerate diligence and build buyer confidence.
+        </li>
+      </ul>
+
+      <h2>What Drives the Multiple Down</h2>
+      <ul>
+        <li>
+          <strong>High owner involvement:</strong> The most common discount factor. Buyers discount for
+          key-person risk — the cost of replacing the owner's labor and relationships. −0.20× adjustment.
+        </li>
+        <li>
+          <strong>Declining revenue:</strong> Sellers who cannot explain a revenue decline face buyers
+          who price the uncertainty directly into their offer. −0.25× adjustment.
+        </li>
+        <li>
+          <strong>Customer concentration:</strong> One customer representing 40%+ of revenue is a deal
+          risk that buyers and SBA lenders scrutinize closely. −0.25× adjustment.
+        </li>
+        <li>
+          <strong>Lease risk:</strong> A business with a lease expiring within 12 months, no renewal option,
+          or an uncooperative landlord faces buyers who walk or demand significant price concessions.
+        </li>
+        <li>
+          <strong>Deferred maintenance:</strong> Equipment that will require near-term capital expenditure
+          becomes a direct price deduction in buyer offers — they will discount for the replacement cost.
+        </li>
+      </ul>
+
+      <h2>The Adjustment Model</h2>
+      <p>
+        The <a href="/">valuation calculator</a> applies the following adjustments to the industry median:
+      </p>
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th scope="col">Factor</th>
+              <th scope="col">Selection</th>
+              <th scope="col">Adjustment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Revenue Trend</td><td>Growing 20%+</td><td>+0.30×</td></tr>
+            <tr><td>Revenue Trend</td><td>Growing 10–20%</td><td>+0.15×</td></tr>
+            <tr><td>Revenue Trend</td><td>Flat (±5%)</td><td>0×</td></tr>
+            <tr><td>Revenue Trend</td><td>Declining</td><td>−0.25×</td></tr>
+            <tr><td>Owner Involvement</td><td>Low (systematized)</td><td>+0.20×</td></tr>
+            <tr><td>Owner Involvement</td><td>Moderate</td><td>0×</td></tr>
+            <tr><td>Owner Involvement</td><td>High (owner-dependent)</td><td>−0.20×</td></tr>
+            <tr><td>Customer Concentration</td><td>Diverse</td><td>+0.10×</td></tr>
+            <tr><td>Customer Concentration</td><td>Concentrated</td><td>−0.25×</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        The best-case scenario (+0.30 + 0.20 + 0.10 = +0.60×) and the worst-case scenario
+        (−0.25 − 0.20 − 0.25 = −0.70×) can swing the multiple by over 1.3×. On a $300,000 SDE business
+        in an industry with a 3.0× median, that swing equals $390,000 in valuation difference
+        ($1,080,000 best vs. $690,000 worst). This is why conditions matter as much as earnings.
+      </p>
+
+      <h2>The Revenue Multiple as a Secondary Check</h2>
+      <p>
+        For industries where revenue is more predictable than earnings (e.g., recurring service businesses),
+        buyers sometimes apply a revenue multiple as a secondary reference. The calculator shows both:
+        the SDE-based estimate (primary) and a revenue-based estimate derived from the industry's average
+        revenue multiple. For most Main Street businesses, the SDE-based figure governs — the revenue
+        multiple is a sanity check, not a competing method.
+      </p>
+
+      <h2>How to Use the Multiple in Negotiation</h2>
+      <p>
+        Knowing your industry's multiple range entering negotiations means you can evaluate offers
+        rationally rather than emotionally. An offer at 2.5× SDE when your industry median is 3.0× is
+        a below-market offer that deserves negotiation. An offer at 2.5× when your business has high owner
+        involvement and declining revenue is actually reasonable — the buyer is applying appropriate risk
+        discounts.
+      </p>
+      <p>
+        The most common mistake sellers make is comparing their offer to the highest multiple they have
+        heard about, rather than the realistic multiple for their specific business conditions. The
+        what-if simulation in the <a href="/">valuation calculator</a> lets you model exactly how
+        improving your conditions would change the number before you list.
+      </p>
+
+    </section>
+
+    <div class="ad-unit ad-unit--mid-content" aria-label="Advertisement">
+      <div class="ad-unit__inner">
+        <ins class="adsbygoogle"
+             style="display:block;min-height:280px;"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+      </div>
+    </div>
+
+    <section class="guide-takeaways">
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li>Valuation multiples are derived from real closed transactions — they reflect what buyers actually paid, not asking prices</li>
+        <li>Multiples vary significantly by industry: car washes at 4.99×, HVAC at 3.17×, restaurants at 2.15×</li>
+        <li>Recurring revenue, low owner involvement, and diverse customers drive multiples toward the upper quartile</li>
+        <li>The best-to-worst adjustment swing is over 1.3× — equal to $390,000+ on a $300,000 SDE business at a 3.0× median</li>
+        <li>Use the industry-specific multiple range, not a generic "2–4×" range, for any meaningful planning</li>
+      </ul>
+    </section>
+
+    <section class="guide-faq">
+      <h2>Frequently Asked Questions</h2>
+      {% for item in faqItems %}
+      <div class="faq-item">
+        <h3>{{ item.question }}</h3>
+        <p>{{ item.answer }}</p>
+      </div>
+      {% endfor %}
+    </section>
+
+    <section class="guide-related">
+      <h3>Related Reading</h3>
+      <ul>
+        <li><a href="/guides/what-is-sde/">What Is SDE? How to Calculate Seller's Discretionary Earnings</a></li>
+        <li><a href="/guides/ebitda-vs-sde/">EBITDA vs SDE: Which Matters When Selling Your Business</a></li>
+        <li><a href="/guides/how-to-increase-business-value/">How to Increase Your Business's Sale Price</a></li>
+        <li><a href="/">Business Valuation Calculator — free, industry-specific</a></li>
+      </ul>
+    </section>
+
+  </div>
+</article>
+
+{% endblock %}

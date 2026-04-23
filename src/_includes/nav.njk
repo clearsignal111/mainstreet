@@ -1,0 +1,77 @@
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="site-nav__inner">
+
+    {# Logo #}
+    <a href="/" class="site-nav__logo" aria-label="{{ site.brandName }} — Home">
+      <img src="/brand-assets/logo-nav-dark.svg" alt="{{ site.brandName }}" height="32" width="auto"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+      <span style="display:none">{{ site.brandName }}</span>
+    </a>
+
+    {# Desktop nav links #}
+    <ul class="site-nav__links" role="list">
+      <li><a href="/" {% if page.url == "/" %}aria-current="page"{% endif %}>Calculator</a></li>
+      <li class="nav-dropdown">
+        <button class="nav-dropdown__trigger" aria-haspopup="true" aria-expanded="false">
+          Industries
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
+            <path d="M2 4l4 4 4-4"/>
+          </svg>
+        </button>
+        <div class="nav-dropdown__menu" role="menu">
+          {% for cat in industries.categories %}
+          <a href="{{ cat.url }}" role="menuitem">{{ cat.name }}</a>
+          {% endfor %}
+        </div>
+      </li>
+      <li><a href="/guides/what-is-sde/" {% if "/guides/" in page.url %}aria-current="page"{% endif %}>Guides</a></li>
+      <li><a href="/about/" {% if page.url == "/about/" %}aria-current="page"{% endif %}>About</a></li>
+      <li><a href="/methodology/" {% if page.url == "/methodology/" %}aria-current="page"{% endif %}>Methodology</a></li>
+    </ul>
+
+    {# Hamburger (mobile) #}
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-drawer">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <line x1="3" y1="6"  x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+{# Mobile overlay #}
+<div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+
+{# Mobile drawer #}
+<nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation" aria-hidden="true">
+  <div class="nav-drawer__header">
+    <span class="site-nav__logo">{{ site.brandName }}</span>
+    <button class="nav-drawer__close" id="nav-drawer-close" aria-label="Close navigation menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <line x1="5" y1="5" x2="19" y2="19"/>
+        <line x1="19" y1="5" x2="5" y2="19"/>
+      </svg>
+    </button>
+  </div>
+
+  <ul class="nav-drawer__links" role="list">
+    <li><a href="/">Calculator</a></li>
+    <li>
+      <button id="drawer-industries-toggle" aria-expanded="false" aria-controls="drawer-industries-sub">
+        Industries
+        <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="currentColor" style="transition:transform 200ms" aria-hidden="true">
+          <path d="M2 4l4 4 4-4"/>
+        </svg>
+      </button>
+      <ul class="nav-drawer__sub" id="drawer-industries-sub" role="list">
+        {% for cat in industries.categories %}
+        <li><a href="{{ cat.url }}">{{ cat.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </li>
+    <li><a href="/guides/what-is-sde/">Guides</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/methodology/">Methodology</a></li>
+  </ul>
+</nav>

@@ -1,0 +1,128 @@
+---
+layout: layouts/base.njk
+pageTitle: "Privacy Policy"
+metaDescription: "Mainstreet Benchmark privacy policy. We don't collect personal data, require registration, or sell information. AdSense may set cookies."
+canonicalPath: /privacy-policy/
+---
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/" },
+    { "@type": "ListItem", "position": 2, "name": "Privacy Policy", "item": "{{ site.url }}/privacy-policy/" }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li aria-current="page">Privacy Policy</li>
+  </ol>
+</nav>
+
+<article class="legal-page">
+  <div class="container">
+
+    <h1>Privacy Policy</h1>
+    <p class="legal-updated">Last updated: {{ site.dataLastModified }}</p>
+
+    <section class="legal-section">
+      <h2>What We Collect</h2>
+      <p>
+        Mainstreet Benchmark does not require registration or collect personal information to use
+        the calculator. You can calculate your business valuation, run What-If scenarios, and access
+        all industry data without creating an account or providing any personal information.
+      </p>
+      <p>
+        The calculator inputs you enter (industry, SDE, revenue, trend, owner involvement, customer
+        concentration) are processed entirely in your browser. These values are not transmitted to
+        our servers or stored anywhere.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>Analytics</h2>
+      <p>
+        If analytics are enabled on this site (see our <a href="/about/">About page</a> for current
+        status), we use Google Analytics 4 (GA4) to collect aggregate, anonymized data about page
+        visits, session duration, and general usage patterns. GA4 data is subject to
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.
+        GA4 does not receive calculator inputs or any personally identifiable information.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>Advertising</h2>
+      <p>
+        This site displays ads served by Google AdSense. AdSense uses cookies to serve relevant
+        advertisements based on your prior visits to this and other websites. Google's use of
+        advertising cookies enables it and its partners to serve ads based on your visit to this
+        site and/or other sites on the internet. You can opt out of personalized advertising by
+        visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ads Settings</a>.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>Cookies</h2>
+      <p>
+        Mainstreet Benchmark itself does not set cookies. Third-party services used by this site
+        (Google Analytics, Google AdSense) may set cookies as described in their respective privacy
+        policies. No cookie consent banner is required for cookies set entirely by third parties
+        in jurisdictions where this site operates, but users in the EU/EEA may see cookie notices
+        required by their local law.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>Third-Party Links</h2>
+      <p>
+        This site contains links to external resources including BizBuySell, Google, and other
+        third-party websites. Mainstreet Benchmark is not responsible for the privacy practices
+        or content of external sites. We encourage you to review the privacy policies of any
+        third-party sites you visit.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>Data Retention</h2>
+      <p>
+        Because we do not collect personally identifiable information, there is no personal data
+        to retain or delete. If you have questions about data held by third-party services (Google
+        Analytics, AdSense), contact those services directly through their privacy settings.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>Children's Privacy</h2>
+      <p>
+        This site is intended for adults (18+) preparing to sell or buy a business. We do not
+        knowingly collect information from children under 13.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>Changes to This Policy</h2>
+      <p>
+        We may update this policy periodically. Changes will be reflected in the "Last updated"
+        date at the top of this page.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>Contact</h2>
+      <p>
+        Questions about this privacy policy: <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a>
+      </p>
+    </section>
+
+  </div>
+</article>
+
+{% endblock %}

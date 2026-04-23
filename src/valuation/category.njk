@@ -1,0 +1,248 @@
+---
+pagination:
+  data: industries.categories
+  size: 1
+  alias: category
+permalink: "/valuation/{{ category.slug }}/"
+layout: layouts/base.njk
+---
+
+{# ─── Front-matter computed values ─────────────────────────────────────────── #}
+{%- set pageTitle = category.name + " Business Valuation: SDE Multiples & Market Data (" + site.dataYear + ")" -%}
+{%- set metaDescription = category.name + " businesses sell for " + category.multiple_low + "× to " + category.multiple_high + "× SDE depending on type. Valuation data for " + category.industry_count + " business types, based on BizBuySell transaction records." -%}
+{%- set canonicalPath = category.url -%}
+
+{# ─── Schema ────────────────────────────────────────────────────────────────── #}
+{% block schema %}
+  {% include "schema/category.njk" %}
+{% endblock %}
+
+{# ─── Page content ──────────────────────────────────────────────────────────── #}
+{% block content %}
+
+{# ── Breadcrumb ─────────────────────────────────────────────────────────────── #}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/valuation/">Business Valuation</a></li>
+    <li aria-current="page">{{ category.name }}</li>
+  </ol>
+</nav>
+
+{# ── H1 + Overview ───────────────────────────────────────────────────────────── #}
+<section class="category-hero">
+  <div class="container">
+    <h1>Valuing a {{ category.name }} Business: SDE Multiples and {{ site.dataYear }} Market Data</h1>
+    <div class="category-overview">
+      <p>
+        {{ category.name }} businesses sell across a wide range of valuations — from
+        <strong>{{ category.multiple_low }}×</strong> to <strong>{{ category.multiple_high }}×</strong>
+        annual SDE — depending on the specific type of business, the degree of owner involvement,
+        and the strength of recurring revenue.
+      </p>
+      <p>
+        This page covers all {{ category.industry_count }} {{ category.name }} business types tracked
+        in Mainstreet Benchmark's transaction database, sourced from {{ site.transactionCount }}+ closed
+        sales reported to BizBuySell. Each business type has its own multiple derived from its actual
+        transaction history — not a generic estimate.
+      </p>
+      <p>
+        Use our free
+        <a href="/">business valuation calculator</a>
+        to get your industry-specific estimate, adjusted for your revenue trend, owner involvement,
+        and customer concentration.
+      </p>
+    </div>
+  </div>
+</section>
+
+{# ── Multiple Summary Table ──────────────────────────────────────────────────── #}
+<section class="category-table-section">
+  <div class="container">
+    <h2>{{ category.name }} Business Valuation Multiples by Type</h2>
+
+    <div class="data-table-wrap">
+      <table class="data-table category-table">
+        <caption class="sr-only">SDE multiples for all {{ category.name }} business types from BizBuySell closed transaction data</caption>
+        <thead>
+          <tr>
+            <th scope="col">Business Type</th>
+            <th scope="col">Typical SDE Multiple</th>
+            <th scope="col">Transactions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for ind in category.industries %}
+          <tr>
+            <td>
+              <a href="{{ ind.page_url }}">{{ ind.industry_name }}</a>
+            </td>
+            <td>{{ ind.sde_multiple_low }}× – {{ ind.sde_multiple_high }}× <span class="median-note">({{ ind.sde_multiple_mid }}× median)</span></td>
+            <td>{{ ind.transaction_count }}+</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <p class="table-source-note">
+      Source: <a href="{{ site.bizBuySellUrl }}" target="_blank" rel="noopener">BizBuySell Industry Valuation Report</a>,
+      {{ site.dataSource }}. Multiples reflect closed transaction prices, not asking prices.
+    </p>
+  </div>
+</section>
+
+{# ── Industry Deep-Dives ─────────────────────────────────────────────────────── #}
+<section class="industry-deep-dives">
+  <div class="container">
+
+    {% for ind in category.industries %}
+    <div class="deep-dive">
+      <h2>{{ ind.industry_name }} Businesses</h2>
+      <p>
+        {{ ind.industry_name }} businesses sell for <strong>{{ ind.sde_multiple_low }}× to {{ ind.sde_multiple_high }}×</strong>
+        SDE, with a median of {{ ind.sde_multiple_mid }}×, based on {{ ind.transaction_count }}+ closed transactions.
+        {{ ind.deal_notes | truncate(200, true, "…") }}
+      </p>
+      <a href="{{ ind.page_url }}" class="deep-dive__cta">
+        See full {{ ind.industry_name }} valuation data →
+      </a>
+    </div>
+    {% endfor %}
+
+  </div>
+</section>
+
+{# ── Key Factors ─────────────────────────────────────────────────────────────── #}
+<section class="category-factors">
+  <div class="container">
+    <h2>Key Factors Affecting {{ category.name }} Business Valuations</h2>
+    <p>
+      Across all {{ category.industry_count }} {{ category.name }} business types, buyers and their lenders
+      evaluate the same core set of risk and quality signals when underwriting an acquisition.
+      Understanding these factors — before you list — determines whether you sell at the median
+      or at the upper quartile of your industry's multiple range.
+    </p>
+
+    <h3>Recurring Revenue and Customer Retention</h3>
+    <p>
+      Businesses with predictable, recurring revenue — service contracts, membership programs, or long-term
+      accounts — command meaningfully higher multiples than comparable businesses with transactional revenue.
+      Buyers pay for certainty. A {{ category.name }} business that can demonstrate 60%+ customer return rates
+      or contract-based revenue is valued as a less risky acquisition and priced accordingly.
+    </p>
+
+    <h3>Owner Dependency</h3>
+    <p>
+      The single most common value discount across all {{ category.name }} transactions is owner dependency.
+      When the owner is the primary service provider, holds key relationships, or is the face of the business
+      to major customers, buyers must price in the cost of replacing that role. Systematized businesses —
+      where operations run via documented processes, trained staff, and accountable managers — command the
+      upper quartile. The full calculator applies a ±0.20× adjustment for owner involvement, which equals
+      $40,000–$60,000 on a $200,000–$300,000 SDE business.
+    </p>
+
+    <h3>Financial Documentation Quality</h3>
+    <p>
+      SBA lenders require 3 years of business tax returns and internally prepared P&amp;Ls. {{ category.name }}
+      businesses with clean, consistent financial records sell faster and at higher prices because buyers and
+      their lenders can underwrite the acquisition with confidence. Businesses with cash income not reported
+      on tax returns, inconsistent bookkeeping, or owner-managed financial records face significant buyer
+      skepticism — and discounts or deal failures during diligence.
+    </p>
+
+    <h3>Lease and Location Security</h3>
+    <p>
+      For location-dependent {{ category.name }} businesses, lease terms are a primary deal risk.
+      A business with a lease expiring within 12 months of closing — and no renewal option — faces buyers
+      who either walk or heavily discount for the risk. Securing a 5+ year remaining lease with a renewal
+      option before going to market removes a major diligence friction point and supports full-multiple pricing.
+    </p>
+
+    <p>
+      <a href="/guides/how-to-prepare-business-for-sale/">How to Prepare Your Business for Sale →</a>
+    </p>
+  </div>
+</section>
+
+{# ── Ad Unit ─────────────────────────────────────────────────────────────────── #}
+<div class="ad-unit ad-unit--mid-content" aria-label="Advertisement">
+  <div class="ad-unit__inner">
+    <ins class="adsbygoogle"
+         style="display:block;min-height:280px;"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
+</div>
+
+{# ── FAQ ─────────────────────────────────────────────────────────────────────── #}
+<section class="category-faq">
+  <div class="container">
+    <h2>Frequently Asked Questions: {{ category.name }} Business Valuations</h2>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <h3>What SDE multiple do {{ category.name }} businesses sell for?</h3>
+        <p>
+          According to Mainstreet Benchmark's analysis of BizBuySell transaction data, {{ category.name }}
+          businesses typically sell for <strong>{{ category.multiple_low }}× to {{ category.multiple_high }}×</strong>
+          annual SDE, with a median around {{ category.multiple_mid_avg }}×. The range reflects the
+          {{ category.industry_count }} distinct business types within this category — each with its own
+          multiple driven by recurring revenue, owner dependency, and customer concentration.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>How many {{ category.name }} business types are covered in your data?</h3>
+        <p>
+          Mainstreet Benchmark covers {{ category.industry_count }} {{ category.name }} business types,
+          each with its own SDE multiple range derived from BizBuySell closed transaction records.
+          Use the links in the table above to view industry-specific multiples, transaction counts,
+          and market context for each type.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>How do I calculate the value of my {{ category.name }} business?</h3>
+        <p>
+          The standard method for valuing a {{ category.name }} business is to multiply annual SDE
+          (Seller's Discretionary Earnings) by the industry-specific multiple. Select your specific
+          business type from the table above to see its current multiple range, then enter your SDE
+          and revenue into the <a href="/">free calculator</a> to receive a personalized valuation
+          range adjusted for growth trend, owner involvement, and customer concentration.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What is SDE and how is it different from net profit?</h3>
+        <p>
+          SDE — Seller's Discretionary Earnings — equals net profit plus the owner's salary plus
+          any personal expenses run through the business plus non-cash charges like depreciation.
+          For most {{ category.name }} businesses, SDE is 15–35% higher than reported net profit.
+          It is the standard valuation basis for Main Street businesses because it normalizes for
+          the fact that owners structure their compensation differently — some pay themselves market
+          salaries, others take minimal salary and maximize distributions.
+          <a href="/guides/what-is-sde/">Full SDE calculation guide →</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{# ── BizBuySell Citation ──────────────────────────────────────────────────────── #}
+<aside class="data-citation">
+  <div class="container">
+    <p>
+      Transaction data: <a href="{{ site.bizBuySellUrl }}" target="_blank" rel="noopener">BizBuySell Industry Valuation Report</a>,
+      {{ site.dataSource }}. Covering {{ site.transactionCount }}+ closed transactions across
+      {{ site.dataYear }} categories. This tool provides planning estimates only and does not
+      constitute a formal business appraisal.
+    </p>
+  </div>
+</aside>
+
+{% endblock %}

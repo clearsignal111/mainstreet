@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="MainStreetBenchmark logo mark">
+  <title>MainStreetBenchmark</title>
+  <!-- Navy background with rounded corners -->
+  <rect width="48" height="48" rx="10" fill="#1B2B4B"/>
+  <!-- Three ascending benchmark bars — left, center, right -->
+  <!-- Left bar: shortest — 12px tall -->
+  <rect x="9" y="27" width="8" height="12" rx="1.5" fill="#FFFFFF" opacity="0.55"/>
+  <!-- Center bar: medium — 20px tall -->
+  <rect x="20" y="19" width="8" height="20" rx="1.5" fill="#FFFFFF" opacity="0.8"/>
+  <!-- Right bar: tallest — 28px tall, in accent green -->
+  <rect x="31" y="11" width="8" height="28" rx="1.5" fill="#1E6B45"/>
+  <!-- Baseline rule -->
+  <rect x="9" y="40" width="30" height="1.5" rx="0.75" fill="#FFFFFF" opacity="0.3"/>
+</svg>

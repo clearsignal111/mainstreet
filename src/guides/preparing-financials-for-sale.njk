@@ -1,0 +1,260 @@
+---
+layout: layouts/base.njk
+pageTitle: "Preparing Your Financials for a Business Sale: Complete Checklist"
+metaDescription: "A complete checklist of financial documents required to sell a business, how to prepare each one, and the most common financial documentation mistakes that kill deals or reduce prices."
+canonicalPath: /guides/preparing-financials-for-sale/
+datePublished: "2026-01-15"
+dateModified: "2026-01-15"
+faqItems:
+  - question: "How many years of financial records do I need to sell my business?"
+    answer: "Buyers and SBA lenders require 3 years of business tax returns and 3 years of monthly profit and loss statements. Additionally, most buyers request an interim year-to-date P&L for the current period and a current balance sheet. If your business has significant assets, a separate equipment list with estimated values is typically required. Plan to have all documents organized and readily available before engaging a broker."
+  - question: "Can I sell my business if my financials are not clean?"
+    answer: "You can attempt to sell, but expect either a significant price discount or a deal that fails in diligence. The most common outcome for a business with messy financials is a buyer who makes an offer contingent on verification, then reduces the price when the financials don't support the seller's claimed SDE. The ROI on financial cleanup — working with a CPA experienced in business sales for 6–12 months before listing — consistently exceeds the cost."
+  - question: "What is a recast profit and loss statement?"
+    answer: "A recast (or adjusted) P&L reconstructs your income statement to show true owner earnings by adding back the owner's compensation, personal expenses run through the business, non-recurring items, and non-cash charges. The recast P&L is what your broker presents to buyers as the basis for the SDE calculation. Every line item in the recast must be supported by documentation — the original P&L, bank statements, payroll records, or invoices."
+  - question: "What happens to financial documentation during due diligence?"
+    answer: "During diligence, the buyer's accountant or financial advisor reviews all financial records against third-party sources. Tax returns are reconciled against P&Ls and bank statements. Add-backs are verified against payroll, credit card, and vendor records. Discrepancies are flagged and almost always result in a price renegotiation. Having all documentation organized in a virtual data room before diligence starts is the single biggest time-saver in the deal process."
+---
+
+{# ─── Schema ────────────────────────────────────────────────────────────────── #}
+{% block schema %}
+  {% include "schema/guide.njk" %}
+{% endblock %}
+
+{% block content %}
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/guides/">Guides</a></li>
+    <li aria-current="page">Preparing Financials for Sale</li>
+  </ol>
+</nav>
+
+<article class="guide-article">
+  <div class="container">
+
+    <header class="guide-header">
+      <h1>Preparing Your Financials for a Business Sale: Complete Checklist</h1>
+      <div class="guide-meta">
+        <span>By {{ site.author.name }}</span>
+        <span>·</span>
+        <span>Updated {{ site.dataLastModified }}</span>
+        <span>·</span>
+        <span>9 min read</span>
+      </div>
+    </header>
+
+    <section class="guide-body">
+
+      <p>
+        Financial documentation is where most business sales succeed or fail. A well-prepared
+        financial package accelerates diligence, supports the asking price, and prevents the
+        renegotiations that erode deal value. An unprepared financial package invites discounts,
+        delays, and deal failures.
+      </p>
+      <p>
+        This guide covers every document you need, how to prepare it, and the specific issues
+        that most commonly create problems in diligence.
+      </p>
+
+      <h2>The Core Document Checklist</h2>
+
+      <h3>1. Business Tax Returns — 3 Years</h3>
+      <p>
+        The IRS tax return is the primary source of truth in any business sale. Buyers and SBA lenders
+        use it because it represents what you told the government your business made — and it is
+        extremely difficult to dispute. Required for all business entity types:
+      </p>
+      <ul>
+        <li>S-Corp: Form 1120-S, plus Schedule K-1s for all shareholders</li>
+        <li>Partnership/LLC taxed as partnership: Form 1065, plus Schedule K-1s</li>
+        <li>Sole Proprietorship: Schedule C from personal Form 1040</li>
+        <li>C-Corp: Form 1120</li>
+      </ul>
+      <p>
+        If you have an extension for the most recent tax year, provide a signed copy of the
+        extension and the most recent quarterly estimated tax filings, along with an explanation
+        of the timeline. Buyers understand extensions — unexplained gaps in filing history raise questions.
+      </p>
+
+      <h3>2. Profit and Loss Statements — 3 Years, Monthly</h3>
+      <p>
+        Monthly P&amp;Ls allow buyers to identify seasonality, revenue trends, and anomalous months.
+        Annual P&amp;Ls hide too much. The monthly statements should come from your accounting software
+        (QuickBooks, Xero, Wave) — hand-prepared spreadsheet P&amp;Ls invite skepticism. They should
+        be consistent with your tax returns — major discrepancies require explanation.
+      </p>
+
+      <h3>3. Current Year Interim P&amp;L</h3>
+      <p>
+        A year-to-date P&amp;L as of the most recent month. This shows buyers how the current year
+        is tracking relative to prior years and allows them to calculate a trailing-twelve-month SDE.
+        If the current year is significantly below prior years, prepare a written explanation.
+      </p>
+
+      <h3>4. Balance Sheet</h3>
+      <p>
+        A current balance sheet as of the most recent month-end. Key items buyers examine:
+      </p>
+      <ul>
+        <li>Accounts receivable aging — are receivables collectible, or are there significant overdue amounts?</li>
+        <li>Inventory — how current is it, and is it at cost or market value?</li>
+        <li>Equipment and fixed assets — depreciated book value vs. actual market value</li>
+        <li>Accounts payable — are there significant vendor balances that will transfer?</li>
+        <li>Debt — what liabilities will be paid off at closing vs. assumed by the buyer?</li>
+      </ul>
+
+      <h3>5. SDE Recast / Add-Back Schedule</h3>
+      <p>
+        This is the most important document you will prepare. The recast P&amp;L reconstructs your
+        income statement to show true owner earnings, with every add-back explicitly identified and
+        its documentation referenced. Format:
+      </p>
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Documentation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Net profit per tax return</td><td>$XX,XXX</td><td>Form 1120-S, Line X</td></tr>
+            <tr><td>Owner salary W-2</td><td>+$XX,XXX</td><td>W-2, Payroll records</td></tr>
+            <tr><td>Owner health insurance</td><td>+$XX,XXX</td><td>Insurance premium statements</td></tr>
+            <tr><td>Owner vehicle</td><td>+$XX,XXX</td><td>Mileage log, vehicle registration</td></tr>
+            <tr><td>Depreciation</td><td>+$XX,XXX</td><td>Schedule of depreciation, tax return</td></tr>
+            <tr><td>Interest expense</td><td>+$XX,XXX</td><td>Loan statements</td></tr>
+            <tr><td>Non-recurring: [description]</td><td>+$XX,XXX</td><td>Invoice or explanation</td></tr>
+            <tr><td><strong>Total SDE</strong></td><td><strong>$XXX,XXX</strong></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>6. Bank Statements — 12–24 Months</h3>
+      <p>
+        Buyers verify that revenue deposits match the reported P&amp;L. If your P&amp;L shows $800,000
+        in revenue but your bank deposits total $650,000, you will be asked to explain the difference.
+        Cash transactions not deposited cannot be credibly added back. Organize statements by account
+        and year — buyers should be able to verify any P&amp;L line without hunting through unsorted records.
+      </p>
+
+      <h3>7. Equipment and Asset List</h3>
+      <p>
+        A detailed list of all equipment, vehicles, and fixtures included in the sale, with:
+      </p>
+      <ul>
+        <li>Description and model/year</li>
+        <li>Age and current condition</li>
+        <li>Estimated fair market value</li>
+        <li>Leased vs. owned (with lease terms for leased equipment)</li>
+        <li>Any known deferred maintenance or required repairs</li>
+      </ul>
+      <p>
+        Buyers will physically inspect this list during diligence. Overstating asset values or
+        omitting known maintenance needs will surface and damage trust at a critical point.
+      </p>
+
+      <h3>8. Customer and Contract Summary</h3>
+      <p>
+        Without naming specific customers (confidentiality is maintained until late diligence),
+        provide a summary showing:
+      </p>
+      <ul>
+        <li>Revenue by customer tier (e.g., top 10 customers as % of revenue, without names)</li>
+        <li>Active contracts with terms and renewal dates</li>
+        <li>Customer retention rate year-over-year</li>
+        <li>Average transaction value and frequency</li>
+      </ul>
+
+      <h3>9. Lease Copies and Key Contracts</h3>
+      <p>
+        Copies of all facility leases (with amendments), equipment leases, franchise agreements,
+        supplier contracts, and any other agreements material to the business. Buyers' attorneys
+        review these to assess assignment risk, renewal options, and change-of-control provisions.
+      </p>
+
+      <h3>10. Employee Summary</h3>
+      <p>
+        A list of all employees (positions, not names for confidentiality) with:
+      </p>
+      <ul>
+        <li>Role and tenure</li>
+        <li>Full-time vs. part-time status</li>
+        <li>Compensation (salary or hourly rate)</li>
+        <li>Any non-compete or non-solicitation agreements</li>
+        <li>Key roles the owner holds that would need replacement</li>
+      </ul>
+
+      <h2>The Virtual Data Room</h2>
+      <p>
+        Organize all documents in a virtual data room — a shared cloud folder (Google Drive, Dropbox,
+        or a dedicated VDR platform) structured so a buyer can navigate without guidance. Folder structure:
+      </p>
+      <ul>
+        <li>01 Tax Returns / [Year 1, Year 2, Year 3]</li>
+        <li>02 P&amp;Ls / [Annual, Monthly by Year, Current YTD]</li>
+        <li>03 Balance Sheets</li>
+        <li>04 Bank Statements</li>
+        <li>05 SDE Recast and Add-Back Schedule</li>
+        <li>06 Assets and Equipment</li>
+        <li>07 Leases and Contracts</li>
+        <li>08 Employees</li>
+        <li>09 Customers and Revenue Summary</li>
+      </ul>
+      <p>
+        A buyer who receives a well-organized data room makes faster decisions and is less likely
+        to use diligence confusion as a negotiating tool. Disorganized records signal disorganized
+        management and invite lower offers.
+      </p>
+
+    </section>
+
+    <div class="ad-unit ad-unit--mid-content" aria-label="Advertisement">
+      <div class="ad-unit__inner">
+        <ins class="adsbygoogle"
+             style="display:block;min-height:280px;"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+      </div>
+    </div>
+
+    <section class="guide-takeaways">
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li>3 years of business tax returns and monthly P&amp;Ls are non-negotiable for any buyer or SBA lender</li>
+        <li>The SDE recast and add-back schedule must have a documentation reference for every line item — undocumented add-backs don't survive diligence</li>
+        <li>Bank statements reconciled to P&amp;Ls are the fastest way to establish financial credibility with skeptical buyers</li>
+        <li>A well-organized virtual data room signals professional management and accelerates diligence</li>
+        <li>Start organizing documents now — not the week you list</li>
+      </ul>
+    </section>
+
+    <section class="guide-faq">
+      <h2>Frequently Asked Questions</h2>
+      {% for item in faqItems %}
+      <div class="faq-item">
+        <h3>{{ item.question }}</h3>
+        <p>{{ item.answer }}</p>
+      </div>
+      {% endfor %}
+    </section>
+
+    <section class="guide-related">
+      <h3>Related Reading</h3>
+      <ul>
+        <li><a href="/guides/what-is-sde/">What Is SDE? How to Calculate Seller's Discretionary Earnings</a></li>
+        <li><a href="/guides/how-to-prepare-business-for-sale/">How to Prepare Your Business for Sale: A 12-Month Action Plan</a></li>
+        <li><a href="/guides/sba-acquisition-loans/">SBA Loans for Business Acquisitions: What Sellers Need to Know</a></li>
+        <li><a href="/">Business Valuation Calculator — know your baseline before the first buyer conversation</a></li>
+      </ul>
+    </section>
+
+  </div>
+</article>
+
+{% endblock %}

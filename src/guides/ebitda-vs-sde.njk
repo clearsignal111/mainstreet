@@ -1,0 +1,269 @@
+---
+layout: layouts/base.njk
+pageTitle: "EBITDA vs SDE: Which Matters When Selling Your Business"
+metaDescription: "EBITDA and SDE are both earnings metrics used in business sales, but they apply to different business sizes and produce very different valuations. Learn when each applies and how to calculate both."
+canonicalPath: /guides/ebitda-vs-sde/
+datePublished: "2026-01-15"
+dateModified: "2026-01-15"
+faqItems:
+  - question: "What is the difference between EBITDA and SDE?"
+    answer: "SDE adds back the owner's full compensation (salary + benefits + personal expenses), while EBITDA adds back only a market-rate management salary. SDE is higher than EBITDA for owner-operated businesses because it captures the total economic benefit to the owner. SDE is the standard for Main Street businesses under $5M revenue; EBITDA is standard for larger businesses ($5M+ revenue) managed by professional management teams."
+  - question: "Is EBITDA or SDE used for restaurant valuations?"
+    answer: "Most restaurant transactions under $3M in revenue use SDE multiples. Larger restaurant groups or multi-location concepts with professional management teams shift to EBITDA. The BizBuySell transaction data used by Mainstreet Benchmark covers primarily Main Street restaurant transactions and applies SDE multiples. A single-location restaurant doing $600,000 revenue with an owner-operator is an SDE business; a 5-location group doing $8M revenue with a professional GM is an EBITDA business."
+  - question: "Which gives a higher valuation — EBITDA or SDE?"
+    answer: "For owner-operated businesses, SDE almost always produces a higher absolute earnings number than EBITDA (because it adds back more), but EBITDA multiples are typically higher (5×–10× for mid-market businesses vs. 2×–4× for Main Street). Which produces a higher valuation depends on the specific business. The key question is which metric is appropriate for your business size and buyer type."
+  - question: "When should I use EBITDA multiples instead of SDE?"
+    answer: "When your business has professional management that would continue under new ownership — meaning the owner could exit without the business losing earnings. Typically this applies to businesses with revenue above $5M, SDE above $1M, or businesses where the owner is primarily a capital allocator rather than a day-to-day operator. If your business depends on you personally to generate its earnings, SDE is the appropriate metric."
+---
+
+{# ─── Schema ────────────────────────────────────────────────────────────────── #}
+{% block schema %}
+  {% include "schema/guide.njk" %}
+{% endblock %}
+
+{% block content %}
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/guides/">Guides</a></li>
+    <li aria-current="page">EBITDA vs SDE</li>
+  </ol>
+</nav>
+
+<article class="guide-article">
+  <div class="container">
+
+    <header class="guide-header">
+      <h1>EBITDA vs SDE: Which Matters When Selling Your Business</h1>
+      <div class="guide-meta">
+        <span>By {{ site.author.name }}</span>
+        <span>·</span>
+        <span>Updated {{ site.dataLastModified }}</span>
+        <span>·</span>
+        <span>8 min read</span>
+      </div>
+    </header>
+
+    <section class="guide-body">
+
+      <p>
+        Business owners preparing to sell encounter two earnings metrics that look similar but produce
+        very different valuations and apply to very different situations: SDE and EBITDA. Using the
+        wrong one — or allowing a buyer to apply the wrong one — can result in a valuation that is
+        hundreds of thousands of dollars off the mark in either direction.
+      </p>
+
+      <h2>The Definitions</h2>
+
+      <h3>SDE — Seller's Discretionary Earnings</h3>
+      <div class="formula-block">
+        <p><strong>SDE = Net Profit + Owner Salary + Owner Benefits + Personal Add-Backs + Depreciation + Amortization + Interest</strong></p>
+      </div>
+      <p>
+        SDE captures the total economic benefit a full-time owner-operator receives from the business.
+        It assumes the buyer will be an individual owner-operator who replaces the seller — working in
+        the business full-time and taking the same compensation structure.
+      </p>
+      <p>
+        This is the standard metric for Main Street businesses — typically those with revenue under
+        $5M or SDE under $1M. The <a href="/guides/what-is-sde/">complete SDE calculation guide</a>
+        covers every add-back category in detail.
+      </p>
+
+      <h3>EBITDA — Earnings Before Interest, Taxes, Depreciation, and Amortization</h3>
+      <div class="formula-block">
+        <p><strong>EBITDA = Net Profit + Interest + Taxes + Depreciation + Amortization</strong></p>
+      </div>
+      <p>
+        EBITDA normalizes earnings for financing structure (adds back interest), tax jurisdiction
+        (adds back taxes), and accounting treatment (adds back D&amp;A). Unlike SDE, EBITDA does
+        <em>not</em> add back the owner's full compensation — instead, it assumes a market-rate
+        manager would be required to replace the owner. That replacement salary stays as an expense.
+      </p>
+      <p>
+        EBITDA is the standard for larger businesses with professional management teams — typically
+        those with revenue above $5M or EBITDA above $1M — where the buyer is a financial acquirer,
+        PE firm, or strategic buyer rather than an individual owner-operator.
+      </p>
+
+      <h2>Why the Distinction Matters: A Worked Example</h2>
+      <p>
+        Imagine a landscaping business with $1.2M in revenue. The owner pays himself $120,000,
+        takes $24,000 in health insurance through the business, expenses $12,000 in personal vehicle
+        costs, and the business shows $65,000 net profit after all expenses.
+      </p>
+
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th scope="col">Metric</th>
+              <th scope="col">Calculation</th>
+              <th scope="col">Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Net Profit</td>
+              <td>As reported</td>
+              <td>$65,000</td>
+            </tr>
+            <tr>
+              <td>EBITDA</td>
+              <td>$65,000 + D&amp;A $18,000 + Interest $7,000 + Taxes $22,000</td>
+              <td>$112,000</td>
+            </tr>
+            <tr>
+              <td>SDE</td>
+              <td>$65,000 + Owner salary $120,000 + Benefits $24,000 + Vehicle $12,000 + D&amp;A $18,000 + Interest $7,000</td>
+              <td>$246,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        The difference between EBITDA ($112,000) and SDE ($246,000) is substantial. At a typical
+        <a href="/valuation/landscaping-yard-services/">landscaping industry multiple of 2.76× SDE</a>,
+        the SDE-based valuation is approximately $678,000. If a buyer or advisor applied a mid-market
+        EBITDA multiple of 5.0× instead, they would get $560,000 on the EBITDA — significantly lower
+        despite the "higher" multiple. SDE captures more earnings and applies to this business;
+        EBITDA does not.
+      </p>
+
+      <h2>The Decision Framework: Which Metric Applies to Your Business</h2>
+
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th scope="col">Factor</th>
+              <th scope="col">Use SDE</th>
+              <th scope="col">Use EBITDA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Revenue</td>
+              <td>Under $5M</td>
+              <td>$5M+</td>
+            </tr>
+            <tr>
+              <td>Earnings</td>
+              <td>Under $1M SDE</td>
+              <td>$1M+ EBITDA</td>
+            </tr>
+            <tr>
+              <td>Management</td>
+              <td>Owner-operated</td>
+              <td>Professional management team</td>
+            </tr>
+            <tr>
+              <td>Buyer type</td>
+              <td>Individual operator, SBA buyer</td>
+              <td>PE firm, strategic acquirer</td>
+            </tr>
+            <tr>
+              <td>Owner role</td>
+              <td>Daily operator</td>
+              <td>Capital allocator, board-level</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>The Multiple Difference: SDE vs. EBITDA</h2>
+      <p>
+        EBITDA multiples for Main Street businesses are not higher than SDE multiples — they are
+        applied to a smaller earnings base. The multiple differences:
+      </p>
+      <ul>
+        <li>Main Street SDE multiples: typically 2.0× – 5.0× (varies significantly by industry)</li>
+        <li>Lower middle market EBITDA multiples: typically 4.0× – 7.0× ($1M–$5M EBITDA)</li>
+        <li>Mid-market EBITDA multiples: typically 6.0× – 12.0× ($5M+ EBITDA)</li>
+      </ul>
+      <p>
+        A business crossing from Main Street into lower middle market — say, $1.2M SDE — may actually
+        benefit from being positioned on an EBITDA basis if it has professional management that would
+        continue post-sale, because the 5–7× EBITDA multiples applied to a smaller number may exceed
+        the 3–4× SDE multiple applied to the larger number. This is a calculation that requires a
+        sophisticated broker to navigate — the right metric is a deal-structuring decision, not just
+        an accounting choice.
+      </p>
+
+      <h2>When Sellers Use the Wrong Metric</h2>
+      <p>
+        The most common mistake: a Main Street seller reads about EBITDA multiples in financial media
+        (where mid-market multiples of 8–12× are reported) and expects those multiples to apply to
+        their $400,000 SDE landscaping business. They do not. Those multiples apply to different-sized
+        businesses with professional management and different risk profiles.
+      </p>
+      <p>
+        The correct approach: use the industry-specific SDE multiple from real transaction data for
+        your business type and size. The <a href="/">valuation calculator</a> uses
+        SDE multiples derived from {{ site.transactionCount }}+ closed Main Street transactions.
+        If your business is above the $5M revenue threshold, consult a business broker or M&amp;A
+        advisor about whether EBITDA positioning makes sense.
+      </p>
+
+      <h2>Seller's Discretionary Earnings in Practice</h2>
+      <p>
+        Most business owners start by using SDE — the right choice for the vast majority of small
+        business sales. The practical workflow:
+      </p>
+      <ol>
+        <li>Calculate your SDE using the method in the <a href="/guides/what-is-sde/">SDE guide</a></li>
+        <li>Enter your SDE in the <a href="/">valuation calculator</a> with your industry, revenue, and adjustment factors</li>
+        <li>Use the resulting range as your baseline for pricing discussions with your broker</li>
+        <li>If your SDE is above $1M, ask your broker whether EBITDA positioning might apply</li>
+      </ol>
+
+    </section>
+
+    <div class="ad-unit ad-unit--mid-content" aria-label="Advertisement">
+      <div class="ad-unit__inner">
+        <ins class="adsbygoogle"
+             style="display:block;min-height:280px;"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+      </div>
+    </div>
+
+    <section class="guide-takeaways">
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li>SDE adds back the owner's full compensation; EBITDA adds back only a market-rate manager salary</li>
+        <li>SDE produces a higher earnings figure but lower multiple — the right metric for owner-operated businesses under $5M revenue</li>
+        <li>EBITDA is appropriate for businesses with professional management teams and $5M+ revenue</li>
+        <li>Using the wrong metric can shift your implied valuation by hundreds of thousands of dollars</li>
+        <li>The industry-specific SDE multiples in the valuation calculator are calibrated to Main Street transaction data — the right benchmark for most small businesses</li>
+      </ul>
+    </section>
+
+    <section class="guide-faq">
+      <h2>Frequently Asked Questions</h2>
+      {% for item in faqItems %}
+      <div class="faq-item">
+        <h3>{{ item.question }}</h3>
+        <p>{{ item.answer }}</p>
+      </div>
+      {% endfor %}
+    </section>
+
+    <section class="guide-related">
+      <h3>Related Reading</h3>
+      <ul>
+        <li><a href="/guides/what-is-sde/">What Is SDE? How to Calculate Seller's Discretionary Earnings</a></li>
+        <li><a href="/guides/valuation-methods-explained/">Business Valuation Methods Explained: SDE, EBITDA, Asset, and DCF</a></li>
+        <li><a href="/guides/understanding-valuation-multiples/">Understanding Business Valuation Multiples</a></li>
+        <li><a href="/">Business Valuation Calculator — industry-specific SDE multiples</a></li>
+      </ul>
+    </section>
+
+  </div>
+</article>
+
+{% endblock %}

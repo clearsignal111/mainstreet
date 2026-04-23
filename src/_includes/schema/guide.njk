@@ -1,0 +1,80 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ pageTitle | jsStr }}",
+  "description": "{{ metaDescription | jsStr }}",
+  "url": "{{ site.url }}{{ page.url }}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ site.url }}{{ page.url }}"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "{{ site.author.name | jsStr }}",
+    "url": "{{ site.url }}/about/#author"
+  },
+  "reviewedBy": {
+    "@type": "Person",
+    "name": "{{ site.reviewer.name | jsStr }}",
+    "url": "{{ site.url }}/about/#reviewer"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ site.brandName | jsStr }}",
+    "url": "{{ site.url }}/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.url }}/brand-assets/logo-on-white@2x.png"
+    }
+  },
+  "datePublished": "{{ datePublished if datePublished else site.dataLastModified }}",
+  "dateModified": "{{ dateModified if dateModified else site.dataLastModified }}"
+}
+</script>
+{% if faqItems and faqItems.length %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for item in faqItems %}
+    {
+      "@type": "Question",
+      "name": "{{ item.question | jsStr }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ item.answer | jsStr }}"
+      }
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ site.url }}/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guides",
+      "item": "{{ site.url }}/guides/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ pageTitle | jsStr }}",
+      "item": "{{ site.url }}{{ page.url }}"
+    }
+  ]
+}
+</script>

@@ -1,0 +1,161 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{ site.url }}/#organization",
+      "name": "{{ site.brandName }}",
+      "url": "{{ site.url }}/",
+      "logo": "{{ site.url }}/brand-assets/logo-on-white@2x.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "{{ site.contactEmail }}",
+        "contactType": "customer support"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{ site.address.street }}",
+        "addressLocality": "{{ site.address.city }}",
+        "addressRegion": "{{ site.address.state }}",
+        "postalCode": "{{ site.address.zip }}",
+        "addressCountry": "US"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "{{ site.url }}/#calculator",
+      "name": "Small Business Valuation Calculator",
+      "url": "{{ site.url }}/",
+      "publisher": { "@id": "{{ site.url }}/#organization" },
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "description": "Industry-specific small business valuation calculator using BizBuySell transaction data. Produces SDE-based valuation ranges for 63 business categories based on closed transaction multiples.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Industry-specific SDE multiples for 63 categories",
+        "BizBuySell closed transaction data",
+        "Adjustable deal-readiness factors",
+        "What-if scenario modeling"
+      ],
+      "screenshot": "{{ site.url }}/brand-assets/og-image-default.png",
+      "input": {
+        "@type": "PropertyValue",
+        "name": "Business Inputs",
+        "description": "Industry type, Annual SDE, Annual Revenue, Revenue Trend, Owner Involvement, Customer Concentration"
+      },
+      "output": {
+        "@type": "PropertyValue",
+        "name": "Valuation Range",
+        "description": "Industry-specific SDE multiple range applied to owner-entered SDE, producing a low-to-high dollar valuation range rounded to nearest $5,000"
+      },
+      "potentialAction": {
+        "@type": "Action",
+        "name": "Calculate Business Valuation",
+        "description": "Enter industry, SDE, revenue, and deal-readiness factors to receive an industry-specific business valuation range",
+        "object": {
+          "@type": "EntryPoint",
+          "urlTemplate": "{{ site.url }}/",
+          "actionPlatform": "https://schema.org/DesktopWebPlatform"
+        }
+      }
+    },
+    {
+      "@type": "Dataset",
+      "@id": "{{ site.url }}/#dataset",
+      "name": "Small Business Valuation Multiples by Industry {{ site.dataYear }}",
+      "description": "SDE multiples and revenue multiples for 63 small business categories, derived from BizBuySell closed transaction data covering {{ site.transactionCount }}+ business sales from Q1 {{ site.dataCoverageStart }} through {{ site.dataQuarter }} {{ site.dataCoverageEnd }}.",
+      "url": "{{ site.url }}/",
+      "creator": { "@id": "{{ site.url }}/#organization" },
+      "isBasedOn": {
+        "@type": "Dataset",
+        "name": "BizBuySell Industry Valuation Report {{ site.dataQuarter }} {{ site.dataYear }}",
+        "url": "{{ site.bizBuySellUrl }}",
+        "publisher": {
+          "@type": "Organization",
+          "name": "BizBuySell (CoStar Group)",
+          "url": "https://www.bizbuysell.com/"
+        }
+      },
+      "variableMeasured": [
+        { "@type": "PropertyValue", "name": "SDE Multiple (Lower Quartile)", "unitText": "× annual SDE" },
+        { "@type": "PropertyValue", "name": "SDE Multiple (Median)", "unitText": "× annual SDE" },
+        { "@type": "PropertyValue", "name": "SDE Multiple (Upper Quartile)", "unitText": "× annual SDE" },
+        { "@type": "PropertyValue", "name": "Revenue Multiple (Average)", "unitText": "× annual revenue" }
+      ],
+      "temporalCoverage": "{{ site.dataCoverageStart }}/{{ site.dataCoverageEnd }}",
+      "spatialCoverage": "United States",
+      "isAccessibleForFree": true,
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "includedInDataCatalog": {
+        "@type": "DataCatalog",
+        "name": "Small Business Valuation Transaction Database",
+        "url": "{{ site.url }}/valuation/"
+      },
+      "dateModified": "2026-01-15"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "{{ site.url }}/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How accurate is this business valuation calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This calculator provides a data-backed estimate based on actual closed transaction multiples reported to BizBuySell from {{ site.transactionCount }}+ business sales. It is accurate as a planning estimate — most small businesses sell within 15–25% of a properly calculated SDE multiple range. It is not a formal appraisal and should not be used for legal, tax, or binding financial purposes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is SDE (Seller's Discretionary Earnings)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SDE is the total financial benefit a single owner-operator derives from a business. It equals net profit plus the owner's salary plus any personal expenses run through the business plus non-recurring or one-time expenses. It represents the true earning power available to a new owner."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I use revenue or earnings to value my business?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For most Main Street small businesses, SDE (earnings) is the primary valuation basis. Revenue multiples are used as a secondary check. Buyers and their lenders focus on earnings because they need to service debt from business cash flow. Revenue-based valuation is more common for SaaS, e-commerce, and subscription businesses."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do buyers determine the price of a small business?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most buyers of small businesses use a multiple of SDE as the starting point for price negotiation. The multiple reflects the industry, the business's growth trend, how dependent the business is on the owner, and the customer concentration risk. Buyers also consider asset value, lease terms, and working capital requirements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is an SDE multiple?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An SDE multiple is the number by which a buyer multiplies your annual SDE to arrive at a business price. If your SDE is $200,000 and your industry's typical multiple is 2.5×, the implied price is $500,000. Multiples vary significantly by industry — from under 1.5× for lower-margin retail to over 5× for high-demand recurring-revenue businesses like car washes and marinas."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "{{ site.url }}/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "{{ site.url }}/"
+        }
+      ]
+    }
+  ]
+}
+</script>

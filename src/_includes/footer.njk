@@ -1,0 +1,59 @@
+<footer class="site-footer" role="contentinfo">
+
+  {# Category-scoped footer links (industry pages only) #}
+  {% if industryPage and industryCategoryIndustries and industryCategoryIndustries.length > 1 %}
+  <div class="footer-category-links">
+    <div class="container" style="max-width:1100px;margin:0 auto;padding:0 1.5rem;">
+      <h4>Other {{ industryCategoryName }} Business Valuations</h4>
+      <ul {% if industryCategoryIndustries.length > 8 %}style="columns:2;column-gap:2rem"{% endif %}>
+        {% for ind in industryCategoryIndustries %}
+        {% if ind.industry_slug !== currentIndustrySlug %}
+        <li><a href="{{ ind.page_url }}">{{ ind.industry_name }} Valuation</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="site-footer__inner">
+
+    {# Column 1: Brand #}
+    <div class="site-footer__brand">
+      <a href="/" class="footer-logo">{{ site.brandName }}</a>
+      <p>Industry-specific small business valuation estimates based on real closed transaction data.</p>
+      <p style="margin-top:0.5rem;font-size:0.75rem;color:rgba(255,255,255,0.4);">
+        701 Brazos St, Suite 1616<br>Austin, TX 78701
+      </p>
+    </div>
+
+    {# Column 2: Navigation #}
+    <div class="site-footer__links">
+      <h4>Tools &amp; Data</h4>
+      <ul>
+        <li><a href="/">Valuation Calculator</a></li>
+        <li><a href="/methodology/">Our Methodology</a></li>
+        <li><a href="/guides/what-is-sde/">What Is SDE?</a></li>
+        <li><a href="/guides/understanding-valuation-multiples/">Valuation Multiples Guide</a></li>
+      </ul>
+    </div>
+
+    {# Column 3: Legal & Contact #}
+    <div class="site-footer__links">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+        <li><a href="mailto:{{ site.contactEmail }}">Contact</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  {# Bottom bar #}
+  <div class="site-footer__bottom">
+    <span>© {% year %} {{ site.brandName }} · <a href="/privacy-policy/">Privacy</a> · Not a formal business appraisal</span>
+    <span>Transaction data: <a href="{{ site.bizBuySellUrl }}" target="_blank" rel="noopener">BizBuySell Industry Valuation Report</a> · Updated biannually · This tool provides planning estimates only and does not constitute a formal business appraisal.</span>
+  </div>
+
+</footer>

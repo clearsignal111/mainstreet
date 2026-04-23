@@ -1,0 +1,152 @@
+---
+layout: layouts/base.njk
+pageTitle: "About Mainstreet Benchmark"
+metaDescription: "Mainstreet Benchmark publishes industry-specific SDE multiples and a free valuation calculator for small business owners. Derived from 9,500+ BizBuySell closed transactions across 63 industries."
+canonicalPath: /about/
+---
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About {{ site.brandName | jsStr }}",
+  "url": "{{ site.url }}/about/",
+  "description": "{{ site.brandName | jsStr }} publishes industry-specific SDE multiples and a free business valuation calculator for small business owners, derived from BizBuySell closed transaction data.",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "{{ site.url }}/#organization",
+    "name": "{{ site.brandName | jsStr }}",
+    "url": "{{ site.url }}/",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "{{ site.contactEmail }}",
+      "contactType": "customer support"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "{{ site.address.street }}",
+      "addressLocality": "{{ site.address.city }}",
+      "addressRegion": "{{ site.address.state }}",
+      "postalCode": "{{ site.address.zip }}",
+      "addressCountry": "US"
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/" },
+    { "@type": "ListItem", "position": 2, "name": "About", "item": "{{ site.url }}/about/" }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li aria-current="page">About</li>
+  </ol>
+</nav>
+
+<article class="about-page">
+  <div class="container">
+
+    <h1>About Mainstreet Benchmark</h1>
+
+    <section class="about-section">
+      <h2>What This Is</h2>
+      <p>
+        Mainstreet Benchmark is a free business valuation calculator and data reference for small business
+        owners who want to know what their business is actually worth before talking to a broker.
+        Every valuation uses industry-specific SDE multiples derived from real closed transaction data —
+        not generic "2–4×" ranges that give you nothing useful.
+      </p>
+      <p>
+        The data covers {{ site.transactionCount }}+ closed small business sales reported to BizBuySell
+        (CoStar Group) from Q1 {{ site.dataCoverageStart }} through Q4 {{ site.dataCoverageEnd }}, across
+        63 industries in 12 categories. These are actual sale prices — not asking prices — which is
+        the only number that matters.
+      </p>
+    </section>
+
+    <section class="about-section" id="author">
+      <h2>Who Builds This</h2>
+      <div class="about-person">
+        <h3>{{ site.author.name }} — Founder</h3>
+        <p>{{ site.author.bio }}</p>
+        <p>
+          The idea for Mainstreet Benchmark came from a recurring observation: business owners preparing
+          to sell consistently overestimate or underestimate their value because they have no access to
+          industry-specific transaction data. Brokers have it. Buyers have it. Sellers don't.
+          Mainstreet Benchmark closes that gap — no email required, no registration wall,
+          no generic range that applies to nothing in particular.
+        </p>
+      </div>
+    </section>
+
+    <section class="about-section" id="reviewer">
+      <h2>Data Review</h2>
+      <p>
+        Industry valuation data and calculator methodology are reviewed by a credentialed business
+        transaction professional before publication. Reviewer credentials and bio will be published
+        here prior to site launch.
+      </p>
+      <p>
+        For questions about specific data or methodology, contact
+        <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a>.
+      </p>
+    </section>
+
+    <section class="about-section">
+      <h2>What This Is Not</h2>
+      <p>
+        Mainstreet Benchmark is not a formal business appraisal service. The valuations produced by
+        this calculator are planning estimates based on closed transaction data — useful for understanding
+        market-rate pricing and preparing for broker conversations, but not a substitute for a formal
+        appraisal for legal, tax, or financing purposes.
+      </p>
+      <p>
+        This site does not provide broker referrals, does not capture or sell user data, and does not
+        require any registration or email to use.
+      </p>
+    </section>
+
+    <section class="about-section">
+      <h2>Data Source</h2>
+      <p>
+        All industry multiples are derived from
+        <a href="{{ site.bizBuySellUrl }}" target="_blank" rel="noopener">BizBuySell's Industry Valuation Report</a>
+        (CoStar Group), the most comprehensive database of Main Street business transactions in the
+        United States. BizBuySell reports closed transaction data — verified sale prices — not asking
+        prices or broker estimates.
+      </p>
+      <p>
+        The dataset is updated biannually as new BizBuySell data becomes available.
+        Current data: {{ site.dataSource }}.
+      </p>
+      <p>
+        For full methodology, including how multiples are calculated, how adjustment factors are derived,
+        and how the calculator produces its range, see the
+        <a href="/methodology/">Methodology page</a>.
+      </p>
+    </section>
+
+    <section class="about-section">
+      <h2>Contact</h2>
+      <p>
+        <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a><br>
+        {{ site.address.full }}
+      </p>
+    </section>
+
+  </div>
+</article>
+
+{% endblock %}

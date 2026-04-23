@@ -1,0 +1,26 @@
+---
+permalink: /robots.txt
+eleventyExcludeFromCollections: true
+---
+User-agent: *
+Disallow: /admin/
+Disallow: /api/
+
+# AI Search & Synthesis bots — cite sources and drive referral traffic — ALLOW
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Pure training scrapers — high server load, zero referral traffic — BLOCK
+User-agent: CCBot
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+Sitemap: {{ site.url }}/sitemap.xml

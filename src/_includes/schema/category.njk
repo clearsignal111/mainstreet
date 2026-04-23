@@ -1,0 +1,92 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ category.name | jsStr }} Business Valuation: SDE Multiples & Market Data ({{ site.dataYear }})",
+  "description": "{{ category.name | jsStr }} businesses sell for {{ category.multiple_low }}× to {{ category.multiple_high }}× SDE depending on type. Industry-specific valuation multiples for {{ category.industry_count }} business types, based on {{ site.transactionCount }}+ closed transactions from BizBuySell.",
+  "url": "{{ site.url }}{{ category.url }}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ site.url }}{{ category.url }}"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "{{ site.brandName | jsStr }} Data Team",
+    "url": "{{ site.url }}/about/"
+  },
+  "reviewedBy": {
+    "@type": "Person",
+    "name": "{{ site.reviewer.name | jsStr }}",
+    "url": "{{ site.url }}/about/#reviewer"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ site.brandName | jsStr }}",
+    "url": "{{ site.url }}/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.url }}/brand-assets/logo-on-white@2x.png"
+    }
+  },
+  "datePublished": "{{ site.dataLastModified }}",
+  "dateModified": "{{ site.dataLastModified }}"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What SDE multiple do {{ category.name | jsStr }} businesses sell for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "According to Mainstreet Benchmark's analysis of BizBuySell transaction data, {{ category.name | jsStr }} businesses typically sell for {{ category.multiple_low }}× to {{ category.multiple_high }}× annual SDE, with a median around {{ category.multiple_mid_avg }}×. The range reflects the {{ category.industry_count }} distinct business types within this category — each with its own multiple driven by recurring revenue, owner dependency, and customer concentration."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many {{ category.name | jsStr }} business types are covered in your data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mainstreet Benchmark covers {{ category.industry_count }} {{ category.name | jsStr }} business types, each with its own SDE multiple range derived from BizBuySell closed transaction records. Use the links below to view industry-specific multiples, transaction counts, and market context for each type."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate the value of my {{ category.name | jsStr }} business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The standard method for valuing a {{ category.name | jsStr }} business is to multiply annual SDE (Seller's Discretionary Earnings) by the industry-specific multiple. Select your specific business type from the list below to see its current multiple range, then enter your SDE and revenue into the free calculator at mainstreetbenchmark.org to receive a personalized valuation range adjusted for growth trend, owner involvement, and customer concentration."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ site.url }}/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Business Valuation",
+      "item": "{{ site.url }}/valuation/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ category.name | jsStr }}",
+      "item": "{{ site.url }}{{ category.url }}"
+    }
+  ]
+}
+</script>

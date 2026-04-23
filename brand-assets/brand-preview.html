@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MainStreetBenchmark — Brand Asset Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary:        #1B2B4B;
+      --color-primary-light:  #243660;
+      --color-accent:         #1E6B45;
+      --color-accent-light:   #EAF5EE;
+      --color-bg:             #FAFAF8;
+      --color-surface:        #FFFFFF;
+      --color-border:         #E2E4E8;
+      --color-text-primary:   #111827;
+      --color-text-secondary: #4B5563;
+      --color-text-muted:     #9CA3AF;
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text-primary);
+      line-height: 1.5;
+    }
+
+    /* ── Preview header ── */
+    .preview-header {
+      background: var(--color-primary);
+      color: white;
+      padding: 24px 48px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+    .preview-header strong { color: white; font-size: 16px; letter-spacing: 0; text-transform: none; display: block; margin-bottom: 4px; }
+
+    /* ── Sections ── */
+    .section {
+      padding: 48px;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 32px;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .asset-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .asset-label {
+      font-size: 11px;
+      color: var(--color-text-muted);
+      font-weight: 500;
+    }
+
+    /* ── Nav simulation ── */
+    .nav-demo {
+      background: var(--color-primary);
+      height: 60px;
+      display: flex;
+      align-items: center;
+      padding: 0 32px;
+      justify-content: space-between;
+      border-radius: 8px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-mark {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+    .nav-wordmark .ms { font-size: 13px; font-weight: 600; color: white; letter-spacing: -0.01em; }
+    .nav-wordmark .bm { font-size: 13px; font-weight: 700; color: var(--color-accent); letter-spacing: -0.01em; }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+    }
+
+    /* ── Dark background panel ── */
+    .dark-panel {
+      background: var(--color-primary);
+      padding: 40px 48px;
+      border-radius: 8px;
+    }
+    .dark-section {
+      background: var(--color-primary);
+      padding: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* ── Favicon grid ── */
+    .favicon-grid {
+      display: flex;
+      align-items: flex-end;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .favicon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .favicon-item img {
+      display: block;
+      image-rendering: pixelated;
+    }
+    .favicon-item.large img { image-rendering: auto; }
+    .favicon-bg-white { background: white; padding: 4px; border-radius: 4px; border: 1px solid var(--color-border); }
+    .favicon-bg-dark  { background: #1B2B4B; padding: 4px; border-radius: 4px; }
+    .favicon-bg-gray  { background: #6B7280; padding: 4px; border-radius: 4px; }
+
+    /* ── Color swatches ── */
+    .swatch-row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .swatch {
+      width: 80px;
+    }
+    .swatch-color {
+      height: 56px;
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.06);
+      margin-bottom: 8px;
+    }
+    .swatch-name { font-size: 11px; font-weight: 600; color: var(--color-text-primary); }
+    .swatch-hex { font-size: 10px; color: var(--color-text-muted); font-family: monospace; }
+
+    /* ── OG image ── */
+    .og-preview {
+      max-width: 600px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .og-preview img { width: 100%; display: block; }
+
+    /* ── Head code block ── */
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 24px 28px;
+      border-radius: 8px;
+      font-size: 12px;
+      line-height: 1.7;
+      overflow-x: auto;
+      font-family: 'Fira Code', 'Cascadia Code', monospace;
+    }
+    .c-comment { color: #64748b; }
+    .c-tag     { color: #7dd3fc; }
+    .c-attr    { color: #a5b4fc; }
+    .c-val     { color: #86efac; }
+  </style>
+</head>
+<body>
+
+<div class="preview-header">
+  <strong>MainStreetBenchmark.com</strong>
+  Brand Asset Preview — All logos, favicons, OG image, and implementation code
+</div>
+
+<!-- ── 1. LOGO MARK ── -->
+<div class="section">
+  <div class="section-label">01 — Logo Mark (Icon Only)</div>
+  <div class="row">
+    <div class="asset-block">
+      <div class="asset-label">On light / white</div>
+      <div style="background:white; padding:24px; border-radius:8px; border:1px solid var(--color-border);">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="80" height="80">
+          <rect width="48" height="48" rx="10" fill="#1B2B4B"/>
+          <rect x="9" y="27" width="8" height="12" rx="1.5" fill="#FFFFFF" opacity="0.55"/>
+          <rect x="20" y="19" width="8" height="20" rx="1.5" fill="#FFFFFF" opacity="0.8"/>
+          <rect x="31" y="11" width="8" height="28" rx="1.5" fill="#1E6B45"/>
+          <rect x="9" y="40" width="30" height="1.5" rx="0.75" fill="#FFFFFF" opacity="0.3"/>
+        </svg>
+      </div>
+    </div>
+    <div class="asset-block">
+      <div class="asset-label">On off-white (#FAFAF8)</div>
+      <div style="background:#FAFAF8; padding:24px; border-radius:8px; border:1px solid var(--color-border);">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="80" height="80">
+          <rect width="48" height="48" rx="10" fill="#1B2B4B"/>
+          <rect x="9" y="27" width="8" height="12" rx="1.5" fill="#FFFFFF" opacity="0.55"/>
+          <rect x="20" y="19" width="8" height="20" rx="1.5" fill="#FFFFFF" opacity="0.8"/>
+          <rect x="31" y="11" width="8" height="28" rx="1.5" fill="#1E6B45"/>
+          <rect x="9" y="40" width="30" height="1.5" rx="0.75" fill="#FFFFFF" opacity="0.3"/>
+        </svg>
+      </div>
+    </div>
+    <div class="asset-block">
+      <div class="asset-label">On dark navy</div>
+      <div style="background:#1B2B4B; padding:24px; border-radius:8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="80" height="80">
+          <rect width="48" height="48" rx="10" fill="rgba(255,255,255,0.1)"/>
+          <rect x="9" y="27" width="8" height="12" rx="1.5" fill="#FFFFFF" opacity="0.55"/>
+          <rect x="20" y="19" width="8" height="20" rx="1.5" fill="#FFFFFF" opacity="0.8"/>
+          <rect x="31" y="11" width="8" height="28" rx="1.5" fill="#1E6B45"/>
+          <rect x="9" y="40" width="30" height="1.5" rx="0.75" fill="#FFFFFF" opacity="0.3"/>
+        </svg>
+      </div>
+    </div>
+    <div class="asset-block">
+      <div class="asset-label">Mark concept</div>
+      <div style="font-size:13px; color:var(--color-text-secondary); max-width:220px; line-height:1.6;">
+        Three ascending bars encode <em>benchmark data</em>. Left + center bars in white (opacity-stepped), right bar in accent green — the "positive result" signal. Baseline rule grounds the chart. Works at 16px (favicon) through 512px (PWA).
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 2. WORDMARK ── -->
+<div class="section">
+  <div class="section-label">02 — Wordmark (Stacked, Light Background)</div>
+  <div class="row" style="align-items:flex-start;">
+    <div class="asset-block">
+      <div class="asset-label">Stacked — light bg</div>
+      <div style="background:white; padding:32px 40px; border-radius:8px; border:1px solid var(--color-border);">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 56" width="200" height="56">
+          <rect x="0" y="4" width="48" height="48" rx="10" fill="#1B2B4B"/>
+          <rect x="9" y="31" width="8" height="13" rx="1.5" fill="#FFFFFF" opacity="0.55"/>
+          <rect x="20" y="23" width="8" height="21" rx="1.5" fill="#FFFFFF" opacity="0.8"/>
+          <rect x="31" y="15" width="8" height="29" rx="1.5" fill="#1E6B45"/>
+          <rect x="9" y="44" width="30" height="1.5" rx="0.75" fill="#FFFFFF" opacity="0.3"/>
+          <text x="62" y="24" font-family="'DM Sans', system-ui, sans-serif" font-weight="600" font-size="16" fill="#1B2B4B" letter-spacing="-0.01em">MainStreet</text>
+          <text x="62" y="44" font-family="'DM Sans', system-ui, sans-serif" font-weight="700" font-size="16" fill="#1E6B45" letter-spacing="-0.01em">Benchmark</text>
+        </svg>
+      </div>
+    </div>
+    <div class="asset-block" style="flex:1; min-width:280px;">
+      <div class="asset-label">Typography rationale</div>
+      <div style="font-size:13px; color:var(--color-text-secondary); line-height:1.7;">
+        <strong style="color:var(--color-text-primary);">DM Sans throughout</strong> — not DM Serif Display, which is reserved for page H1s. A logo must be legible at 14px in a nav bar; display serifs fail at that size.<br><br>
+        <strong style="color:var(--color-text-primary);">"MainStreet" semibold (#1B2B4B)</strong> — the qualifier. Navy matches the nav background.<br><br>
+        <strong style="color:#1E6B45;">"Benchmark" bold (#1E6B45)</strong> — the differentiator. Green encodes the same <em>positive data result</em> signal used for the valuation output. Two-weight split creates emphasis without a second typeface.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 3. NAV IN CONTEXT ── -->
+<div class="section">
+  <div class="section-label">03 — Logo in Navigation (Actual Context)</div>
+  <div class="nav-demo">
+    <div class="nav-logo">
+      <div class="nav-mark">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="26" height="26">
+          <rect x="9" y="27" width="8" height="12" rx="1.5" fill="#FFFFFF" opacity="0.55"/>
+          <rect x="20" y="19" width="8" height="20" rx="1.5" fill="#FFFFFF" opacity="0.8"/>
+          <rect x="31" y="11" width="8" height="28" rx="1.5" fill="#1E6B45"/>
+          <rect x="9" y="40" width="30" height="1.5" rx="0.75" fill="#FFFFFF" opacity="0.3"/>
+        </svg>
+      </div>
+      <div class="nav-wordmark">
+        <span class="ms">MainStreet</span>
+        <span class="bm">Benchmark</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#">Industries</a>
+      <a href="#">Guides</a>
+      <a href="#">About</a>
+      <a href="#">Methodology</a>
+    </div>
+  </div>
+  <p style="font-size:12px; color:var(--color-text-muted); margin-top:12px;">
+    Note: In the nav the mark sits on a subtle white-opacity square rather than the full navy rounded-rect — avoids a box-inside-a-box on the already-navy nav background.
+  </p>
+</div>
+
+<!-- ── 4. FAVICON SIZES ── -->
+<div class="section">
+  <div class="section-label">04 — Favicons (All Required Sizes)</div>
+  <div class="favicon-grid">
+    <div class="favicon-item">
+      <div class="favicon-bg-white"><img src="favicon-16x16.png" width="16" height="16" alt="16px favicon"></div>
+      <div class="asset-label">16px</div>
+    </div>
+    <div class="favicon-item">
+      <div class="favicon-bg-white"><img src="favicon-32x32.png" width="32" height="32" alt="32px favicon"></div>
+      <div class="asset-label">32px</div>
+    </div>
+    <div class="favicon-item">
+      <div class="favicon-bg-white"><img src="favicon-48x48.png" width="48" height="48" alt="48px favicon"></div>
+      <div class="asset-label">48px</div>
+    </div>
+    <div class="favicon-item large">
+      <div class="favicon-bg-white"><img src="favicon-96x96.png" width="64" height="64" alt="96px favicon"></div>
+      <div class="asset-label">96px</div>
+    </div>
+    <div class="favicon-item large">
+      <div class="favicon-bg-white"><img src="apple-touch-icon.png" width="80" height="80" alt="Apple touch icon 180px"></div>
+      <div class="asset-label">180px<br>Apple Touch</div>
+    </div>
+    <div class="favicon-item large">
+      <div class="favicon-bg-white"><img src="favicon-192x192.png" width="80" height="80" alt="192px Android"></div>
+      <div class="asset-label">192px<br>Android PWA</div>
+    </div>
+    <div class="favicon-item large">
+      <div class="favicon-bg-white"><img src="favicon-512x512.png" width="80" height="80" alt="512px splash"></div>
+      <div class="asset-label">512px<br>PWA Splash</div>
+    </div>
+    <div style="width:1px; background:var(--color-border); height:80px; margin: 0 8px;"></div>
+    <div class="asset-block">
+      <div class="asset-label">On dark bg test</div>
+      <div style="display:flex; gap:8px;">
+        <div class="favicon-bg-dark"><img src="favicon-32x32.png" width="32" height="32" alt="favicon dark bg"></div>
+        <div class="favicon-bg-gray"><img src="favicon-32x32.png" width="32" height="32" alt="favicon gray bg"></div>
+      </div>
+      <div style="font-size:11px; color:var(--color-text-muted); margin-top:4px;">Navy + gray bg test ✓</div>
+    </div>
+  </div>
+  <div style="margin-top:24px; padding:16px 20px; background:#EAF5EE; border-left:3px solid #1E6B45; border-radius:0 6px 6px 0; font-size:13px; color:var(--color-text-secondary);">
+    <strong style="color:var(--color-text-primary);">File manifest:</strong> favicon.ico (16+32+48 multi-res) · favicon.svg · favicon-32x32.png · favicon-96x96.png · apple-touch-icon.png (180px) · favicon-192x192.png · favicon-512x512.png · manifest.webmanifest
+  </div>
+</div>
+
+<!-- ── 5. OG IMAGE ── -->
+<div class="section">
+  <div class="section-label">05 — Open Graph / Social Share Image (1200×630)</div>
+  <div class="og-preview">
+    <img src="og-image-default.png" alt="OG image preview" loading="lazy">
+  </div>
+  <p style="font-size:12px; color:var(--color-text-muted); margin-top:12px;">
+    Used when any page is shared on LinkedIn, Twitter/X, Slack, iMessage, or cited by AI link preview crawlers. The decorative ascending bars (right side) reinforce the benchmark data concept without needing text. Domain shown bottom-left.
+  </p>
+</div>
+
+<!-- ── 6. COLOR SYSTEM ── -->
+<div class="section">
+  <div class="section-label">06 — Color System (From Visual Design Spec)</div>
+  <div class="swatch-row">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#1B2B4B;"></div>
+      <div class="swatch-name">Primary Navy</div>
+      <div class="swatch-hex">#1B2B4B</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#243660;"></div>
+      <div class="swatch-name">Navy Light</div>
+      <div class="swatch-hex">#243660</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#1E6B45;"></div>
+      <div class="swatch-name">Accent Green</div>
+      <div class="swatch-hex">#1E6B45</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#175938;"></div>
+      <div class="swatch-name">Green Hover</div>
+      <div class="swatch-hex">#175938</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#EAF5EE; border:1px solid #d1e8d9;"></div>
+      <div class="swatch-name">Accent Light</div>
+      <div class="swatch-hex">#EAF5EE</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#FAFAF8; border:1px solid var(--color-border);"></div>
+      <div class="swatch-name">Page BG</div>
+      <div class="swatch-hex">#FAFAF8</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#111827;"></div>
+      <div class="swatch-name">Text Primary</div>
+      <div class="swatch-hex">#111827</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#4B5563;"></div>
+      <div class="swatch-name">Text Secondary</div>
+      <div class="swatch-hex">#4B5563</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#9CA3AF;"></div>
+      <div class="swatch-name">Text Muted</div>
+      <div class="swatch-hex">#9CA3AF</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#E2E4E8;"></div>
+      <div class="swatch-name">Border</div>
+      <div class="swatch-hex">#E2E4E8</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 7. HEAD CODE ── -->
+<div class="section">
+  <div class="section-label">07 — Complete &lt;head&gt; Favicon Implementation</div>
+  <pre><span class="c-comment">&lt;!-- Favicon implementation — copy exactly into every page &lt;head&gt; --&gt;</span>
+
+<span class="c-comment">&lt;!-- Legacy ICO: covers IE11, old Edge, Windows pinned sites --&gt;</span>
+<span class="c-tag">&lt;link</span> <span class="c-attr">rel</span>=<span class="c-val">"icon"</span> <span class="c-attr">href</span>=<span class="c-val">"/favicon.ico"</span> <span class="c-attr">sizes</span>=<span class="c-val">"32x32"</span><span class="c-tag">&gt;</span>
+
+<span class="c-comment">&lt;!-- SVG: modern browsers (Chrome 80+, Firefox 72+, Edge 80+) --&gt;</span>
+<span class="c-comment">&lt;!-- Scales perfectly at any resolution, smallest file --&gt;</span>
+<span class="c-tag">&lt;link</span> <span class="c-attr">rel</span>=<span class="c-val">"icon"</span> <span class="c-attr">href</span>=<span class="c-val">"/favicon.svg"</span> <span class="c-attr">type</span>=<span class="c-val">"image/svg+xml"</span><span class="c-tag">&gt;</span>
+
+<span class="c-comment">&lt;!-- Apple Touch Icon: iOS Safari home screen, iMessage link previews --&gt;</span>
+<span class="c-comment">&lt;!-- No rounded corners in file — iOS adds them automatically --&gt;</span>
+<span class="c-tag">&lt;link</span> <span class="c-attr">rel</span>=<span class="c-val">"apple-touch-icon"</span> <span class="c-attr">href</span>=<span class="c-val">"/apple-touch-icon.png"</span><span class="c-tag">&gt;</span>
+
+<span class="c-comment">&lt;!-- PWA Manifest: Android home screen, Chrome install prompt --&gt;</span>
+<span class="c-tag">&lt;link</span> <span class="c-attr">rel</span>=<span class="c-val">"manifest"</span> <span class="c-attr">href</span>=<span class="c-val">"/manifest.webmanifest"</span><span class="c-tag">&gt;</span>
+
+<span class="c-comment">&lt;!-- Theme color: Chrome mobile address bar, Windows taskbar --&gt;</span>
+<span class="c-tag">&lt;meta</span> <span class="c-attr">name</span>=<span class="c-val">"theme-color"</span> <span class="c-attr">content</span>=<span class="c-val">"#1B2B4B"</span><span class="c-tag">&gt;</span>
+
+<span class="c-comment">&lt;!-- Force light mode: overrides OS dark mode --&gt;</span>
+<span class="c-comment">&lt;!-- Per 12-VISUAL-DESIGN-SPEC.md: no dark mode implementation --&gt;</span>
+<span class="c-tag">&lt;meta</span> <span class="c-attr">name</span>=<span class="c-val">"color-scheme"</span> <span class="c-attr">content</span>=<span class="c-val">"light"</span><span class="c-tag">&gt;</span></pre>
+</div>
+
+<!-- ── 8. FILE MANIFEST ── -->
+<div class="section" style="border-bottom:none;">
+  <div class="section-label">08 — Complete File Manifest</div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; max-width:800px;">
+    <div style="padding:20px; background:white; border-radius:8px; border:1px solid var(--color-border);">
+      <div style="font-size:12px; font-weight:600; color:var(--color-text-muted); margin-bottom:12px; letter-spacing:0.05em; text-transform:uppercase;">SVG Sources</div>
+      <div style="font-size:13px; color:var(--color-text-secondary); line-height:2; font-family:monospace;">
+        logo-mark.svg<br>
+        logo-wordmark-stacked.svg<br>
+        logo-nav-dark.svg<br>
+        favicon.svg
+      </div>
+    </div>
+    <div style="padding:20px; background:white; border-radius:8px; border:1px solid var(--color-border);">
+      <div style="font-size:12px; font-weight:600; color:var(--color-text-muted); margin-bottom:12px; letter-spacing:0.05em; text-transform:uppercase;">Raster / Compiled</div>
+      <div style="font-size:13px; color:var(--color-text-secondary); line-height:2; font-family:monospace;">
+        favicon.ico (16+32+48)<br>
+        favicon-32x32.png<br>
+        favicon-96x96.png<br>
+        apple-touch-icon.png (180)<br>
+        favicon-192x192.png<br>
+        favicon-512x512.png<br>
+        logo-on-white@2x.png (520×112)<br>
+        og-image-default.png (1200×630)<br>
+        manifest.webmanifest
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:24px; padding:20px 24px; background:#FAFAF8; border-radius:8px; border:1px solid var(--color-border); font-size:13px; color:var(--color-text-secondary); line-height:1.7;">
+    <strong style="color:var(--color-text-primary);">Deployment note (Cloudflare Workers):</strong> All static assets should be served from Cloudflare R2 or bundled as Worker static assets. Set <code style="background:#E2E4E8; padding:1px 5px; border-radius:3px; font-size:12px;">Cache-Control: public, max-age=31536000, immutable</code> on all icon files. The SVG favicon will be served fastest and is the primary format for modern browsers.
+  </div>
+</div>
+
+</body>
+</html>

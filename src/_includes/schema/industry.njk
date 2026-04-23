@@ -1,0 +1,138 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "{{ industry.industry_name | jsStr }} Business Valuation Multiples — {{ industry.last_updated_display | jsStr }}",
+  "description": "SDE multiple and revenue multiple data for {{ industry.industry_name | jsStr }} businesses, based on {{ industry.transaction_count }}+ closed transactions reported to BizBuySell. {{ industry.industry_name | jsStr }} businesses typically sell for {{ industry.sde_multiple_low }}× to {{ industry.sde_multiple_high }}× annual SDE.",
+  "url": "{{ site.url }}{{ industry.page_url }}",
+  "creator": {
+    "@type": "Organization",
+    "name": "{{ site.brandName | jsStr }}",
+    "url": "{{ site.url }}/"
+  },
+  "isBasedOn": {
+    "@type": "Dataset",
+    "name": "BizBuySell Industry Valuation Report {{ industry.data_source | jsStr }}",
+    "url": "{{ site.bizBuySellUrl }}",
+    "publisher": {
+      "@type": "Organization",
+      "name": "BizBuySell (CoStar Group)",
+      "url": "https://www.bizbuysell.com/"
+    }
+  },
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "SDE Multiple (Lower Quartile)",
+      "value": {{ industry.sde_multiple_low }},
+      "unitText": "× annual SDE"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "SDE Multiple (Median)",
+      "value": {{ industry.sde_multiple_mid }},
+      "unitText": "× annual SDE"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "SDE Multiple (Upper Quartile)",
+      "value": {{ industry.sde_multiple_high }},
+      "unitText": "× annual SDE"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Revenue Multiple (Average)",
+      "value": {{ industry.revenue_multiple_avg }},
+      "unitText": "× annual revenue"
+    }
+  ],
+  "temporalCoverage": "{{ site.dataCoverageStart }}/{{ site.dataCoverageEnd }}",
+  "spatialCoverage": "United States",
+  "isAccessibleForFree": true,
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "includedInDataCatalog": {
+    "@type": "DataCatalog",
+    "name": "Small Business Valuation Transaction Database",
+    "url": "{{ site.url }}/valuation/"
+  },
+  "isRelatedTo": {
+    "@type": "WebApplication",
+    "name": "Small Business Valuation Calculator",
+    "url": "{{ site.url }}/",
+    "description": "Full industry-specific valuation calculator using this data. Accepts SDE, revenue, growth trend, owner involvement, and customer concentration to produce a personalized estimate."
+  },
+  "dateModified": "{{ industry.last_updated }}"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much is a {{ industry.industry_name | jsStr }} business worth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "According to Mainstreet Benchmark's analysis of {{ industry.transaction_count }}+ closed transactions reported to BizBuySell, {{ industry.industry_name | jsStr }} businesses typically sell for {{ industry.sde_multiple_low }}× to {{ industry.sde_multiple_high }}× annual SDE, with a median of {{ industry.sde_multiple_mid }}×. A business generating $200,000 in annual SDE would be valued between {{ industry.example_low | usd }} and {{ industry.example_high | usd }} under typical market conditions. Use the calculator above to generate a range based on your specific numbers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What drives a {{ industry.industry_name | jsStr }} business toward the upper end of the valuation range?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ industry.what_increases_value[0] | jsStr }} Beyond the base multiple, deal-specific factors for {{ industry.industry_name | jsStr }} businesses include: {{ industry.deal_notes | jsStr }}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the current market for buying and selling {{ industry.industry_name | jsStr }} businesses?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ industry.market_sentiment | jsStr }}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who typically buys {{ industry.industry_name | jsStr }} businesses, and how do they finance the purchase?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ industry.typical_buyer_profile | jsStr }}"
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ site.url }}/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Business Valuation",
+      "item": "{{ site.url }}/valuation/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ industry.industry_category | jsStr }}",
+      "item": "{{ site.url }}{{ industry.category_url }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "{{ industry.industry_name | jsStr }}",
+      "item": "{{ site.url }}{{ industry.page_url }}"
+    }
+  ]
+}
+</script>

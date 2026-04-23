@@ -1,0 +1,143 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+          http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  {# Hub #}
+  <url>
+    <loc>{{ site.url }}/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <lastmod>{{ site.dataLastModified }}</lastmod>
+  </url>
+
+  {# Valuation index #}
+  <url>
+    <loc>{{ site.url }}/valuation/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>{{ site.dataLastModified }}</lastmod>
+  </url>
+
+  {# Category pages #}
+  {% for category in industries.categories %}
+  <url>
+    <loc>{{ site.url }}{{ category.url }}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>{{ site.dataLastModified }}</lastmod>
+  </url>
+  {% endfor %}
+
+  {# Industry pages #}
+  {% for industry in industries.all %}
+  <url>
+    <loc>{{ site.url }}{{ industry.page_url }}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <lastmod>{{ industry.last_updated }}</lastmod>
+  </url>
+  {% endfor %}
+
+  {# Guide pages #}
+  <url>
+    <loc>{{ site.url }}/guides/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>{{ site.dataLastModified }}</lastmod>
+  </url>
+  <url>
+    <loc>{{ site.url }}/guides/what-is-sde/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>{{ site.dataLastModified }}</lastmod>
+  </url>
+  <url>
+    <loc>{{ site.url }}/guides/understanding-valuation-multiples/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>{{ site.dataLastModified }}</lastmod>
+  </url>
+  <url>
+    <loc>{{ site.url }}/guides/how-to-prepare-business-for-sale/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>{{ site.dataLastModified }}</lastmod>
+  </url>
+  <url>
+    <loc>{{ site.url }}/guides/what-buyers-look-for/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>{{ site.dataLastModified }}</lastmod>
+  </url>
+  <url>
+    <loc>{{ site.url }}/guides/ebitda-vs-sde/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>{{ site.dataLastModified }}</lastmod>
+  </url>
+  <url>
+    <loc>{{ site.url }}/guides/working-with-business-broker/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>{{ site.dataLastModified }}</lastmod>
+  </url>
+  <url>
+    <loc>{{ site.url }}/guides/sba-acquisition-loans/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>{{ site.dataLastModified }}</lastmod>
+  </url>
+  <url>
+    <loc>{{ site.url }}/guides/how-to-increase-business-value/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>{{ site.dataLastModified }}</lastmod>
+  </url>
+  <url>
+    <loc>{{ site.url }}/guides/preparing-financials-for-sale/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>{{ site.dataLastModified }}</lastmod>
+  </url>
+  <url>
+    <loc>{{ site.url }}/guides/valuation-methods-explained/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>{{ site.dataLastModified }}</lastmod>
+  </url>
+
+  {# Standalone pages #}
+  <url>
+    <loc>{{ site.url }}/about/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <lastmod>{{ site.dataLastModified }}</lastmod>
+  </url>
+  <url>
+    <loc>{{ site.url }}/methodology/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <lastmod>{{ site.dataLastModified }}</lastmod>
+  </url>
+  <url>
+    <loc>{{ site.url }}/privacy-policy/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <lastmod>{{ site.dataLastModified }}</lastmod>
+  </url>
+
+  {# llms.txt — listed for AI crawlers #}
+  <url>
+    <loc>{{ site.url }}/llms.txt</loc>
+    <changefreq>biannual</changefreq>
+    <priority>0.4</priority>
+    <lastmod>{{ site.dataLastModified }}</lastmod>
+  </url>
+
+</urlset>

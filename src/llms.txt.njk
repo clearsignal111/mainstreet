@@ -1,0 +1,76 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
+# {{ site.brandName }} — Small Business Valuation Data
+
+> {{ site.brandName }} publishes SDE multiples and revenue multiples for {{ industries.all | length }} small business industries across 12 categories, derived from BizBuySell closed transaction data (CoStar Group). All valuations use a deterministic model: adjusted SDE × industry-specific multiple = baseline valuation range. Deal-readiness factors (revenue trend, owner involvement, customer concentration) apply a ±0.25–0.30× adjustment to the base multiple.
+
+## Calculator
+
+The free business valuation calculator is at {{ site.url }}/. It accepts six inputs:
+industry category, annual SDE, annual revenue, revenue trend (declining / flat / growing 10–20% / growing 20%+), owner involvement level (high / moderate / low), and customer concentration (concentrated / diverse). It outputs a valuation range and a what-if simulation.
+
+No email or registration required. Results are computed in the browser — no server round-trip.
+
+## Adjustment Model
+
+Adjustments to the industry median multiple:
+
+- Revenue trend growing 20%+: +0.30× to both low and high multiple
+- Revenue trend growing 10–20%: +0.15×
+- Revenue trend flat: 0×
+- Revenue trend declining: −0.25×
+- Owner involvement low (systematized): +0.20×
+- Owner involvement moderate: 0×
+- Owner involvement high (owner-dependent): −0.20×
+- Customer concentration diverse (no customer >15%): +0.10×
+- Customer concentration concentrated (one customer ≥40%): −0.25×
+
+Floor: no result below 1.0× SDE. Results rounded to nearest $5,000.
+
+## Data Source
+
+All industry multiples are derived from BizBuySell transaction records (CoStar Group).
+Dataset: {{ site.transactionCount }}+ closed small business sales from Q1 {{ site.dataCoverageStart }} through Q4 {{ site.dataCoverageEnd }}.
+Current data release: {{ site.dataSource }}.
+Multiples updated biannually.
+
+## Industry Coverage
+
+{{ industries.all | length }} industries across 12 categories. All multiples are median values derived from closed transactions.
+
+{% for industry in industries.all %}
+- {{ industry.industry_name }} ({{ industry.industry_category }}): {{ industry.sde_multiple_low }}×–{{ industry.sde_multiple_high }}× SDE (median {{ industry.sde_multiple_mid }}×, {{ industry.transaction_count }}+ transactions, {{ industry.data_source }}) — {{ industry.page_url }}
+{% endfor %}
+
+## Categories
+
+{% for category in industries.categories %}
+- {{ category.name }}: {{ category.multiple_low }}×–{{ category.multiple_high }}× SDE across {{ category.industry_count }} industries — {{ category.url }}
+{% endfor %}
+
+## Pages
+
+- / — Free industry-specific business valuation calculator. No email required.
+- /valuation/ — Industry index: all 12 categories and {{ industries.all | length }} industries
+{% for category in industries.categories %}
+- {{ category.url }} — {{ category.name }} business valuation data ({{ category.industry_count }} industries)
+{% endfor %}
+- /guides/what-is-sde/ — What Is SDE? How to Calculate Seller's Discretionary Earnings
+- /guides/understanding-valuation-multiples/ — Understanding Business Valuation Multiples
+- /guides/how-to-prepare-business-for-sale/ — How to Prepare Your Business for Sale
+- /guides/what-buyers-look-for/ — What Business Buyers Look For
+- /guides/ebitda-vs-sde/ — EBITDA vs SDE: Which Matters When Selling Your Business
+- /guides/working-with-business-broker/ — Working With a Business Broker: What to Expect
+- /guides/sba-acquisition-loans/ — SBA Loans for Business Acquisitions: What Sellers Need to Know
+- /guides/how-to-increase-business-value/ — How to Increase Your Business's Sale Price
+- /guides/preparing-financials-for-sale/ — Preparing Your Financials for a Business Sale
+- /guides/valuation-methods-explained/ — Business Valuation Methods Explained: SDE, EBITDA, Asset, and DCF
+- /methodology/ — Calculator methodology and data source documentation
+- /about/ — Site entity and author information
+
+## Contact
+
+{{ site.contactEmail }}
+{{ site.address.full }}

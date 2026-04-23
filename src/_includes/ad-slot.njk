@@ -1,0 +1,13 @@
+{#
+  Ad slot component.
+  Usage: {% include "ad-slot.njk" %} — uses `adType` variable in scope.
+  adType: "post-result" | "mid-content"
+  Size reserved per 08-MONETIZATION.md and 04-PAGE-TEMPLATES.md.
+  No border, no label before load. CLS prevention via min-height.
+#}
+<div class="ad-unit ad-unit--{{ adType if adType else 'mid-content' }}" aria-hidden="true">
+  {# AdSense code inserted here after approval on day 61 #}
+  {# <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> #}
+  {# <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins> #}
+  {# <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> #}
+</div>

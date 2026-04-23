@@ -1,0 +1,110 @@
+---
+layout: layouts/base.njk
+pageTitle: "Business Sale Guides — How to Value, Prepare, and Sell Your Business"
+metaDescription: "Practical guides for small business owners preparing to sell. Covers SDE calculation, valuation multiples, broker selection, SBA financing, and deal preparation. Based on real transaction data."
+canonicalPath: /guides/
+---
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Business Sale Guides",
+  "description": "Educational guides for small business owners preparing to sell — covering SDE, valuation multiples, broker selection, SBA financing, and financial documentation.",
+  "url": "{{ site.url }}/guides/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ site.brandName | jsStr }}",
+    "url": "{{ site.url }}/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/" },
+    { "@type": "ListItem", "position": 2, "name": "Guides", "item": "{{ site.url }}/guides/" }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li aria-current="page">Guides</li>
+  </ol>
+</nav>
+
+<section class="guides-index-hero">
+  <div class="container">
+    <h1>Business Sale Guides</h1>
+    <p>
+      Practical guides for small business owners in the consideration and preparation phase of a sale.
+      Written for operators — not finance students. Every guide references real transaction data where relevant.
+    </p>
+  </div>
+</section>
+
+<section class="guides-index-list">
+  <div class="container">
+
+    <div class="guide-card">
+      <h2><a href="/guides/what-is-sde/">What Is SDE? How to Calculate Seller's Discretionary Earnings</a></h2>
+      <p>SDE is the number buyers and their lenders use — and it is consistently higher than net profit. Learn what gets added back and how to document it.</p>
+    </div>
+
+    <div class="guide-card">
+      <h2><a href="/guides/understanding-valuation-multiples/">Understanding Business Valuation Multiples</a></h2>
+      <p>Why car washes trade at 4.99× while restaurants trade at 2.15×. How multiples are derived from transaction data and what moves yours up or down.</p>
+    </div>
+
+    <div class="guide-card">
+      <h2><a href="/guides/how-to-prepare-business-for-sale/">How to Prepare Your Business for Sale: A 12-Month Action Plan</a></h2>
+      <p>The eight highest-ROI actions to take in the 12–24 months before listing — with specific timelines and common mistakes.</p>
+    </div>
+
+    <div class="guide-card">
+      <h2><a href="/guides/what-buyers-look-for/">What Business Buyers Look For</a></h2>
+      <p>How buyers and SBA lenders evaluate businesses during due diligence — and what signals command premium pricing vs. discount.</p>
+    </div>
+
+    <div class="guide-card">
+      <h2><a href="/guides/ebitda-vs-sde/">EBITDA vs SDE: Which Matters When Selling Your Business</a></h2>
+      <p>The two earnings metrics are often confused. Learn which one applies to your business and why using the wrong one can cost hundreds of thousands of dollars.</p>
+    </div>
+
+    <div class="guide-card">
+      <h2><a href="/guides/working-with-business-broker/">Working With a Business Broker: What to Expect</a></h2>
+      <p>What brokers do, what they charge (10–12% success fee), how to find a good one, and what the LOI-to-close process looks like.</p>
+    </div>
+
+    <div class="guide-card">
+      <h2><a href="/guides/sba-acquisition-loans/">SBA Loans for Business Acquisitions: What Sellers Need to Know</a></h2>
+      <p>Most Main Street buyers use SBA 7(a) loans. Understand how DSCR requirements set a price ceiling for your business and what makes a business SBA-financeable.</p>
+    </div>
+
+    <div class="guide-card">
+      <h2><a href="/guides/how-to-increase-business-value/">How to Increase Your Business's Sale Price Before You Sell</a></h2>
+      <p>Specific, quantified actions with the highest ROI: reducing owner involvement (+$120,000 on a $300k SDE business), building recurring revenue, diversifying customers.</p>
+    </div>
+
+    <div class="guide-card">
+      <h2><a href="/guides/preparing-financials-for-sale/">Preparing Your Financials for a Business Sale: Complete Checklist</a></h2>
+      <p>Every document required for a business sale, how to organize them, and the most common financial documentation mistakes that kill deals.</p>
+    </div>
+
+    <div class="guide-card">
+      <h2><a href="/guides/valuation-methods-explained/">Business Valuation Methods Explained: SDE, EBITDA, Asset, and DCF</a></h2>
+      <p>The four primary valuation methods compared — when each applies, worked examples, and how to choose the right one for your business size and buyer type.</p>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

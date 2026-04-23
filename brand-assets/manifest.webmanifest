@@ -1,0 +1,22 @@
+{
+  "name": "MainStreetBenchmark",
+  "short_name": "MSBenchmark",
+  "description": "Transaction-based business valuation data for Main Street small businesses",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAFAF8",
+  "theme_color": "#1B2B4B",
+  "icons": [
+    {
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ]
+}

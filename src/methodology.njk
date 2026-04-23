@@ -1,0 +1,295 @@
+---
+layout: layouts/base.njk
+pageTitle: "Methodology: How the Business Valuation Calculator Works"
+metaDescription: "How Mainstreet Benchmark calculates business valuations. Covers data sources, SDE multiple derivation, adjustment factors, floor and ceiling rules, and the difference between this tool and a formal appraisal."
+canonicalPath: /methodology/
+---
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Methodology: How the Business Valuation Calculator Works",
+  "description": "How Mainstreet Benchmark derives industry-specific SDE multiples from BizBuySell transaction data and applies adjustment factors to produce business valuation ranges.",
+  "url": "{{ site.url }}/methodology/",
+  "author": {
+    "@type": "Person",
+    "name": "{{ site.author.name | jsStr }}",
+    "url": "{{ site.url }}/about/#author"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ site.brandName | jsStr }}",
+    "url": "{{ site.url }}/"
+  },
+  "dateModified": "{{ site.dataLastModified }}"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/" },
+    { "@type": "ListItem", "position": 2, "name": "Methodology", "item": "{{ site.url }}/methodology/" }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li aria-current="page">Methodology</li>
+  </ol>
+</nav>
+
+<article class="methodology-page">
+  <div class="container">
+
+    <h1>Methodology: How the Business Valuation Calculator Works</h1>
+    <p class="methodology-updated">Last updated: {{ site.dataLastModified }} · Data: {{ site.dataSource }}</p>
+
+    <section class="methodology-section">
+      <h2>Data Source</h2>
+      <p>
+        All industry multiples used in this calculator are derived from the
+        <a href="{{ site.bizBuySellUrl }}" target="_blank" rel="noopener">BizBuySell Industry Valuation Report</a>,
+        published by CoStar Group. BizBuySell is the largest business-for-sale marketplace in the United
+        States and publishes closed transaction data — verified sale prices from completed transactions,
+        not asking prices or broker estimates.
+      </p>
+      <p>
+        The dataset underlying this calculator covers <strong>{{ site.transactionCount }}+ closed transactions</strong>
+        from Q1 {{ site.dataCoverageStart }} through Q4 {{ site.dataCoverageEnd }}, across 63 industries
+        in 12 categories. Transactions are weighted toward the most recent four quarters to reflect
+        current market conditions while maintaining statistical stability in industries with lower
+        transaction volumes.
+      </p>
+      <p>
+        BizBuySell data covers businesses primarily in the Main Street segment — those with revenue
+        under approximately $10M. It does not represent mid-market or large-cap business transactions,
+        which are reported through different channels (Capital IQ, PitchBook, etc.) and use different
+        valuation metrics (EBITDA multiples rather than SDE multiples).
+      </p>
+    </section>
+
+    <section class="methodology-section">
+      <h2>What the Multiples Represent</h2>
+      <p>
+        For each of the 63 industries in the dataset, we report three SDE multiple points and one
+        revenue multiple:
+      </p>
+      <ul>
+        <li><strong>Lower Quartile (sde_multiple_low):</strong> The 25th percentile of closed transaction multiples for this industry. Approximately 25% of transactions in this industry closed at or below this multiple.</li>
+        <li><strong>Median (sde_multiple_mid):</strong> The 50th percentile. Half of transactions closed above this multiple; half below. This is the primary reference point for the base valuation.</li>
+        <li><strong>Upper Quartile (sde_multiple_high):</strong> The 75th percentile. Approximately 25% of transactions closed at or above this multiple.</li>
+        <li><strong>Revenue Multiple (revenue_multiple_avg):</strong> The average ratio of sale price to annual revenue across closed transactions. Used as a secondary reference check, not a primary valuation method for most Main Street businesses.</li>
+      </ul>
+      <p>
+        These are not theoretical multiples derived from comparable analysis or broker estimates.
+        They are observed ratios from actual reported transaction prices.
+      </p>
+    </section>
+
+    <section class="methodology-section">
+      <h2>Base Calculation</h2>
+      <p>
+        The calculator's base calculation applies the industry-specific lower quartile and upper quartile
+        multiples to the user's stated annual SDE:
+      </p>
+      <div class="formula-block">
+        <p><code>base_low  = sde_multiple_low × annual_sde</code></p>
+        <p><code>base_high = sde_multiple_high × annual_sde</code></p>
+      </div>
+      <p>
+        This produces an unadjusted range representing where comparable businesses in this industry
+        have traded, before accounting for the specific quality and risk characteristics of the
+        user's business.
+      </p>
+    </section>
+
+    <section class="methodology-section">
+      <h2>Adjustment Factors</h2>
+      <p>
+        Three adjustment factors shift the base multiple range up or down based on the user's inputs.
+        Each factor represents a documented driver of multiple variation in Main Street transaction data.
+      </p>
+
+      <h3>Revenue Trend</h3>
+      <p>
+        Revenue growth trajectory is one of the strongest predictors of whether a business sells
+        at the upper or lower end of its industry range. Buyers pay for momentum; they discount for
+        uncertainty.
+      </p>
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>Selection</th><th>Adjustment (applied to both low and high)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Growing 20%+/yr</td><td>+0.30×</td></tr>
+            <tr><td>Growing 10–20%/yr</td><td>+0.15×</td></tr>
+            <tr><td>Flat (±5%)</td><td>0×</td></tr>
+            <tr><td>Declining</td><td>−0.25×</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Owner Involvement</h3>
+      <p>
+        Owner dependency is the most common discount factor in Main Street acquisitions. Businesses
+        where the owner is the primary service provider, holds key customer relationships, or manages
+        all daily operations require buyers to price in the cost and risk of replacing that involvement.
+        Systematized businesses — where operations run via trained staff and documented processes —
+        transfer more reliably and command higher prices.
+      </p>
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>Selection</th><th>Adjustment</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Low — mostly runs without me</td><td>+0.20×</td></tr>
+            <tr><td>Moderate — some systems, but I'm still key</td><td>0×</td></tr>
+            <tr><td>High — I'm central to daily operations</td><td>−0.20×</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Customer Concentration</h3>
+      <p>
+        Customer concentration — a single customer representing a disproportionate share of revenue —
+        is a primary SBA lender risk flag. If the concentrated customer departs post-acquisition,
+        the earnings base that supported the purchase price may no longer exist. Buyers and their
+        lenders apply meaningful discounts for concentration risk.
+      </p>
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>Selection</th><th>Adjustment</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Diverse — no single customer over 15%</td><td>+0.10×</td></tr>
+            <tr><td>Concentrated — one or a few customers 40%+</td><td>−0.25×</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Combined Adjustment Application</h3>
+      <div class="formula-block">
+        <p><code>total_adjustment = revenue_adj + owner_adj + concentration_adj</code></p>
+        <p><code>adjusted_low  = base_low  + (total_adjustment × annual_sde / base_multiple... </code></p>
+      </div>
+      <p>
+        More precisely: the adjustment is applied to the <em>multiple</em>, not directly to the dollar value,
+        then the adjusted multiple is applied to SDE:
+      </p>
+      <div class="formula-block">
+        <p><code>adjusted_multiple_low  = sde_multiple_low  + total_adjustment</code></p>
+        <p><code>adjusted_multiple_high = sde_multiple_high + total_adjustment</code></p>
+        <p><code>valuation_low  = adjusted_multiple_low  × annual_sde</code></p>
+        <p><code>valuation_high = adjusted_multiple_high × annual_sde</code></p>
+      </div>
+    </section>
+
+    <section class="methodology-section">
+      <h2>Floor and Ceiling Rules</h2>
+      <p>
+        <strong>Floor:</strong> The adjusted multiple cannot fall below 1.0×. A business rarely sells
+        for less than one year of earnings, regardless of risk factors, because sellers have the option
+        to simply continue operating. Results are floored at <code>max(adjusted_multiple, 1.0) × SDE</code>.
+      </p>
+      <p>
+        <strong>Ceiling note:</strong> When the adjusted high multiple exceeds 6.0×, the calculator
+        displays a contextual note: "This estimate reflects strong transaction multiples in your industry.
+        Multiples above 6× are rare and typically apply to businesses with significant recurring revenue
+        and minimal owner dependency." The calculation is not capped — the note provides context.
+      </p>
+    </section>
+
+    <section class="methodology-section">
+      <h2>Revenue Multiple (Secondary Check)</h2>
+      <p>
+        The calculator also computes a revenue-based valuation using the industry's average revenue
+        multiple from the BizBuySell dataset:
+      </p>
+      <div class="formula-block">
+        <p><code>revenue_valuation = revenue_multiple_avg × annual_revenue</code></p>
+      </div>
+      <p>
+        This is displayed as a secondary reference, not the primary output. For most Main Street
+        businesses, the SDE-based range is the governing metric. The revenue-based estimate provides
+        a market sanity check — significant divergence between the two figures (SDE-based estimate
+        much higher or lower than revenue-based) may indicate unusual margin characteristics worth
+        investigating.
+      </p>
+    </section>
+
+    <section class="methodology-section">
+      <h2>Rounding</h2>
+      <p>
+        All dollar output values are rounded to the nearest $5,000. False precision is noise for
+        planning purposes. "$382,417" is not more useful than "$380,000" — it implies a precision
+        the underlying data does not support.
+      </p>
+    </section>
+
+    <section class="methodology-section">
+      <h2>What This Calculator Is Not</h2>
+      <p>
+        This calculator produces planning estimates — not formal appraisals. Key limitations:
+      </p>
+      <ul>
+        <li>
+          <strong>Not a formal business appraisal.</strong> A formal appraisal requires on-site
+          inspection, detailed financial analysis, and attestation by a certified valuator (CVA, ABV,
+          or ASA). The output of this calculator cannot be used for legal, tax, estate, financing,
+          or litigation purposes.
+        </li>
+        <li>
+          <strong>Not a broker opinion of value.</strong> An experienced broker applies market knowledge
+          specific to your local market, buyer demand signals, and qualitative factors not captured in
+          the six inputs of this tool.
+        </li>
+        <li>
+          <strong>Not predictive of any specific offer.</strong> Individual buyers have specific
+          strategic or financial rationales that may cause them to bid above or below the statistical
+          median for your industry. The calculator predicts where your business should trade based on
+          comparable transactions — not where any specific buyer will bid.
+        </li>
+        <li>
+          <strong>Not a substitute for professional advice.</strong> Before listing your business for
+          sale, consult with a business broker, a CPA experienced in business sales, and a transaction
+          attorney. The cost of professional guidance is almost always less than the value destroyed
+          by entering a sale process without it.
+        </li>
+      </ul>
+    </section>
+
+    <section class="methodology-section">
+      <h2>Data Updates</h2>
+      <p>
+        Industry multiples are updated biannually as BizBuySell releases new transaction data.
+        The current dataset reflects {{ site.dataSource }}.
+        The <code>last_updated</code> field in each industry's data record reflects the date the
+        specific industry's multiples were last refreshed.
+      </p>
+    </section>
+
+    <section class="methodology-section">
+      <h2>Questions and Corrections</h2>
+      <p>
+        If you identify a data discrepancy, have a question about a specific industry's multiples,
+        or want to report an issue with the calculator, contact
+        <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a>.
+      </p>
+    </section>
+
+  </div>
+</article>
+
+{% endblock %}

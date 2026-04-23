@@ -1,0 +1,21 @@
+{
+  "name": "mainstreet-benchmark",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mainstreet Benchmark — Small Business Valuation Calculator",
+  "scripts": {
+    "validate:data": "node scripts/validate-data.js",
+    "build": "npm run validate:data && eleventy",
+    "validate:schema": "node scripts/validate-schema.js",
+    "build:full": "npm run build && npm run validate:schema",
+    "dev": "eleventy --serve --port 8080",
+    "deploy:preview": "vercel dist/ --yes",
+    "deploy:prod": "wrangler pages deploy dist/ --project-name mainstreet-benchmark"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "node-html-parser": "^6.1.13"
+  }
+}

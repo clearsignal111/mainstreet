@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>{{ pageTitle if pageTitle else title }} | {{ site.brandName }}</title>
+  <meta name="description" content="{{ metaDescription if metaDescription else description }}">
+
+  {# Canonical #}
+  <link rel="canonical" href="{{ site.url }}{{ canonicalPath if canonicalPath else page.url }}">
+
+  {# Open Graph #}
+  <meta property="og:type" content="{{ ogType if ogType else 'website' }}">
+  <meta property="og:title" content="{{ pageTitle if pageTitle else title }} | {{ site.brandName }}">
+  <meta property="og:description" content="{{ metaDescription if metaDescription else description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:site_name" content="{{ site.brandName }}">
+  <meta property="og:image" content="{{ site.url }}/brand-assets/og-image-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  {# Twitter Card #}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ pageTitle if pageTitle else title }} | {{ site.brandName }}">
+  <meta name="twitter:description" content="{{ metaDescription if metaDescription else description }}">
+  <meta name="twitter:image" content="{{ site.url }}/brand-assets/og-image-default.png">
+
+  {# Favicons & Manifest #}
+  <link rel="icon" href="/brand-assets/favicon.ico" sizes="any">
+  <link rel="icon" href="/brand-assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/brand-assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/brand-assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/brand-assets/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/brand-assets/favicon-192x192.png">
+  <link rel="manifest" href="/brand-assets/manifest.webmanifest">
+  <meta name="theme-color" content="#1B2B4B">
+
+  {# llms.txt AI alternate #}
+  <link rel="alternate" type="text/markdown" title="{{ site.brandName }} for AI" href="{{ site.url }}/llms.txt">
+
+  {# Preconnect for Google Fonts #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  {# CSS #}
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  {# Schema / JSON-LD — injected per page type #}
+  {% block schema %}{% endblock %}
+
+  {# GA4 — placeholder, add measurement ID to src/_data/site.js #}
+  {% if site.ga4Id %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga4Id }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.ga4Id }}');
+  </script>
+  {% endif %}
+</head>
+<body>
+
+  {# Navigation #}
+  {% include "nav.njk" %}
+
+  {# Page content #}
+  <main id="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  {# Footer #}
+  {% include "footer.njk" %}
+
+  {# Nav drawer JS (inline, tiny) #}
+  <script>
+    (function() {
+      var hamburger = document.getElementById('nav-hamburger');
+      var drawer    = document.getElementById('nav-drawer');
+      var overlay   = document.getElementById('nav-overlay');
+      var closeBtn  = document.getElementById('nav-drawer-close');
+      var indAccord = document.getElementById('drawer-industries-toggle');
+      var indSub    = document.getElementById('drawer-industries-sub');
+
+      function openDrawer() {
+        drawer.classList.add('open');
+        overlay.style.display = 'block';
+        requestAnimationFrame(function() { overlay.classList.add('open'); });
+        document.body.style.overflow = 'hidden';
+        drawer.setAttribute('aria-hidden', 'false');
+      }
+      function closeDrawer() {
+        drawer.classList.remove('open');
+        overlay.classList.remove('open');
+        setTimeout(function() { overlay.style.display = 'none'; }, 200);
+        document.body.style.overflow = '';
+        drawer.setAttribute('aria-hidden', 'true');
+      }
+
+      if (hamburger) hamburger.addEventListener('click', openDrawer);
+      if (closeBtn)  closeBtn.addEventListener('click', closeDrawer);
+      if (overlay)   overlay.addEventListener('click', closeDrawer);
+
+      if (indAccord && indSub) {
+        indAccord.addEventListener('click', function() {
+          var open = indSub.classList.toggle('open');
+          indAccord.querySelector('.chevron').style.transform = open ? 'rotate(180deg)' : '';
+        });
+      }
+
+      // Desktop dropdown
+      document.querySelectorAll('.nav-dropdown').forEach(function(dd) {
+        dd.addEventListener('mouseenter', function() { dd.classList.add('open'); });
+        dd.addEventListener('mouseleave', function() { dd.classList.remove('open'); });
+      });
+    })();
+  </script>
+
+  {# Page-specific scripts #}
+  {% block scripts %}{% endblock %}
+
+</body>
+</html>

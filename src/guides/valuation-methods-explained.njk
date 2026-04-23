@@ -1,0 +1,257 @@
+---
+layout: layouts/base.njk
+pageTitle: "Business Valuation Methods Explained: SDE, EBITDA, Asset, and DCF"
+metaDescription: "The four main business valuation methods — SDE multiples, EBITDA multiples, asset-based, and DCF — compared with worked examples. Learn which method applies to your business type."
+canonicalPath: /guides/valuation-methods-explained/
+datePublished: "2026-01-15"
+dateModified: "2026-01-15"
+faqItems:
+  - question: "Which valuation method is most common for small business sales?"
+    answer: "SDE (Seller's Discretionary Earnings) multiples are the most common method for Main Street businesses under $5M revenue. The multiple is applied to the business's SDE to produce a valuation range. This method is preferred because it normalizes for owner compensation structure and is supported by large transaction databases like BizBuySell, which report actual closed-sale multiples by industry."
+  - question: "When is asset-based valuation used?"
+    answer: "Asset-based valuation is used when the business has more value in its physical assets than in its ongoing earnings — typically for businesses with low or declining profitability, asset-intensive businesses like equipment dealers or trucking companies, or liquidation scenarios. A business with $50,000 SDE but $800,000 in verifiable equipment fair market value may be valued on assets rather than earnings."
+  - question: "Is DCF valuation used for small businesses?"
+    answer: "Rarely. DCF (Discounted Cash Flow) requires projecting future cash flows 5–10 years forward and selecting a discount rate — both highly sensitive to assumptions. Small business cash flows are too volatile and too dependent on the current owner to support defensible 10-year projections. DCF is primarily used for larger businesses, investment-grade assets, or specific situations like restaurant franchise valuations where corporate data provides a stable projection basis."
+  - question: "Can the same business use different valuation methods and get very different results?"
+    answer: "Yes — and this is intentional. A business with $150,000 SDE, $400,000 in equipment, and projected 30% annual growth for 5 years would value very differently under SDE multiples ($450,000 at 3×), asset-based ($500,000+), and DCF ($800,000+ depending on discount rate and terminal value). The appropriate method depends on the buyer type, the business's characteristics, and what the buyer is actually underwriting. Most Main Street sales use SDE multiples because it matches how SBA lenders underwrite the acquisition."
+---
+
+{# ─── Schema ────────────────────────────────────────────────────────────────── #}
+{% block schema %}
+  {% include "schema/guide.njk" %}
+{% endblock %}
+
+{% block content %}
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/guides/">Guides</a></li>
+    <li aria-current="page">Business Valuation Methods Explained</li>
+  </ol>
+</nav>
+
+<article class="guide-article">
+  <div class="container">
+
+    <header class="guide-header">
+      <h1>Business Valuation Methods Explained: SDE, EBITDA, Asset, and DCF</h1>
+      <div class="guide-meta">
+        <span>By {{ site.author.name }}</span>
+        <span>·</span>
+        <span>Updated {{ site.dataLastModified }}</span>
+        <span>·</span>
+        <span>11 min read</span>
+      </div>
+    </header>
+
+    <section class="guide-body">
+
+      <p>
+        There are four primary methods for valuing a business, and the appropriate choice depends
+        on your business type, size, and the buyer you are targeting. Using the wrong method —
+        or allowing a buyer to apply the wrong method — can result in a valuation that is significantly
+        below what the market would actually pay. This guide explains all four, when each applies,
+        and how they interact.
+      </p>
+
+      <h2>Method 1: SDE Multiple (Seller's Discretionary Earnings)</h2>
+      <p>
+        <strong>Applies to:</strong> Main Street businesses, typically $500,000 – $5,000,000 in revenue,
+        owner-operated, SDE under $1,000,000.
+      </p>
+      <p>
+        SDE multiples are the most widely used valuation method for small business sales because they
+        match how SBA lenders underwrite acquisitions. The method is straightforward:
+      </p>
+      <div class="formula-block">
+        <p><strong>Business Value = Annual SDE × Industry-Specific Multiple</strong></p>
+      </div>
+      <p>
+        The multiple comes from real transaction data — closed sale prices divided by SDE for comparable
+        businesses. Mainstreet Benchmark's multiples are derived from {{ site.transactionCount }}+ closed
+        transactions reported to BizBuySell across {{ site.dataCoverageStart }}–{{ site.dataCoverageEnd }}.
+        Industry-specific multiples vary significantly:
+      </p>
+      <ul>
+        <li><a href="/valuation/car-wash/">Car Washes</a>: 4.99× median</li>
+        <li><a href="/valuation/hvac-services/">HVAC Services</a>: 3.17× median</li>
+        <li><a href="/valuation/cleaning-businesses/">Cleaning Businesses</a>: 2.44× median</li>
+        <li><a href="/valuation/restaurant/">Restaurants</a>: 2.15× median</li>
+      </ul>
+      <p>
+        The multiple adjusts up or down based on owner involvement (±0.20×), revenue trend (−0.25× to
+        +0.30×), and customer concentration (−0.25× to +0.10×). The
+        <a href="/">valuation calculator</a> applies these adjustments automatically.
+      </p>
+      <p>
+        <strong>Limitations:</strong> SDE multiples are most accurate for businesses that are similar
+        to the comparable transactions in the database. Highly unusual businesses, first-of-their-kind
+        concepts, or businesses with extraordinary growth may not be well-served by a median multiple.
+      </p>
+
+      <h2>Method 2: EBITDA Multiple</h2>
+      <p>
+        <strong>Applies to:</strong> Lower middle-market businesses, typically $5M–$100M revenue,
+        professionally managed, EBITDA of $1M+.
+      </p>
+      <p>
+        EBITDA (Earnings Before Interest, Taxes, Depreciation, and Amortization) is the earnings metric
+        used in larger business transactions because it normalizes for capital structure (removes interest),
+        tax jurisdiction (removes taxes), and accounting treatment (removes D&amp;A). Unlike SDE, it does
+        not add back the owner's full compensation — it assumes a market-rate manager would replace the
+        owner, and that salary stays as an expense.
+      </p>
+      <div class="formula-block">
+        <p><strong>Business Value = EBITDA × Industry Multiple (typically 4× – 12× at this size)</strong></p>
+      </div>
+      <p>
+        EBITDA multiples are higher (4×–12×) than SDE multiples (2×–6×) because they are applied to a
+        smaller earnings base. A business with $400,000 SDE might have $220,000 EBITDA after accounting
+        for a market-rate manager. At 3.0× SDE the valuation is $1.2M; at 5.0× EBITDA it is $1.1M —
+        similar results from different starting points.
+      </p>
+      <p>
+        See <a href="/guides/ebitda-vs-sde/">EBITDA vs SDE: Which Matters When Selling Your Business</a>
+        for a complete comparison with worked examples.
+      </p>
+
+      <h2>Method 3: Asset-Based Valuation</h2>
+      <p>
+        <strong>Applies to:</strong> Asset-intensive businesses with low earnings relative to asset value,
+        distressed businesses, liquidation scenarios, or businesses where physical assets are the primary
+        value driver.
+      </p>
+      <p>
+        Asset-based valuation calculates the fair market value of all business assets (equipment, inventory,
+        real estate, accounts receivable) and subtracts liabilities to arrive at net asset value.
+      </p>
+      <div class="formula-block">
+        <p><strong>Business Value = Fair Market Value of Assets − Total Liabilities</strong></p>
+      </div>
+      <p>
+        Two variants:
+      </p>
+      <ul>
+        <li>
+          <strong>Going concern asset value:</strong> Assets valued at their replacement cost minus
+          depreciation, assuming the business continues to operate.
+        </li>
+        <li>
+          <strong>Liquidation value:</strong> Assets valued at what they would fetch in a forced sale —
+          typically 30–60% of replacement value. Used in bankruptcy and distressed situations.
+        </li>
+      </ul>
+      <p>
+        Asset-based valuation is most appropriate when:
+      </p>
+      <ul>
+        <li>SDE is negative or minimal (the business loses money or barely breaks even)</li>
+        <li>The business owns significant real estate or specialized equipment</li>
+        <li>The business is being liquidated rather than sold as a going concern</li>
+        <li>An equipment dealer, trucking company, or similar asset-heavy business is being valued</li>
+      </ul>
+      <p>
+        For profitable operating businesses, asset-based valuation typically produces a lower value
+        than SDE multiples because it does not capture the earnings power and customer relationships
+        that make a business worth more than its parts.
+      </p>
+
+      <h2>Method 4: Discounted Cash Flow (DCF)</h2>
+      <p>
+        <strong>Applies to:</strong> Larger businesses, franchise acquisitions, investment-grade assets,
+        or situations where reliable multi-year projections are available.
+      </p>
+      <p>
+        DCF projects the business's future free cash flows over a 5–10 year horizon, then discounts
+        those projections back to present value at a discount rate that reflects investment risk.
+      </p>
+      <div class="formula-block">
+        <p><strong>Business Value = Sum of (Projected Annual Cash Flow ÷ (1 + Discount Rate)^Year) + Terminal Value</strong></p>
+      </div>
+      <p>
+        DCF is theoretically the most rigorous valuation method because it explicitly captures the
+        time value of money and growth expectations. In practice, for small businesses, it has
+        significant weaknesses:
+      </p>
+      <ul>
+        <li>Small business cash flows are volatile and highly dependent on the current owner — projecting them reliably 5–10 years is difficult</li>
+        <li>The discount rate selection (typically 20–35% for small businesses) has an enormous impact on the result</li>
+        <li>Terminal value (the assumed sale value at the end of the projection period) often dominates the calculation in ways that are sensitive to assumptions</li>
+        <li>SBA lenders don't use DCF — they use the DSCR based on current SDE, so DCF valuations don't translate to financing capacity</li>
+      </ul>
+
+      <h2>Choosing the Right Method</h2>
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th scope="col">Business Profile</th>
+              <th scope="col">Primary Method</th>
+              <th scope="col">Secondary Check</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Owner-operated, under $5M revenue, profitable</td><td>SDE multiple</td><td>Revenue multiple</td></tr>
+            <tr><td>Professionally managed, $5M+ revenue</td><td>EBITDA multiple</td><td>Revenue multiple</td></tr>
+            <tr><td>Asset-heavy, low profitability</td><td>Asset-based</td><td>SDE multiple (floor check)</td></tr>
+            <tr><td>High growth, reliable projections</td><td>SDE/EBITDA multiple</td><td>DCF (scenario check)</td></tr>
+            <tr><td>Distressed or liquidation</td><td>Liquidation asset value</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        For the vast majority of small business owners reading this guide, the relevant method is
+        the SDE multiple — and the most useful data is the industry-specific multiple range from
+        actual transaction records. Start with the <a href="/">free valuation calculator</a> to
+        establish your baseline.
+      </p>
+
+    </section>
+
+    <div class="ad-unit ad-unit--mid-content" aria-label="Advertisement">
+      <div class="ad-unit__inner">
+        <ins class="adsbygoogle"
+             style="display:block;min-height:280px;"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+      </div>
+    </div>
+
+    <section class="guide-takeaways">
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li>SDE multiples are the standard for Main Street businesses — they match how SBA lenders underwrite acquisitions</li>
+        <li>EBITDA multiples apply to larger, professionally managed businesses ($5M+ revenue)</li>
+        <li>Asset-based valuation applies when assets exceed the earnings-based valuation (distressed or asset-heavy businesses)</li>
+        <li>DCF is rarely appropriate for small businesses due to projection uncertainty and irrelevance to SBA financing</li>
+        <li>The correct method is the one that matches your buyer type — SBA buyers underwrite on SDE, PE buyers underwrite on EBITDA</li>
+      </ul>
+    </section>
+
+    <section class="guide-faq">
+      <h2>Frequently Asked Questions</h2>
+      {% for item in faqItems %}
+      <div class="faq-item">
+        <h3>{{ item.question }}</h3>
+        <p>{{ item.answer }}</p>
+      </div>
+      {% endfor %}
+    </section>
+
+    <section class="guide-related">
+      <h3>Related Reading</h3>
+      <ul>
+        <li><a href="/guides/what-is-sde/">What Is SDE? How to Calculate Seller's Discretionary Earnings</a></li>
+        <li><a href="/guides/ebitda-vs-sde/">EBITDA vs SDE: Which Matters When Selling Your Business</a></li>
+        <li><a href="/guides/understanding-valuation-multiples/">Understanding Business Valuation Multiples</a></li>
+        <li><a href="/">Business Valuation Calculator — industry-specific SDE multiples from real transactions</a></li>
+      </ul>
+    </section>
+
+  </div>
+</article>
+
+{% endblock %}

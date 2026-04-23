@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <title>MainStreetBenchmark</title>
+  <rect width="32" height="32" rx="6" fill="#1B2B4B"/>
+  <rect x="6" y="18" width="5" height="8" rx="1" fill="#FFFFFF" opacity="0.55"/>
+  <rect x="13.5" y="13" width="5" height="13" rx="1" fill="#FFFFFF" opacity="0.8"/>
+  <rect x="21" y="7" width="5" height="19" rx="1" fill="#1E6B45"/>
+  <rect x="6" y="27" width="20" height="1" rx="0.5" fill="#FFFFFF" opacity="0.3"/>
+</svg>

@@ -1,0 +1,92 @@
+---
+layout: layouts/base.njk
+pageTitle: "Business Valuation by Industry — SDE Multiples & Market Data (2026)"
+metaDescription: "Industry-specific business valuation data for 63 business types across 12 categories. SDE multiples derived from 9,500+ BizBuySell closed transactions. Free valuation calculator — no email required."
+canonicalPath: /valuation/
+---
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Business Valuation by Industry — {{ site.dataYear }} SDE Multiples",
+  "description": "Industry-specific SDE multiples and valuation data for {{ industries.all | length }} business types, derived from {{ site.transactionCount }}+ BizBuySell closed transactions.",
+  "url": "{{ site.url }}/valuation/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ site.brandName | jsStr }}",
+    "url": "{{ site.url }}/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/" },
+    { "@type": "ListItem", "position": 2, "name": "Business Valuation", "item": "{{ site.url }}/valuation/" }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li aria-current="page">Business Valuation</li>
+  </ol>
+</nav>
+
+<section class="valuation-index-hero">
+  <div class="container">
+    <h1>Business Valuation by Industry — {{ site.dataYear }} SDE Multiples</h1>
+    <p>
+      Industry-specific SDE multiples for {{ industries.all | length }} business types derived from
+      {{ site.transactionCount }}+ closed transactions ({{ site.dataSource }}).
+      Select your industry to see actual multiple data and get an inline estimate,
+      or use the <a href="/">full valuation calculator</a> for an adjusted range.
+    </p>
+  </div>
+</section>
+
+<section class="valuation-index-categories">
+  <div class="container">
+
+    {% for category in industries.categories %}
+    <div class="index-category">
+      <h2>
+        <a href="{{ category.url }}">{{ category.name }}</a>
+        <span class="category-range">{{ category.multiple_low }}× – {{ category.multiple_high }}× SDE</span>
+      </h2>
+      <ul class="index-industry-list">
+        {% for ind in category.industries %}
+        <li>
+          <a href="{{ ind.page_url }}">{{ ind.industry_name }}</a>
+          <span class="index-multiple">{{ ind.sde_multiple_low }}× – {{ ind.sde_multiple_high }}×</span>
+        </li>
+        {% endfor %}
+      </ul>
+      <a href="{{ category.url }}" class="index-category__cta">
+        See all {{ category.name }} valuation data →
+      </a>
+    </div>
+    {% endfor %}
+
+  </div>
+</section>
+
+<aside class="data-citation">
+  <div class="container">
+    <p>
+      Transaction data: <a href="{{ site.bizBuySellUrl }}" target="_blank" rel="noopener">BizBuySell Industry Valuation Report</a>,
+      {{ site.dataSource }}. Multiples reflect closed transaction prices. This tool provides planning
+      estimates only and does not constitute a formal business appraisal.
+    </p>
+  </div>
+</aside>
+
+{% endblock %}
