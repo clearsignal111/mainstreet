@@ -47,10 +47,10 @@
   {# CSS #}
   <link rel="stylesheet" href="/assets/css/main.css">
 
-  {# Schema / JSON-LD — injected per page type #}
+  {# Schema / JSON-LD - injected per page type #}
   {% block schema %}{% endblock %}
 
-  {# GA4 — placeholder, add measurement ID to src/_data/site.js #}
+  {# GA4 - placeholder, add measurement ID to src/_data/site.js #}
   {% if site.ga4Id %}
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga4Id }}"></script>
   <script>

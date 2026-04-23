@@ -1,10 +1,10 @@
 ---
-metaDescription: "Free business valuation calculator using BizBuySell's 2025 SDE multiples for 63 industries. Get your industry-specific valuation range in 60 seconds — no email required."
+metaDescription: "Free business valuation calculator using BizBuySell's 2025 SDE multiples for 63 industries. Get your industry-specific valuation range in 60 seconds - no email required."
 canonicalPath: /
 ---
 {%- extends "layouts/base.njk" -%}
 
-{%- set pageTitle = "Small Business Valuation Calculator — " + site.dataYear + " Industry Data" -%}
+{%- set pageTitle = "Small Business Valuation Calculator - " + site.dataYear + " Industry Data" -%}
 
 
 {% block schema %}
@@ -17,8 +17,8 @@ canonicalPath: /
   {# ── H1 + Orienting text ──────────────────────────────────────── #}
   <section class="hub-hero">
     <div class="container">
-      <h1>Small Business Valuation Calculator — {{ site.dataYear }} Industry Data</h1>
-      <p class="hub-subhead">Industry-specific SDE multiples from {{ site.transactionCount }}+ closed transactions. No email required — full result instantly.</p>
+      <h1>Small Business Valuation Calculator - {{ site.dataYear }} Industry Data</h1>
+      <p class="hub-subhead">Industry-specific SDE multiples from {{ site.transactionCount }}+ closed transactions. No email required - full result instantly.</p>
       <p class="hub-stats">Based on {{ site.transactionCount }}+ closed transactions &middot; 63 industries &middot; Updated {{ site.dataSource }}</p>
     </div>
   </section>
@@ -46,7 +46,7 @@ canonicalPath: /
                 aria-label="Search industries">
               <div id="industry-dropdown" class="industry-dropdown" role="listbox" aria-label="Industries" style="display:none"></div>
               <div id="industry-locked-note" class="field-note hidden">
-                Showing selected industry data — <button type="button" class="link-btn" onclick="document.getElementById('industry-search').dataset.locked='';document.getElementById('industry-search').removeAttribute('readonly');document.getElementById('industry-search').classList.remove('locked');document.getElementById('industry-locked-note').classList.add('hidden');document.getElementById('industry-search').value='';document.getElementById('industry-search').focus();">change industry?</button>
+                Showing selected industry data - <button type="button" class="link-btn" onclick="document.getElementById('industry-search').dataset.locked='';document.getElementById('industry-search').removeAttribute('readonly');document.getElementById('industry-search').classList.remove('locked');document.getElementById('industry-locked-note').classList.add('hidden');document.getElementById('industry-search').value='';document.getElementById('industry-search').focus();">change industry?</button>
               </div>
             </div>
             <div id="industry-error" class="field-error" role="alert">Please select an industry to continue.</div>
@@ -62,7 +62,7 @@ canonicalPath: /
               <p><strong>SDE is your business's true earning power for a new owner.</strong> It equals:</p>
               <p><strong>Net profit + your salary + personal benefits run through the business + any one-time expenses</strong></p>
               <p>Example: If your business showed $40,000 net profit, you paid yourself $90,000, and ran $15,000 in personal expenses through the business, your SDE is $145,000.</p>
-              <p>If you're unsure, use your best estimate — you can refine it later.</p>
+              <p>If you're unsure, use your best estimate - you can refine it later.</p>
             </div>
             <div class="currency-wrap">
               <span class="currency-prefix" aria-hidden="true">$</span>
@@ -77,7 +77,7 @@ canonicalPath: /
             </div>
             <div id="sde-error" class="field-error" role="alert">Please enter your annual SDE.</div>
             <div id="sde-warning" class="field-warning" role="alert">
-              This looks higher than typical SDE for this industry — are you entering revenue? SDE is usually 15–35% of revenue for most businesses.
+              This looks higher than typical SDE for this industry - are you entering revenue? SDE is usually 15–35% of revenue for most businesses.
             </div>
           </div>
 
@@ -133,20 +133,20 @@ canonicalPath: /
                 <button type="button" class="tooltip-icon" id="owner-tooltip-btn" aria-expanded="false" aria-controls="owner-tooltip-content" aria-label="Help: what does owner involvement mean?">ⓘ</button>
               </label>
               <div id="owner-tooltip-content" class="tooltip-inline" role="region">
-                Buyers pay more for businesses that can operate without the seller staying involved. A business run on systems — with trained staff and documented processes — is more transferable and commands a higher multiple than one where key relationships and knowledge live with the owner personally.
+                Buyers pay more for businesses that can operate without the seller staying involved. A business run on systems - with trained staff and documented processes - is more transferable and commands a higher multiple than one where key relationships and knowledge live with the owner personally.
               </div>
               <div class="btn-group" role="group" aria-label="Owner involvement">
                 <label class="btn-group__btn">
                   <input type="radio" name="owner" value="high">
-                  <span>High — I'm central to daily operations</span>
+                  <span>High - I'm central to daily operations</span>
                 </label>
                 <label class="btn-group__btn">
                   <input type="radio" name="owner" value="moderate">
-                  <span>Moderate — some systems, but I'm still key</span>
+                  <span>Moderate - some systems, but I'm still key</span>
                 </label>
                 <label class="btn-group__btn">
                   <input type="radio" name="owner" value="low">
-                  <span>Low — mostly runs without me</span>
+                  <span>Low - mostly runs without me</span>
                 </label>
               </div>
               <div id="owner-error" class="field-error" role="alert">Please select your owner involvement level.</div>
@@ -158,11 +158,11 @@ canonicalPath: /
               <div class="btn-group" role="group" aria-label="Customer concentration">
                 <label class="btn-group__btn">
                   <input type="radio" name="concentration" value="concentrated">
-                  <span>Concentrated — one or a few customers represent 40%+ of revenue</span>
+                  <span>Concentrated - one or a few customers represent 40%+ of revenue</span>
                 </label>
                 <label class="btn-group__btn">
                   <input type="radio" name="concentration" value="diverse">
-                  <span>Diverse — no single customer over 15% of revenue</span>
+                  <span>Diverse - no single customer over 15% of revenue</span>
                 </label>
               </div>
               <div id="concentration-error" class="field-error" role="alert">Please select your customer concentration.</div>
@@ -192,12 +192,12 @@ canonicalPath: /
           {# Primary range #}
           <div class="result-primary">
             <div class="result-label">ESTIMATED BUSINESS VALUE</div>
-            <div id="res-range" class="result-range" tabindex="-1">—</div>
-            <div id="res-median" class="result-median">Median estimate: —</div>
+            <div id="res-range" class="result-range" tabindex="-1"> -</div>
+            <div id="res-median" class="result-median">Median estimate:  -</div>
             <div id="res-multiple-line" class="result-multiple-line"></div>
           </div>
 
-          {# Ceiling note — shown only when adjusted multiple > 6× #}
+          {# Ceiling note - shown only when adjusted multiple > 6× #}
           <div id="res-ceiling-note" class="result-ceiling-note" style="display:none">
             This estimate reflects strong transaction multiples in your industry. Multiples above 6× are rare and typically apply to businesses with significant recurring revenue and minimal owner dependency.
           </div>
@@ -208,29 +208,29 @@ canonicalPath: /
             <dl class="breakdown-dl">
               <div class="breakdown-row">
                 <dt>Industry</dt>
-                <dd id="res-industry">—</dd>
+                <dd id="res-industry"> -</dd>
               </div>
               <div class="breakdown-row">
                 <dt>Typical SDE multiple range</dt>
-                <dd id="res-base-range">—</dd>
+                <dd id="res-base-range"> -</dd>
               </div>
               <div class="breakdown-row">
                 <dt>Your adjusted multiple range</dt>
-                <dd id="res-adj-range">—</dd>
+                <dd id="res-adj-range"> -</dd>
               </div>
               <div class="breakdown-row">
-                <dt>Applied to your SDE of <span id="res-sde">—</span></dt>
-                <dd id="res-sde-val">—</dd>
+                <dt>Applied to your SDE of <span id="res-sde"> -</span></dt>
+                <dd id="res-sde-val"> -</dd>
               </div>
             </dl>
             <div class="breakdown-secondary">
               <span class="breakdown-secondary__label">Revenue-based estimate (secondary method):</span>
-              <span id="res-rev-val" class="breakdown-secondary__value">—</span>
+              <span id="res-rev-val" class="breakdown-secondary__value"> -</span>
               <p class="breakdown-secondary__note">Most Main Street businesses sell on SDE, not revenue. Use this as a reference point only.</p>
             </div>
           </div>
 
-          {# Value drivers — dynamic based on inputs #}
+          {# Value drivers - dynamic based on inputs #}
           <div id="res-drivers-up" class="value-drivers value-drivers--positive" style="display:none">
             <h3 class="drivers-heading">What drives your value up:</h3>
             <ul class="drivers-list"></ul>
@@ -243,7 +243,7 @@ canonicalPath: /
           {# Logic transparency / methodology note #}
           <div class="logic-transparency">
             <p id="res-lt-opener" class="lt-opener"></p>
-            <p class="result-disclaimer">Your estimate adjusts from the industry median based on revenue trend (±0.15 to 0.30×), owner involvement (±0.20×), and customer concentration (±0.10 to 0.25×). Results are floored at 1.0× SDE — businesses rarely sell below annual earnings regardless of risk factors. This is a planning estimate based on closed transaction data, not a formal business appraisal.</p>
+            <p class="result-disclaimer">Your estimate adjusts from the industry median based on revenue trend (±0.15 to 0.30×), owner involvement (±0.20×), and customer concentration (±0.10 to 0.25×). Results are floored at 1.0× SDE - businesses rarely sell below annual earnings regardless of risk factors. This is a planning estimate based on closed transaction data, not a formal business appraisal.</p>
           </div>
 
           {# Data source citation #}
@@ -251,12 +251,12 @@ canonicalPath: /
             <p id="res-citation"></p>
           </div>
 
-          {# Contextual frame — valuation-tiered sentence above ad unit #}
+          {# Contextual frame - valuation-tiered sentence above ad unit #}
           <p id="res-contextual-frame" class="contextual-frame"></p>
 
         </div>{# end result-block__inner #}
 
-        {# Ad Unit 1 — post-result, highest intent position #}
+        {# Ad Unit 1 - post-result, highest intent position #}
         {% set adType = "result" %}
         {% include "ad-slot.njk" %}
 
@@ -346,7 +346,7 @@ canonicalPath: /
           <div class="next-steps__num" aria-hidden="true">2</div>
           <div class="next-steps__body">
             <strong>Understand your deal-readiness</strong>
-            <p>Most businesses need 12–24 months of preparation to sell at maximum value. <a href="/guides/how-to-prepare-business-for-sale/">How to prepare your business for sale</a> covers the specific steps — addressing owner dependency, cleaning up financials, and documenting systems — that buyers and their lenders look for.</p>
+            <p>Most businesses need 12–24 months of preparation to sell at maximum value. <a href="/guides/how-to-prepare-business-for-sale/">How to prepare your business for sale</a> covers the specific steps - addressing owner dependency, cleaning up financials, and documenting systems - that buyers and their lenders look for.</p>
           </div>
         </li>
         <li class="next-steps__item">
@@ -360,7 +360,7 @@ canonicalPath: /
     </div>
   </section>
 
-  {# Ad Unit 2 — below Next Steps #}
+  {# Ad Unit 2 - below Next Steps #}
   <div class="container">
     {% set adType = "midpage" %}
     {% include "ad-slot.njk" %}
@@ -370,7 +370,7 @@ canonicalPath: /
   <section class="data-provenance-section">
     <div class="container prose">
       <h2>Where This Data Comes From</h2>
-      <p>BizBuySell is operated by CoStar Group — the same company that provides commercial real estate data to institutions — and collects closed transaction data from business brokers across the United States. Each transaction in the dataset represents an actual completed sale: a business that found a buyer, agreed on a price, and transferred ownership. The SDE multiples used in this calculator are derived from that closed transaction data, not from listing prices or broker estimates.</p>
+      <p>BizBuySell is operated by CoStar Group - the same company that provides commercial real estate data to institutions - and collects closed transaction data from business brokers across the United States. Each transaction in the dataset represents an actual completed sale: a business that found a buyer, agreed on a price, and transferred ownership. The SDE multiples used in this calculator are derived from that closed transaction data, not from listing prices or broker estimates.</p>
       <p>This distinction matters. Businesses typically close at 15–25% below their initial asking price. Using closed transaction data produces more realistic planning estimates than using asking prices, which reflect seller optimism rather than market reality.</p>
       <p>The current dataset covers <strong>{{ site.transactionCount }}+ closed transactions</strong> across 63 business categories from Q1 {{ site.dataCoverageStart }} through {{ site.dataQuarter }} {{ site.dataCoverageEnd }}. Multiples are updated twice per year when BizBuySell releases new transaction reports. This calculator reflects the {{ site.dataSource }} data.</p>
       <p>For a complete explanation of how SDE multiples are derived, how the adjustment factors work, and what this calculator can and cannot tell you, see our <a href="/methodology/">data methodology page</a>.</p>
@@ -385,11 +385,11 @@ canonicalPath: /
       <p>The multiple varies by industry because it reflects how predictable, recurring, and transferable the earnings are. Industries with recurring revenue, systematized operations, and low owner dependency command higher multiples. Industries where earnings are one-time, owner-dependent, or sensitive to a single relationship command lower ones.</p>
       <p>Three real examples from our {{ site.dataSource }} data illustrate the range:</p>
       <ul>
-        <li><strong>Car washes: 4.99× median.</strong> The highest multiple in the dataset. Buyers pay a premium because car wash revenue is recurring (membership programs in express-format operations), low-labor, and doesn't follow the owner out the door. A membership base of 500 monthly subscribers generating consistent revenue is valued like recurring software revenue — it compounds.</li>
+        <li><strong>Car washes: 4.99× median.</strong> The highest multiple in the dataset. Buyers pay a premium because car wash revenue is recurring (membership programs in express-format operations), low-labor, and doesn't follow the owner out the door. A membership base of 500 monthly subscribers generating consistent revenue is valued like recurring software revenue - it compounds.</li>
         <li><strong>HVAC businesses: 2.79× median.</strong> A solid multiple driven by recurring maintenance agreements. An HVAC business where 30%+ of revenue comes from active service contracts commands significantly more than an identical business dependent on new installation revenue. PE-backed consolidators in this category specifically pay for the recurring contract base.</li>
-        <li><strong>Restaurants: 2.15× median.</strong> The lowest multiple among comparable service businesses. Restaurant earnings are sensitive to lease terms, staff turnover, location, and the owner's personal relationships with key customers and suppliers — all factors that create transition risk buyers price heavily.</li>
+        <li><strong>Restaurants: 2.15× median.</strong> The lowest multiple among comparable service businesses. Restaurant earnings are sensitive to lease terms, staff turnover, location, and the owner's personal relationships with key customers and suppliers - all factors that create transition risk buyers price heavily.</li>
       </ul>
-      <p>The range within each industry — not just between industries — reflects what buyers pay attention to: revenue trend, owner involvement, and customer concentration. A growing HVAC business with diversified customers and low owner dependency might sell at 3.3× or higher. A declining HVAC business where the owner handles most customer relationships personally might sell at 2.2×. Same industry, very different numbers. That's what the calculator's adjustment factors model.</p>
+      <p>The range within each industry - not just between industries - reflects what buyers pay attention to: revenue trend, owner involvement, and customer concentration. A growing HVAC business with diversified customers and low owner dependency might sell at 3.3× or higher. A declining HVAC business where the owner handles most customer relationships personally might sell at 2.2×. Same industry, very different numbers. That's what the calculator's adjustment factors model.</p>
       <p>For a deeper explanation of how multiples work and why they vary, read our guide to <a href="/guides/understanding-valuation-multiples/">understanding business valuation multiples</a>.</p>
     </div>
   </section>
@@ -432,35 +432,35 @@ canonicalPath: /
         <div class="faq-item">
           <h3 class="faq-question">How accurate is this business valuation calculator?</h3>
           <div class="faq-answer">
-            <p>This calculator provides a data-backed estimate based on actual closed transaction multiples reported to BizBuySell from {{ site.transactionCount }}+ business sales. It is accurate as a planning estimate — most small businesses sell within 15–25% of a properly calculated SDE multiple range. It is not a formal appraisal and should not be used for legal, tax, or binding financial purposes. A certified business appraiser who reviews your actual financials, lease, customer contracts, and staff situation will produce a more precise opinion of value.</p>
+            <p>This calculator provides a data-backed estimate based on actual closed transaction multiples reported to BizBuySell from {{ site.transactionCount }}+ business sales. It is accurate as a planning estimate - most small businesses sell within 15–25% of a properly calculated SDE multiple range. It is not a formal appraisal and should not be used for legal, tax, or binding financial purposes. A certified business appraiser who reviews your actual financials, lease, customer contracts, and staff situation will produce a more precise opinion of value.</p>
           </div>
         </div>
 
         <div class="faq-item">
           <h3 class="faq-question">What is SDE (Seller's Discretionary Earnings)?</h3>
           <div class="faq-answer">
-            <p>SDE is the total financial benefit a single owner-operator derives from a business annually. It equals net profit plus the owner's salary plus any personal expenses run through the business plus non-recurring or one-time expenses. It represents the true earning power available to a new owner who will replace the previous owner's role. For example: a business that shows $40,000 net profit where the owner pays themselves $90,000 and runs $15,000 of personal expenses through the business has $145,000 in SDE — not $40,000. SDE is the correct basis for valuing most Main Street small businesses.</p>
+            <p>SDE is the total financial benefit a single owner-operator derives from a business annually. It equals net profit plus the owner's salary plus any personal expenses run through the business plus non-recurring or one-time expenses. It represents the true earning power available to a new owner who will replace the previous owner's role. For example: a business that shows $40,000 net profit where the owner pays themselves $90,000 and runs $15,000 of personal expenses through the business has $145,000 in SDE - not $40,000. SDE is the correct basis for valuing most Main Street small businesses.</p>
           </div>
         </div>
 
         <div class="faq-item">
           <h3 class="faq-question">Should I use revenue or earnings to value my business?</h3>
           <div class="faq-answer">
-            <p>For most Main Street small businesses, SDE (earnings) is the primary valuation basis. Revenue multiples are used as a secondary check and are shown in this calculator for reference. Buyers and their lenders focus on earnings because they need to service the acquisition debt from business cash flow after the purchase — revenue minus expenses is what pays the loan. Revenue-based valuation is more common in SaaS, e-commerce, and subscription businesses where margins are highly predictable. If your business has unusually thin or unusually thick margins for your industry, the secondary revenue estimate can help calibrate the SDE-based result.</p>
+            <p>For most Main Street small businesses, SDE (earnings) is the primary valuation basis. Revenue multiples are used as a secondary check and are shown in this calculator for reference. Buyers and their lenders focus on earnings because they need to service the acquisition debt from business cash flow after the purchase - revenue minus expenses is what pays the loan. Revenue-based valuation is more common in SaaS, e-commerce, and subscription businesses where margins are highly predictable. If your business has unusually thin or unusually thick margins for your industry, the secondary revenue estimate can help calibrate the SDE-based result.</p>
           </div>
         </div>
 
         <div class="faq-item">
           <h3 class="faq-question">How do buyers determine the price of a small business?</h3>
           <div class="faq-answer">
-            <p>Most buyers of small businesses use a multiple of SDE as the starting point for price negotiation. The multiple is influenced by the industry (some industries simply trade at higher multiples than others based on risk and growth profile), the business's revenue trend over the past 2 years, how dependent the business is on the owner personally, and the customer concentration risk. Buyers also factor in the remaining lease term and transferability, equipment condition, staff retention risk, and — for SBA-financed purchases — whether the business meets SBA underwriting requirements. Most Main Street acquisitions are financed through SBA 7(a) loans, which impose their own qualification standards that indirectly shape the offer price.</p>
+            <p>Most buyers of small businesses use a multiple of SDE as the starting point for price negotiation. The multiple is influenced by the industry (some industries simply trade at higher multiples than others based on risk and growth profile), the business's revenue trend over the past 2 years, how dependent the business is on the owner personally, and the customer concentration risk. Buyers also factor in the remaining lease term and transferability, equipment condition, staff retention risk, and - for SBA-financed purchases - whether the business meets SBA underwriting requirements. Most Main Street acquisitions are financed through SBA 7(a) loans, which impose their own qualification standards that indirectly shape the offer price.</p>
           </div>
         </div>
 
         <div class="faq-item">
           <h3 class="faq-question">What is an SDE multiple?</h3>
           <div class="faq-answer">
-            <p>An SDE multiple is the number by which a buyer multiplies your annual SDE to arrive at a business price. If your SDE is $200,000 and your industry's typical multiple is 2.5×, the implied price is $500,000. Multiples vary significantly by industry — from under 1.5× for lower-margin retail categories to over 5× for high-demand recurring-revenue businesses like car washes and marinas. Within any industry, the actual multiple paid depends on whether the business has recurring revenue, how involved the owner is in day-to-day operations, and whether the customer base is concentrated or diversified. The What-If simulation above shows how these factors shift your specific estimate.</p>
+            <p>An SDE multiple is the number by which a buyer multiplies your annual SDE to arrive at a business price. If your SDE is $200,000 and your industry's typical multiple is 2.5×, the implied price is $500,000. Multiples vary significantly by industry - from under 1.5× for lower-margin retail categories to over 5× for high-demand recurring-revenue businesses like car washes and marinas. Within any industry, the actual multiple paid depends on whether the business has recurring revenue, how involved the owner is in day-to-day operations, and whether the customer base is concentrated or diversified. The What-If simulation above shows how these factors shift your specific estimate.</p>
           </div>
         </div>
 
@@ -473,7 +473,7 @@ canonicalPath: /
 
 {% block scripts %}
 <script>
-/* Industry data for calculator — injected at build time */
+/* Industry data for calculator - injected at build time */
 window.INDUSTRIES = {{ industries.all | jsonEncode | safe }};
 </script>
 <script src="/assets/js/calculator.js" defer></script>
