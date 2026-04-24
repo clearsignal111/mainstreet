@@ -19,7 +19,11 @@ canonicalPath: /
     <div class="container">
       <h1>Small Business Valuation Calculator - {{ site.dataYear }} Industry Data</h1>
       <p class="hub-subhead">Industry-specific SDE multiples from {{ site.transactionCount }}+ closed transactions. No email required - full result instantly.</p>
-      <p class="hub-stats">Based on {{ site.transactionCount }}+ closed transactions &middot; 63 industries &middot; Updated {{ site.dataSource }}</p>
+      <div class="trust-chips" aria-label="Data provenance">
+        <span class="trust-chip"><strong>{{ site.transactionCount }}+</strong> closed transactions</span>
+        <span class="trust-chip"><strong>63</strong> industries</span>
+        <span class="trust-chip"><strong>{{ site.dataSource }}</strong> data</span>
+      </div>
     </div>
   </section>
 

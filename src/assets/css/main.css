@@ -1528,6 +1528,148 @@ textarea {
 .mb-4 { margin-bottom: var(--space-4); }
 .mb-8 { margin-bottom: var(--space-8); }
 
+/* ── Hub Page — Hero Band (Step 3) ─────────────────────────── */
+.hub-hero {
+  background: linear-gradient(180deg, #EEF2F8 0%, #F4F6FA 100%);
+  padding: var(--space-12) 0 var(--space-10);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hub-hero .container { max-width: 760px; }
+
+.hub-hero h1 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  color: var(--color-primary);
+  margin-bottom: var(--space-4);
+}
+
+.hub-subhead {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  max-width: 58ch;
+  margin-bottom: var(--space-6);
+}
+
+/* Trust stat chips (Step 4) */
+.trust-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.trust-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.trust-chip strong {
+  font-weight: var(--weight-semibold);
+  color: var(--color-primary);
+  font-size: var(--text-base);
+}
+
+/* Calculator section */
+.calc-section {
+  padding: var(--space-12) 0;
+  background: var(--color-bg);
+}
+
+/* ── Hub Page — Section Backgrounds (Step 5) ───────────────── */
+.next-steps-section {
+  padding: var(--space-16) 0;
+  background: #ffffff;
+}
+
+.data-provenance-section {
+  padding: var(--space-16) 0;
+  background: #F4F6F9;
+}
+
+.education-section {
+  padding: var(--space-16) 0;
+  background: #ffffff;
+}
+
+.browse-section {
+  padding: var(--space-16) 0;
+  background: #F4F6F9;
+}
+
+.faq-section {
+  padding: var(--space-16) 0;
+  background: #ffffff;
+}
+
+/* Next steps — numbered cards (Step 8 placeholder styles) */
+.next-steps__list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.next-steps__item {
+  display: flex;
+  gap: var(--space-4);
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--space-6);
+  align-items: flex-start;
+}
+
+.next-steps__num {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.next-steps__body strong {
+  display: block;
+  font-weight: var(--weight-semibold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+  font-size: var(--text-base);
+}
+
+.next-steps__body p {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: none;
+}
+
+.next-steps__heading {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .next-steps__list { grid-template-columns: 1fr; }
+  .trust-chips { gap: var(--space-2); }
+  .trust-chip { font-size: var(--text-xs); padding: var(--space-1) var(--space-3); }
+}
+
 /* ── Print ─────────────────────────────────────────────────── */
 @media print {
   .site-nav, .site-footer, .ad-unit { display: none; }
