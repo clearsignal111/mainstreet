@@ -207,6 +207,8 @@ li {
 
 /* ── Navigation ────────────────────────────────────────────── */
 .site-nav {
+  display: flex;
+  align-items: center;
   background: #ffffff;
   border-bottom: 1px solid var(--color-border);
   height: 64px;
@@ -218,7 +220,7 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100%;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--space-6);
@@ -431,7 +433,9 @@ li {
 .breadcrumb {
   font-size: var(--text-sm);
   color: var(--color-text-muted);
-  padding: var(--space-4) 0;
+  padding: var(--space-3) var(--space-6);
+  background: var(--color-bg-alt);
+  border-bottom: 1px solid var(--color-border-light);
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -1850,6 +1854,429 @@ textarea {
 
 @media (max-width: 600px) {
   .priority-list, .priority-industries { columns: 1; }
+}
+
+/* ── Guides Hub Page ───────────────────────────────────────── */
+.guides-index-hero {
+  background: linear-gradient(160deg, #2D4275 0%, #0D1828 100%);
+  padding: var(--space-20) 0 var(--space-16);
+}
+.guides-index-hero .container { max-width: 800px; }
+.guides-index-hero h1 {
+  color: #ffffff;
+  font-size: clamp(1.875rem, 4.5vw, 2.75rem);
+  margin-bottom: var(--space-4);
+}
+.guides-index-hero p {
+  color: rgba(255,255,255,0.78);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  max-width: 56ch;
+  margin: 0;
+}
+
+.guides-index-list {
+  padding: var(--space-16) 0 var(--space-20);
+  background: var(--color-bg-alt);
+}
+
+.guide-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  margin-bottom: var(--space-4);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 200ms, transform 200ms;
+}
+.guide-card:last-child { margin-bottom: 0; }
+.guide-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+.guide-card h2 {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  margin: 0 0 var(--space-2);
+  color: var(--color-primary);
+}
+.guide-card h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+.guide-card h2 a:hover { color: var(--color-cta); text-decoration: none; }
+.guide-card p {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: none;
+  line-height: var(--leading-relaxed);
+}
+
+/* ── Guide Article Pages ───────────────────────────────────── */
+/* Alt-bg on article page; white card panels float on top (BizBuySell pattern) */
+.guide-article {
+  background: var(--color-bg-alt);
+  padding: var(--space-8) 0 var(--space-20);
+}
+
+.guide-header {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-8) var(--space-10);
+  margin-bottom: var(--space-6);
+}
+
+h1.guide-h1,
+.guide-header h1 {
+  font-family: var(--font-body);
+  font-weight: var(--weight-extrabold);
+  font-size: clamp(1.625rem, 4vw, 2.5rem);
+  line-height: var(--leading-snug);
+  color: var(--color-primary);
+  margin-bottom: var(--space-4);
+}
+
+.guide-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.guide-body {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-10);
+  max-width: none;
+}
+
+/* Visible inline links in guide body — internal linking CTR matters for SEO */
+.guide-body a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: rgba(27,43,75,0.35);
+  transition: color 150ms, text-decoration-color 150ms;
+}
+.guide-body a:hover {
+  color: var(--color-cta);
+  text-decoration-color: var(--color-cta);
+}
+
+/* h2s in guide body get a subtle divider to break long reads */
+.guide-body h2 {
+  margin-top: var(--space-10);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border-light);
+}
+
+/* Formula / equation callout */
+.formula-block {
+  background: var(--color-bg-alt);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--space-5) var(--space-6);
+  margin: var(--space-6) 0;
+}
+.formula-block p {
+  font-size: var(--text-base);
+  max-width: none;
+  margin: 0;
+  line-height: var(--leading-relaxed);
+}
+
+/* Visible inline links in all long-form content */
+.article-body a,
+.guide-body a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: rgba(27,43,75,0.35);
+}
+.article-body a:hover,
+.guide-body a:hover {
+  color: var(--color-cta);
+  text-decoration-color: var(--color-cta);
+}
+
+@media (max-width: 767px) {
+  .guide-header { padding: var(--space-6); }
+  .guide-body { padding: var(--space-6); }
+  .guide-article { padding: var(--space-6) 0 var(--space-12); }
+}
+
+/* ── Industry Pages ────────────────────────────────────────── */
+.industry-hero {
+  background: linear-gradient(160deg, #2D4275 0%, #0D1828 100%);
+  padding: var(--space-16) 0 var(--space-12);
+}
+.industry-hero .container { max-width: 860px; }
+.industry-hero h1 {
+  color: #ffffff;
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  margin-bottom: var(--space-4);
+}
+.industry-hook {
+  color: rgba(255,255,255,0.82);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  max-width: 60ch;
+  margin-bottom: var(--space-3);
+}
+.industry-intro {
+  color: rgba(255,255,255,0.68);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  max-width: 64ch;
+  margin: 0;
+}
+
+/* SGE summary block — white card on alt-bg (replaces the old green left-border style) */
+.sge-summary-block {
+  background: var(--color-bg-alt);
+  padding: var(--space-12) 0;
+  border-left: none;
+  border-radius: 0;
+}
+.sge-summary-block__inner {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-8);
+}
+.sge-fact {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+}
+.sge-authority {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+.sge-range {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
+}
+.sge-summary-block__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-4);
+  border-top: 1px solid var(--color-border-light);
+  padding-top: var(--space-6);
+}
+.sge-summary-block__stats > div {
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+}
+.sge-summary-block__stats dt {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-1);
+}
+.sge-summary-block__stats dd {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Micro-calc section */
+.micro-calc-section {
+  background: var(--color-bg);
+  padding: var(--space-12) 0;
+}
+.micro-calc-hook {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
+  max-width: 60ch;
+}
+
+/* Industry data table section */
+.industry-data {
+  background: var(--color-bg-alt);
+  padding: var(--space-12) 0;
+}
+.industry-data h2 { margin-top: 0; }
+
+/* Shared data table (industry + methodology pages) */
+.data-table-wrap {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  margin: var(--space-6) 0;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+.data-table th,
+.data-table td {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border-light);
+}
+.data-table tr:last-child th,
+.data-table tr:last-child td { border-bottom: none; }
+.data-table th {
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-secondary);
+  background: var(--color-bg-alt);
+  width: 55%;
+}
+.data-table td {
+  font-weight: var(--weight-medium);
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+.data-table-interp {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  max-width: 68ch;
+}
+.data-table-interp a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Logic transparency accordion */
+.logic-transparency {
+  margin-top: var(--space-6);
+  border-top: 1px solid var(--color-border-light);
+  padding-top: var(--space-4);
+}
+.logic-transparency__toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-primary);
+  padding: 0;
+}
+.logic-transparency__toggle .chevron { transition: transform 200ms; }
+.logic-transparency__toggle[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+.logic-transparency__body {
+  margin-top: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-primary);
+}
+.logic-transparency__body p { font-size: var(--text-sm); max-width: none; margin-bottom: var(--space-3); }
+.logic-transparency__body p:last-child { margin-bottom: 0; }
+.logic-transparency__body a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Industry page .next-steps (different from hub page .next-steps-section) */
+.next-steps {
+  background: var(--color-bg);
+  padding: var(--space-12) 0;
+}
+.next-steps h2 { margin-top: 0; }
+.next-steps ol { padding-left: var(--space-5); }
+.next-steps li {
+  margin-bottom: var(--space-4);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  max-width: 64ch;
+}
+.next-steps li a {
+  color: var(--color-cta);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ── About Page ────────────────────────────────────────────── */
+.about-page {
+  background: var(--color-bg-alt);
+  padding: var(--space-8) 0 var(--space-20);
+}
+.about-section {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-8) var(--space-10);
+  margin-bottom: var(--space-6);
+}
+.about-section h2 { margin-top: 0; }
+.about-section a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.about-section a:hover { color: var(--color-cta); }
+.about-person {
+  display: flex;
+  gap: var(--space-6);
+  align-items: flex-start;
+}
+.about-person p { max-width: none; }
+
+/* ── Methodology Page ──────────────────────────────────────── */
+.methodology-page {
+  background: var(--color-bg-alt);
+  padding: var(--space-8) 0 var(--space-20);
+}
+.methodology-updated {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-6);
+}
+.methodology-section {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-8) var(--space-10);
+  margin-bottom: var(--space-6);
+}
+.methodology-section h2 { margin-top: 0; }
+.methodology-section a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.methodology-section a:hover { color: var(--color-cta); }
+
+@media (max-width: 767px) {
+  .industry-hero { padding: var(--space-12) 0 var(--space-8); }
+  .about-section,
+  .methodology-section { padding: var(--space-6); }
+  .sge-summary-block__inner { padding: var(--space-6); }
+  .sge-summary-block__stats { grid-template-columns: 1fr 1fr; }
+  .about-person { flex-direction: column; }
+  .data-table-wrap { overflow-x: auto; }
+  .data-table { min-width: 360px; }
 }
 
 /* ── Print ─────────────────────────────────────────────────── */
