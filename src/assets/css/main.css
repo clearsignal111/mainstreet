@@ -635,11 +635,12 @@ textarea {
 .btn-calculate {
   width: 100%;
   height: 52px;
-  background: var(--color-accent);
+  background: var(--color-primary);
   color: #fff;
   font-family: var(--font-body);
   font-size: var(--text-base);
   font-weight: var(--weight-semibold);
+  letter-spacing: 0.01em;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -651,7 +652,7 @@ textarea {
   margin-top: var(--space-6);
   position: relative;
 }
-.btn-calculate:hover { background: var(--color-accent-hover); }
+.btn-calculate:hover { background: var(--color-primary-light); }
 .btn-calculate:active { transform: scale(0.99); }
 .btn-calculate:disabled {
   opacity: 0.55;
