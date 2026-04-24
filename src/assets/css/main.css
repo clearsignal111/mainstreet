@@ -75,6 +75,9 @@
   --space-24:  6rem;
 }
 
+/* ── Utility ───────────────────────────────────────────────── */
+.hidden { display: none !important; }
+
 /* ── Reset & Base ──────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -512,14 +515,14 @@ textarea {
   gap: var(--space-2);
 }
 
-.btn-group input[type="radio"] {
+.btn-group__btn input[type="radio"] {
   position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.btn-group label {
+.btn-group__btn {
   display: inline-block;
   padding: var(--space-2) var(--space-4);
   font-size: var(--text-sm);
@@ -534,18 +537,18 @@ textarea {
   line-height: 1.4;
 }
 
-.btn-group input[type="radio"]:checked + label {
+.btn-group__btn:has(input[type="radio"]:checked) {
   background: var(--color-primary);
   border-color: var(--color-primary);
   color: #fff;
 }
 
-.btn-group label:hover {
+.btn-group__btn:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
 }
 
-.btn-group input[type="radio"]:checked + label:hover {
+.btn-group__btn:has(input[type="radio"]:checked):hover {
   background: var(--color-primary);
   color: #fff;
 }

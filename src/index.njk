@@ -26,7 +26,7 @@ canonicalPath: /
   {# ── Full Calculator ───────────────────────────────────────────── #}
   <section class="calc-section">
     <div class="container">
-      <div class="calc-container">
+      <div class="calculator">
 
         <form id="calculator-form" novalidate>
 
@@ -37,6 +37,7 @@ canonicalPath: /
               <input
                 type="text"
                 id="industry-search"
+                class="form-input"
                 placeholder="Search or select your industry..."
                 autocomplete="off"
                 spellcheck="false"
@@ -49,16 +50,16 @@ canonicalPath: /
                 Showing selected industry data - <button type="button" class="link-btn" onclick="document.getElementById('industry-search').dataset.locked='';document.getElementById('industry-search').removeAttribute('readonly');document.getElementById('industry-search').classList.remove('locked');document.getElementById('industry-locked-note').classList.add('hidden');document.getElementById('industry-search').value='';document.getElementById('industry-search').focus();">change industry?</button>
               </div>
             </div>
-            <div id="industry-error" class="field-error" role="alert">Please select an industry to continue.</div>
+            <div id="industry-error" class="form-error" role="alert">Please select an industry to continue.</div>
           </div>
 
           {# Input 2: Annual SDE #}
           <div class="form-group">
             <label for="sde-input">
               Annual SDE (Seller's Discretionary Earnings)
-              <button type="button" class="expander-trigger" id="sde-expander-toggle" aria-expanded="false" aria-controls="sde-expander-content">▾ What is SDE?</button>
+              <button type="button" class="sde-expander__toggle" id="sde-expander-toggle" aria-expanded="false" aria-controls="sde-expander-content">▾ What is SDE?</button>
             </label>
-            <div id="sde-expander-content" class="expander-content" role="region" aria-label="SDE definition">
+            <div id="sde-expander-content" class="sde-expander__content" role="region" aria-label="SDE definition">
               <p><strong>SDE is your business's true earning power for a new owner.</strong> It equals:</p>
               <p><strong>Net profit + your salary + personal benefits run through the business + any one-time expenses</strong></p>
               <p>Example: If your business showed $40,000 net profit, you paid yourself $90,000, and ran $15,000 in personal expenses through the business, your SDE is $145,000.</p>
@@ -72,11 +73,12 @@ canonicalPath: /
                 placeholder="0"
                 inputmode="numeric"
                 autocomplete="off"
+                class="form-input"
                 aria-label="Annual SDE in dollars"
                 aria-required="true">
             </div>
-            <div id="sde-error" class="field-error" role="alert">Please enter your annual SDE.</div>
-            <div id="sde-warning" class="field-warning" role="alert">
+            <div id="sde-error" class="form-error" role="alert">Please enter your annual SDE.</div>
+            <div id="sde-warning" class="form-warning" role="alert">
               This looks higher than typical SDE for this industry - are you entering revenue? SDE is usually 15–35% of revenue for most businesses.
             </div>
           </div>
@@ -92,10 +94,11 @@ canonicalPath: /
                 placeholder="0"
                 inputmode="numeric"
                 autocomplete="off"
+                class="form-input"
                 aria-label="Annual revenue in dollars"
                 aria-required="true">
             </div>
-            <div id="revenue-error" class="field-error" role="alert">Revenue should be larger than SDE. Please check your figures.</div>
+            <div id="revenue-error" class="form-error" role="alert">Revenue should be larger than SDE. Please check your figures.</div>
           </div>
 
           {# Stage 2: revealed on mobile after SDE entry #}
@@ -123,7 +126,7 @@ canonicalPath: /
                   <span>Growing 20%+/yr</span>
                 </label>
               </div>
-              <div id="trend-error" class="field-error" role="alert">Please select your revenue trend.</div>
+              <div id="trend-error" class="form-error" role="alert">Please select your revenue trend.</div>
             </div>
 
             {# Input 5: Owner Involvement #}
@@ -149,7 +152,7 @@ canonicalPath: /
                   <span>Low - mostly runs without me</span>
                 </label>
               </div>
-              <div id="owner-error" class="field-error" role="alert">Please select your owner involvement level.</div>
+              <div id="owner-error" class="form-error" role="alert">Please select your owner involvement level.</div>
             </div>
 
             {# Input 6: Customer Concentration #}
@@ -165,15 +168,15 @@ canonicalPath: /
                   <span>Diverse - no single customer over 15% of revenue</span>
                 </label>
               </div>
-              <div id="concentration-error" class="field-error" role="alert">Please select your customer concentration.</div>
+              <div id="concentration-error" class="form-error" role="alert">Please select your customer concentration.</div>
             </div>
 
           </div>{# end stage-2-fields #}
 
           <p id="calc-sublabel" class="calc-sublabel">Complete your details to refine your estimate</p>
-          <button type="button" id="calc-btn" class="calc-btn">
-            <span class="calc-btn__label">Calculate My Valuation</span>
-            <span class="calc-btn__spinner" aria-hidden="true"></span>
+          <button type="button" id="calc-btn" class="btn-calculate">
+            <span class="btn-label">Calculate My Valuation</span>
+            <span class="spinner" aria-hidden="true"></span>
           </button>
 
         </form>{# end calculator-form #}
