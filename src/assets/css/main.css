@@ -207,23 +207,21 @@ li {
 
 /* ── Navigation ────────────────────────────────────────────── */
 .site-nav {
-  display: flex;
-  align-items: center;
   background: #ffffff;
   border-bottom: 1px solid var(--color-border);
-  height: 64px;
   position: relative;
   z-index: 100;
 }
 
+/* The inner row carries the explicit height so centering is reliable */
 .site-nav__inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
+  height: 64px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--space-6);
+  justify-content: space-between;
 }
 
 .site-nav__logo {
@@ -233,6 +231,9 @@ li {
   text-decoration: none;
   letter-spacing: -0.01em;
   white-space: nowrap;
+  line-height: 1;
+  display: flex;
+  align-items: center;
 }
 .site-nav__logo span { color: var(--color-accent); font-family: var(--font-body); font-weight: var(--weight-medium); font-size: 1rem; }
 .site-nav__logo:hover { text-decoration: none; opacity: 0.85; }
@@ -242,6 +243,14 @@ li {
   align-items: center;
   gap: var(--space-6);
   list-style: none;
+  height: 100%;
+}
+
+.site-nav__links li {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin: 0;
 }
 
 .site-nav__links a {
@@ -250,16 +259,25 @@ li {
   color: var(--color-text-secondary);
   text-decoration: none;
   transition: color 150ms;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  position: relative;
 }
 .site-nav__links a:hover,
 .site-nav__links a[aria-current="page"] {
   color: var(--color-primary);
   text-decoration: none;
 }
-.site-nav__links a[aria-current="page"] {
-  color: var(--color-primary);
-  border-bottom: 2px solid var(--color-primary);
-  padding-bottom: 2px;
+/* Active indicator as pseudo-element — adds no height to the element itself */
+.site-nav__links a[aria-current="page"]::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-primary);
 }
 
 /* Industries dropdown */
@@ -1574,7 +1592,7 @@ textarea {
 
 /* ── Hub Page — Hero Band ───────────────────────────────────── */
 .hub-hero {
-  background: linear-gradient(160deg, #2D4275 0%, #0D1828 100%);
+  background: var(--color-primary);
   padding: var(--space-20) 0 var(--space-16);
 }
 
@@ -1858,7 +1876,7 @@ textarea {
 
 /* ── Guides Hub Page ───────────────────────────────────────── */
 .guides-index-hero {
-  background: linear-gradient(160deg, #2D4275 0%, #0D1828 100%);
+  background: var(--color-primary);
   padding: var(--space-20) 0 var(--space-16);
 }
 .guides-index-hero .container { max-width: 800px; }
@@ -2014,7 +2032,7 @@ h1.guide-h1,
 
 /* ── Industry Pages ────────────────────────────────────────── */
 .industry-hero {
-  background: linear-gradient(160deg, #2D4275 0%, #0D1828 100%);
+  background: var(--color-primary);
   padding: var(--space-16) 0 var(--space-12);
 }
 .industry-hero .container { max-width: 860px; }
