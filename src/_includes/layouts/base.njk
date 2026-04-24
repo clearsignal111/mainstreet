@@ -110,10 +110,28 @@
         });
       }
 
-      // Desktop dropdown
-      document.querySelectorAll('.nav-dropdown').forEach(function(dd) {
-        dd.addEventListener('mouseenter', function() { dd.classList.add('open'); });
-        dd.addEventListener('mouseleave', function() { dd.classList.remove('open'); });
+      // Desktop dropdown — CSS :hover handles mouse; click toggle handles keyboard/touch
+      document.querySelectorAll('.nav-dropdown__trigger').forEach(function(trigger) {
+        trigger.addEventListener('click', function() {
+          var dd = trigger.closest('.nav-dropdown');
+          var opening = !dd.classList.contains('open');
+          document.querySelectorAll('.nav-dropdown').forEach(function(d) {
+            d.classList.remove('open');
+            d.querySelector('.nav-dropdown__trigger').setAttribute('aria-expanded', 'false');
+          });
+          if (opening) {
+            dd.classList.add('open');
+            trigger.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.nav-dropdown')) {
+          document.querySelectorAll('.nav-dropdown').forEach(function(dd) {
+            dd.classList.remove('open');
+            dd.querySelector('.nav-dropdown__trigger').setAttribute('aria-expanded', 'false');
+          });
+        }
       });
     })();
   </script>
