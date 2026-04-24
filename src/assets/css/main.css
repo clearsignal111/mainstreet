@@ -213,7 +213,7 @@ li {
   z-index: 100;
 }
 
-/* The inner row carries the explicit height so centering is reliable */
+/* Explicit height here — align-items:center vertically centers all children */
 .site-nav__inner {
   display: flex;
   align-items: center;
@@ -231,9 +231,6 @@ li {
   text-decoration: none;
   letter-spacing: -0.01em;
   white-space: nowrap;
-  line-height: 1;
-  display: flex;
-  align-items: center;
 }
 .site-nav__logo span { color: var(--color-accent); font-family: var(--font-body); font-weight: var(--weight-medium); font-size: 1rem; }
 .site-nav__logo:hover { text-decoration: none; opacity: 0.85; }
@@ -243,15 +240,9 @@ li {
   align-items: center;
   gap: var(--space-6);
   list-style: none;
-  height: 100%;
 }
 
-.site-nav__links li {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  margin: 0;
-}
+.site-nav__links li { margin: 0; }
 
 .site-nav__links a {
   font-size: var(--text-sm);
@@ -259,25 +250,16 @@ li {
   color: var(--color-text-secondary);
   text-decoration: none;
   transition: color 150ms;
-  display: flex;
-  align-items: center;
-  height: 100%;
-  position: relative;
+  padding-bottom: 2px;
 }
 .site-nav__links a:hover,
 .site-nav__links a[aria-current="page"] {
   color: var(--color-primary);
   text-decoration: none;
 }
-/* Active indicator as pseudo-element — adds no height to the element itself */
-.site-nav__links a[aria-current="page"]::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--color-primary);
+.site-nav__links a[aria-current="page"] {
+  border-bottom: 2px solid var(--color-primary);
+  padding-bottom: 0;
 }
 
 /* Industries dropdown */
