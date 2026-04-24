@@ -187,8 +187,9 @@ li {
 
 /* ── Navigation ────────────────────────────────────────────── */
 .site-nav {
-  background: var(--color-primary);
-  height: 60px;
+  background: #ffffff;
+  border-bottom: 1px solid var(--color-border);
+  height: 64px;
   position: relative;
   z-index: 100;
 }
@@ -205,13 +206,14 @@ li {
 
 .site-nav__logo {
   font-family: var(--font-display);
-  font-size: 1.25rem;
-  color: #fff;
+  font-size: 1.2rem;
+  color: var(--color-primary);
   text-decoration: none;
   letter-spacing: -0.01em;
   white-space: nowrap;
 }
-.site-nav__logo:hover { text-decoration: none; opacity: 0.9; }
+.site-nav__logo span { color: var(--color-accent); font-family: var(--font-body); font-weight: var(--weight-medium); font-size: 1rem; }
+.site-nav__logo:hover { text-decoration: none; opacity: 0.85; }
 
 .site-nav__links {
   display: flex;
@@ -223,18 +225,18 @@ li {
 .site-nav__links a {
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
-  color: rgba(255,255,255,0.85);
+  color: var(--color-text-secondary);
   text-decoration: none;
-  transition: opacity 150ms;
+  transition: color 150ms;
 }
 .site-nav__links a:hover,
 .site-nav__links a[aria-current="page"] {
-  color: #fff;
-  opacity: 1;
+  color: var(--color-primary);
   text-decoration: none;
 }
 .site-nav__links a[aria-current="page"] {
-  border-bottom: 2px solid var(--color-accent);
+  color: var(--color-primary);
+  border-bottom: 2px solid var(--color-primary);
   padding-bottom: 2px;
 }
 
@@ -246,15 +248,17 @@ li {
   cursor: pointer;
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
-  color: rgba(255,255,255,0.85);
+  color: var(--color-text-secondary);
   display: flex;
   align-items: center;
   gap: var(--space-1);
   padding: 0;
+  transition: color 150ms;
 }
-.nav-dropdown__trigger:hover { color: #fff; }
+.nav-dropdown__trigger:hover { color: var(--color-primary); }
 .nav-dropdown__trigger svg { transition: transform 200ms; }
 .nav-dropdown.open .nav-dropdown__trigger svg { transform: rotate(180deg); }
+.nav-dropdown.open .nav-dropdown__trigger { color: var(--color-primary); }
 
 .nav-dropdown__menu {
   display: none;
@@ -289,7 +293,7 @@ li {
   border: none;
   cursor: pointer;
   padding: var(--space-2);
-  color: #fff;
+  color: var(--color-primary);
 }
 
 /* Mobile drawer */
